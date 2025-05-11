@@ -1,0 +1,21 @@
+<div class="chat-container">
+  <aside class="chat-sidebar">
+    <ul class="chat-list">
+      <li *ngFor="let chat of chats" class="chat-item">
+        <img [src]="chat.avatar" alt="{{ chat.name }}" class="chat-avatar">
+        <div class="chat-text">
+          <strong>{{ chat.name }}</strong>
+          <p>{{ chat.lastMessage }}</p>
+        </div>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="chat-main">
+    <hr />
+    <div class="chat-input-wrapper">
+      <input type="text" placeholder="Type a message..." class="chat-input">
+      <span class="chat-send-icon">💬</span>
+    </div>
+  </div>
+</div>

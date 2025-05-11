@@ -1,0 +1,20 @@
+<header class="header-container">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="AgeCare Logo" />
+  </div>
+
+  <button class="menu-toggle" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links" [class.open]="menuOpen">
+    <a routerLink="/diagnosis" routerLinkActive="active-link" (click)="closeMenu()">Stats</a>
+    <a routerLink="/medical-reports" routerLinkActive="active-link" (click)="closeMenu()">Reports</a>
+    <a routerLink="/messages" routerLinkActive="active-link" (click)="closeMenu()">Messages</a>
+    <a routerLink="/appointments" routerLinkActive="active-link" (click)="closeMenu()">Appointments</a>
+  </nav>
+
+  <div class="login-button" [class.hide]="menuOpen">
+    <a routerLink="/login" class="btn-login">Log In</a>
+  </div>
+</header>

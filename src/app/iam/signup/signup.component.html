@@ -1,0 +1,31 @@
+<div class="signup-container">
+  <h2><u>Sign Up</u></h2>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Patient details:</legend>
+      <label>Name: <input formControlName="name" /></label>
+      <label>Lastname: <input formControlName="lastname" /></label>
+      <label>ID: <input formControlName="id" /></label>
+      <label>Age: <input type="number" formControlName="age" /></label>
+      <label>Health Insurance: <input formControlName="healthInsurance" /></label>
+      <label>Prefered Hospital: <input formControlName="hospital" /></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Account Details:</legend>
+      <label>Full name: <input formControlName="fullName" /></label>
+      <label>Email: <input type="email" formControlName="email" /></label>
+      <label>Password: <input type="password" formControlName="password" /></label>
+      <label>Confirm: <input type="password" formControlName="confirmPassword" /></label>
+    </fieldset>
+
+    <button type="submit" class="register-btn">Register</button>
+
+    <div class="alt-signup">
+      <span>or</span>
+      <button type="button" class="google-btn">Sign up with Google</button>
+      <button type="button" class="apple-btn">Sign up with Apple</button>
+    </div>
+  </form>
+</div>

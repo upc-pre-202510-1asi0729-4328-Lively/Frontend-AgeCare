@@ -1,0 +1,86 @@
+/* Header */
+*{
+  color: black;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+
+.logo {
+  height: 50px;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.profile {
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Main Content */
+.content {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+
+}
+
+.report-header h2,
+.report-header {
+  text-decoration: underline;
+}
+
+/* Sections */
+h4 {
+  margin-bottom: 1rem;
+}
+
+.report-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.report-card {
+  flex: 1 1 calc(33.333% - 1rem);
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+.report-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.report-title {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+}

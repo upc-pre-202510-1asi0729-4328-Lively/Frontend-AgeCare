@@ -1,0 +1,61 @@
+
+.appointment-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #e0f0ff;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.form-section, .payment-section {
+  width: 48%;
+  background: #b2d9f7;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h2, h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="date"], input[type="time"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 4px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-book, .btn-pay {
+  margin-top: 15px;
+  background-color: #003366;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-pay-alt {
+  margin-top: 10px;
+  background-color: #f0c040;
+  color: #000;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.card-icons img {
+  height: 30px;
+  margin-right: 5px;
+}

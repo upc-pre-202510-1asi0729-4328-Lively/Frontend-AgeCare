@@ -1,0 +1,29 @@
+
+
+<main class="content">
+  <section class="report-header">
+    <h2>Patient Medical Reports</h2>
+    <h2><a routerLink="/reports" routerLinkActive="active-link">Patient’s reports</a>
+    </h2>
+  </section>
+
+  <section>
+    <h4>Weekly</h4>
+    <div class="report-grid">
+      <div class="report-card" *ngFor="let report of weeklyReports">
+        <img [src]="report.image" [alt]="report.title">
+        <div class="report-title">{{ report.title }}</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h4>Monthly</h4>
+    <div class="report-grid">
+      <div class="report-card" *ngFor="let report of monthlyReports">
+        <img [src]="report.image" [alt]="report.title">
+        <div class="report-title">{{ report.title }}</div>
+      </div>
+    </div>
+  </section>
+</main>

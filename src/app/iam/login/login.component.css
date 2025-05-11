@@ -1,0 +1,149 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.login-box {
+  background-color: #72b3dc;
+  padding: 40px 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  border-bottom: 2px solid black;
+  display: inline-block;
+}
+
+.form-group {
+  margin: 15px 0;
+  text-align: left;
+  width: 90%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #eee;
+  font-size: 16px;
+}
+
+.input-icon mat-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+.btn-login {
+  background-color: #002d5c;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.social-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.social-login button {
+  flex: 1 1 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  background: white;
+}
+
+.social-login img {
+  height: 20px;
+}
+
+.bottom-links {
+  font-size: 14px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.bottom-links span {
+  color: #333;
+}
+
+.bottom-links a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+}
+
+
+/* ✅ RESPONSIVE: Pantallas menores a 600px */
+@media screen and (max-width: 600px) {
+  .login-box {
+    padding: 30px 20px;
+  }
+
+  .login-box h2 {
+    font-size: 24px;
+  }
+
+  .social-login {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .social-login button {
+    width: 100%;
+  }
+
+  .btn-login {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .bottom-links {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}
