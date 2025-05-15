@@ -1,0 +1,140 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "FirstName": "John",
+      "LastName": "Doe",
+      "Speciality": "Cardiologia",
+      "Phone": 987162718,
+      "NursingHomeId": 83
+    },
+    {
+      "id": 2,
+      "FirstName": "Tony",
+      "LastName": "Loarte",
+      "Speciality": "Urologia",
+      "Phone": 987615261,
+      "NursingHomeId": 124
+    },
+    {
+      "id": 3,
+      "FirstName": "Ramiro",
+      "LastName": "Chavez",
+      "Speciality": "Ginecologia",
+      "Phone": 914646796,
+      "NursingHomeId": 91
+    },
+    {
+      "id": 4,
+      "FirstName": "Laura",
+      "LastName": "Martínez",
+      "Speciality": "Neurologia",
+      "Phone": 987615728,
+      "NursingHomeId": 124
+    },
+    {
+      "id": 5,
+      "FirstName": "Sandra",
+      "LastName": "Lopez",
+      "Speciality": "Ortopediatria",
+      "Phone": 987665172,
+      "NursingHomeId": 11
+    },
+    {
+      "id": 6,
+      "FirstName": "Eduardo",
+      "LastName": "Perez",
+      "Speciality": "Dermatologia",
+      "Phone": 999817261,
+      "NursingHomeId": 10
+    },
+    {
+      "id": 7,
+      "FirstName": "Clara",
+      "LastName": "Fernández",
+      "Speciality": "Pediatria",
+      "Phone": 987516278,
+      "NursingHomeId": 8
+    },
+    {
+      "id": 8,
+      "FirstName": "Miguel",
+      "LastName": "Gomez",
+      "Speciality": "Cirugia General",
+      "Phone": 987615261,
+      "NursingHomeId": 2
+    },
+    {
+      "id": 9,
+      "FirstName": "Eduardo",
+      "LastName": "Vela",
+      "Speciality": "Cardiologia",
+      "Phone": 51912821823,
+      "NursingHomeId": 1
+    },
+    {
+      "id": 10,
+      "FirstName": "Lucía",
+      "LastName": "Ramos",
+      "Speciality": "Reumatologia",
+      "Phone": 987128374,
+      "NursingHomeId": 22
+    },
+    {
+      "id": 11,
+      "FirstName": "Andrés",
+      "LastName": "Torres",
+      "Speciality": "Endocrinologia",
+      "Phone": 987432189,
+      "NursingHomeId": 45
+    },
+    {
+      "id": 12,
+      "FirstName": "Valeria",
+      "LastName": "Mejía",
+      "Speciality": "Gastroenterologia",
+      "Phone": 998172635,
+      "NursingHomeId": 19
+    },
+    {
+      "id": 13,
+      "FirstName": "Carlos",
+      "LastName": "Ibáñez",
+      "Speciality": "Oncologia",
+      "Phone": 987176543,
+      "NursingHomeId": 3
+    },
+    {
+      "id": 14,
+      "FirstName": "Gabriela",
+      "LastName": "Cruz",
+      "Speciality": "Nefrologia",
+      "Phone": 987543287,
+      "NursingHomeId": 17
+    },
+    {
+      "id": 15,
+      "FirstName": "Roberto",
+      "LastName": "Aguilar",
+      "Speciality": "Medicina Interna",
+      "Phone": 987645382,
+      "NursingHomeId": 6
+    },
+    {
+      "id": 16,
+      "FirstName": "Natalia",
+      "LastName": "Vargas",
+      "Speciality": "Otorrinolaringologia",
+      "Phone": 987612734,
+      "NursingHomeId": 20
+    },
+    {
+      "FirstName": "Hola",
+      "LastName": "Mundo",
+      "Speciality": "Farmagologia",
+      "Phone": 987615267,
+      "NursingHomeId": 1,
+      "id": 17
+    }
+  ]
+}

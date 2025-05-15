@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="main-toolbar">
+  <!-- Imagen del logo en lugar del ícono -->
+  <img class="app-logo" src="assets/img/LogoAgeCare1.png" alt="AgeCare Logo" />
+
+
+  <span class="mat-spacer"></span>
+
+  <!-- Botones de navegación -->
+  <button mat-button routerLink="/home" routerLinkActive="active-link">Home</button>
+  <button mat-button routerLink="/about" routerLinkActive="active-link">About</button>
+  <button mat-button routerLink="/doctors" routerLinkActive="active-link">Doctors</button>
+
+  <!-- Botón compartir -->
+  <button mat-icon-button aria-label="Share">
+    <mat-icon>share</mat-icon>
+  </button>
+
+  <!-- Selector de idioma -->
+  <span class="language-switcher">
+    <app-language-switcher></app-language-switcher>
+  </span>
+</mat-toolbar>

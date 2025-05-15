@@ -1,0 +1,19 @@
+{
+  "add_doctor": "Agregar Doctor AgeCare",
+  "edit_doctor": "Editar Doctor AgeCare",
+  "first_name": "Nombre",
+  "last_name": "Apellido",
+  "speciality": "Especialidad",
+  "phone": "Teléfono",
+  "nursing_home_id": "Asilo ID",
+  "add": "Agregar",
+  "update": "Actualizar",
+  "cancel": "Cancelar",
+  "search_placeholder": "Buscar doctor por nombre o apellido...",
+  "edit": "Editar",
+  "delete": "Eliminar",
+  "confirm_delete_title": "Confirmar Eliminación",
+  "confirm_delete_message": "¿Estás seguro de que deseas eliminar este doctor? Esta acción no se puede deshacer.",
+  "yes_delete": "Sí, eliminar",
+  "footer_message": "© 2025 AgeCare. Todos los derechos reservados."
+}

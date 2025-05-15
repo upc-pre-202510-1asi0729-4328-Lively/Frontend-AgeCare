@@ -1,0 +1,73 @@
+<div class="modal-overlay" *ngIf="showForm">
+  <div class="modal-content">
+    <div class="form-container">
+      <h2>{{ editingDoctorId ? ('edit_doctor' | translate) : ('add_doctor' | translate) }}</h2>
+      <form (ngSubmit)="addDoctor()" #doctorForm="ngForm">
+        <input type="text" [placeholder]="'first_name' | translate" [(ngModel)]="newDoctor.FirstName" name="FirstName" required>
+        <input type="text" [placeholder]="'last_name' | translate" [(ngModel)]="newDoctor.LastName" name="LastName" required>
+        <input type="text" [placeholder]="'speciality' | translate" [(ngModel)]="newDoctor.Speciality" name="Speciality" required>
+
+        <input type="number" [placeholder]="'phone' | translate" [(ngModel)]="newDoctor.Phone" name="Phone" required
+               min="0" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+        <input type="number" [placeholder]="'nursing_home_id' | translate" [(ngModel)]="newDoctor.NursingHomeId" name="NursingHomeId" required
+               min="0" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+        <button type="submit" [disabled]="!doctorForm.form.valid">
+          {{ editingDoctorId ? ('update' | translate) : ('add' | translate) }}
+        </button>
+        <button type="button" (click)="closeForm()">{{ 'cancel' | translate }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="add-doctor-button">
+  <button (click)="openForm()">+ {{ 'add_doctor' | translate }}</button>
+</div>
+
+<div *ngIf="confirmationMessage" class="confirmation-message">
+  <p>{{ confirmationMessage }}</p>
+</div>
+
+<div class="search-container">
+  <input
+    type="text"
+    [placeholder]="'search_placeholder' | translate"
+    [(ngModel)]="searchTerm"
+    name="searchTerm"
+  >
+</div>
+
+<div class="doctor-container">
+  <div class="doctor-card" *ngFor="let doctor of filteredDoctors">
+    <div class="card-content">
+      <div class="doctor-info">
+        <h3>{{ doctor.FirstName }} {{ doctor.LastName }}</h3>
+        <p><strong>{{ 'speciality' | translate }}:</strong> {{ doctor.Speciality }}</p>
+        <p><strong>{{ 'phone' | translate }}:</strong> {{ doctor.Phone }}</p>
+        <p><strong>{{ 'nursing_home_id' | translate }}:</strong> {{ doctor.NursingHomeId }}</p>
+        <div class="action-buttons">
+          <button (click)="editDoctor(doctor)">{{ 'edit' | translate }}</button>
+          <button (click)="confirmDeleteDoctor(doctor.id)">{{ 'delete' | translate }}</button>
+        </div>
+      </div>
+      <div class="doctor-image">
+        <img src="assets/img/doctor3.png" alt="Doctor Image">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDeleteWarning">
+  <div class="modal-content warning-modal">
+    <h3>{{ 'confirm_delete_title' | translate }}</h3>
+    <p>{{ 'confirm_delete_message' | translate }}</p>
+    <div class="modal-actions">
+      <button (click)="performDeleteDoctor()">{{ 'yes_delete' | translate }}</button>
+      <button (click)="cancelDelete()">{{ 'cancel' | translate }}</button>
+    </div>
+  </div>
+</div>
+
+
