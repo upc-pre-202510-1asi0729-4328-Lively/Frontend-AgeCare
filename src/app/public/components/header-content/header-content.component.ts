@@ -4,7 +4,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
-import {NgIf, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-header-content',
@@ -15,9 +14,7 @@ import {NgIf, NgOptimizedImage} from '@angular/common';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    RouterModule,
-    NgOptimizedImage,
-    NgIf,
+    RouterModule
   ]
 })
 export class HeaderContentComponent {

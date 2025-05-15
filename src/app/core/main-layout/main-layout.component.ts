@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {HeaderContentComponent} from '../../public/components/header-content/header-content.component';
 import {CommonModule} from '@angular/common';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import { RouterOutlet} from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -16,8 +16,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [
     HeaderContentComponent,
     CommonModule,
-    RouterLink,
-    RouterLinkActive,
     RouterOutlet,
     MatSidenavModule,
     MatListModule,

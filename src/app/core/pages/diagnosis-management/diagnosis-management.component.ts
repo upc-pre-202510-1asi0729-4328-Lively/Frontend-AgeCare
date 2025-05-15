@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-diagnosis-management',
-  imports: [
-    NgOptimizedImage
-  ],
+  imports: [  ],
   templateUrl: './diagnosis-management.component.html',
   styleUrl: './diagnosis-management.component.css'
 })

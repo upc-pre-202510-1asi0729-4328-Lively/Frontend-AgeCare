@@ -10,6 +10,7 @@ import { MedicalReportManagementComponent } from './core/pages/medical-report-ma
 import { MessagesManagementComponent } from './core/pages/messages-management/messages-management.component';
 import { ProfileManagementComponent } from './core/pages/profile-management/profile-management.component';
 import { ReportManagementComponent } from './core/pages/report-management/report-management.component';
+import {ResidentManagementComponent} from './core/pages/resident-management/resident-management.component';
 
 // IAM
 import { LoginComponent } from './iam/login/login.component';
@@ -31,6 +32,7 @@ export const routes: Routes = [
       { path: 'messages', component: MessagesManagementComponent },
       { path: 'profile', component: ProfileManagementComponent },
       { path: 'reports', component: ReportManagementComponent },
+      { path: 'core/residents', component: ResidentManagementComponent },
     ]
   },
   { path: 'login', component: LoginComponent },

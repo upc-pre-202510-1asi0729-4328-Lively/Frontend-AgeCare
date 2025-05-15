@@ -36,5 +36,47 @@
       "message": "Don't forget to bring your ID",
       "avatar": "assets/avatars/therapy.jpg"
     }
+  ],
+  "residents": [
+    {
+      "id": 1,
+      "name": "Rosa Gutiérrez",
+      "age": 82,
+      "diagnosis": "Hipertensión",
+      "medication": "Losartán 50mg (1x día)",
+      "emergency_contact": "Carmen Ríos (hija) - 987654321"
+    },
+    {
+      "id": 2,
+      "name": "Luis Salazar",
+      "age": 79,
+      "diagnosis": "Alzheimer leve",
+      "medication": "Donepezilo 10mg (1x día)",
+      "emergency_contact": "Julio Salazar (hijo) - 912345678"
+    },
+    {
+      "id": 3,
+      "name": "Teresa Medina",
+      "age": 85,
+      "diagnosis": "Diabetes tipo 2",
+      "medication": "Metformina 850mg (2x día)",
+      "emergency_contact": "Ana Medina (sobrina) - 923456789"
+    },
+    {
+      "id": 4,
+      "name": "Juan Ramos",
+      "age": 90,
+      "diagnosis": "Artrosis generalizada",
+      "medication": "Paracetamol 500mg (3x día)",
+      "emergency_contact": "Marta Ramos (nieta) - 931234567"
+    },
+    {
+      "id": 5,
+      "name": "Carmen Díaz",
+      "age": 76,
+      "diagnosis": "Depresión mayor",
+      "medication": "Sertralina 50mg (1x día)",
+      "emergency_contact": "Luis Díaz (hermano) - 987321456"
+    }
   ]
 }
