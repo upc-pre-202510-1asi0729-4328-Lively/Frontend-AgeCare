@@ -1,0 +1,40 @@
+{
+  "chats": [
+    {
+      "id": 1,
+      "name": "Doctor Watson",
+      "message": "The appointment is tomorrow at 10am",
+      "avatar": "assets/avatars/doctor-watson.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Medic Thompson",
+      "message": "I'll make sure he takes medicine",
+      "avatar": "assets/avatars/medic-thompson.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Family Chat",
+      "message": "Dad: Can someone go to the doctor with me?",
+      "avatar": "assets/avatars/family-chat.png"
+    },
+    {
+      "id": 4,
+      "name": "Hospital",
+      "message": "We can book an appointment online",
+      "avatar": "assets/avatars/hospital.png"
+    },
+    {
+      "id": 5,
+      "name": "Psichologist",
+      "message": "You can download the results in the portal",
+      "avatar": "assets/avatars/psichologist.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Therapy",
+      "message": "Don't forget to bring your ID",
+      "avatar": "assets/avatars/therapy.jpg"
+    }
+  ]
+}

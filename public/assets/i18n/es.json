@@ -1,0 +1,14 @@
+{
+  "header": {
+    "appointments": "Citas",
+    "notifications Alerts": "Alertas de notificaciones",
+    "resident": "Residente",
+    "payment": "Pago",
+    "user": "Usuario"
+  },
+  "footer": {
+    "rights": "Derechos de autor © 2025, Todos los derechos reservados",
+    "intro": "Desarrollado ",
+    "author": "por el Equipo Lively"
+  }
+}

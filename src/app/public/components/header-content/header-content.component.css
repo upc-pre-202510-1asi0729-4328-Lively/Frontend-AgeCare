@@ -1,0 +1,85 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 80px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-size: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.nav-links a.active-link {
+  border-bottom: 2px solid black;
+}
+
+.login-button .btn-login {
+  padding: 8px 20px;
+  background-color: #002d5c;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+}
+
+.login-button.hide {
+  display: none;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: white;
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+  }
+
+  .nav-links.open {
+    transform: scaleY(1);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .login-button {
+    order: 3;
+    margin-top: 10px;
+    width: 100%;
+    text-align: right;
+  }
+}

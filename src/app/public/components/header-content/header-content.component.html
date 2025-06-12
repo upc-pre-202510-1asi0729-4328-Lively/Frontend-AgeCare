@@ -1,0 +1,21 @@
+<header class="header-container">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="AgeCare Logo" />
+  </div>
+
+  <button class="menu-toggle" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <nav class="nav-links" [class.open]="menuOpen">
+    <a routerLink="/appointments" routerLinkActive="active-link" (click)="closeMenu()">{{ 'header.appointments' | translate }}</a>
+    <a routerLink="/notifications-alerts" routerLinkActive="active-link" (click)="closeMenu()">{{ 'header.notifications-alerts' | translate }}</a>
+    <a routerLink="/resident" routerLinkActive="active-link" (click)="closeMenu()">{{ 'header.resident' | translate }}</a>
+    <a routerLink="/payment" routerLinkActive="active-link" (click)="closeMenu()">{{ 'header.payment' | translate }}</a>
+    <a routerLink="/user" routerLinkActive="active-link" (click)="closeMenu()">{{ 'header.user' | translate }}</a>
+  </nav>
+
+  <span>
+    <app-language-switcher/>
+  </span>
+</header>

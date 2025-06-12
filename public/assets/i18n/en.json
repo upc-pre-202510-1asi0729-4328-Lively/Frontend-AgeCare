@@ -1,0 +1,14 @@
+{
+  "header": {
+    "appointments": "Appointments",
+    "notifications-alerts": "Notifications Alerts",
+    "resident": "Resident",
+    "payment": "Payment",
+    "user": "User"
+  },
+  "footer": {
+    "rights": "Copyright © 2025, All rights reserved",
+    "intro": "Developed ",
+    "author": "by Lively Team"
+  }
+}
