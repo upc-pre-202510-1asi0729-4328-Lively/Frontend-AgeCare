@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Resident } from '../../model/resident.entity';
 import { ResidentService } from '../../services/resident.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DatePipe, NgForOf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-resident-care-management',
@@ -10,7 +10,8 @@ import {DatePipe, NgForOf} from '@angular/common';
   imports: [
     ReactiveFormsModule,
     NgForOf,
-    DatePipe
+    DatePipe,
+    NgIf
   ],
   styleUrls: ['./resident-care-management.component.css']
 })
