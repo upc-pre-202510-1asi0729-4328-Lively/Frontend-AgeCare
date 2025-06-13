@@ -1,3 +1,5 @@
+import {Medication} from './medication.entity';
+
 export interface Resident {
   id: number;
   dni: string;
