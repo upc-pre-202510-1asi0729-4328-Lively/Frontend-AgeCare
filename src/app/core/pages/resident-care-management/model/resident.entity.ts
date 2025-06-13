@@ -1,4 +1,5 @@
 import {Medication} from './medication.entity';
+import {MedicalHistory} from './medicalHistory.entity';
 
 export interface Resident {
   id: number;
