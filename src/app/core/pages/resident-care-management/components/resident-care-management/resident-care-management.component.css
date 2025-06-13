@@ -31,3 +31,24 @@ button {
   padding: 16px;
   width: 300px;
 }
+
+.card-actions,
+.card-actions-secondary {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-actions-secondary button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card-actions-secondary button:hover {
+  background-color: #1258a8;
+}

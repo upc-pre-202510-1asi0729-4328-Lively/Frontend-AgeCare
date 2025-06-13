@@ -91,4 +91,17 @@ export class ResidentCareManagementComponent implements OnInit {
     this.editingResidentId = null;
     this.residentForm.reset();
   }
+
+  viewMedications(resident: Resident): void {
+    console.log(`Viewing medications for ${resident.firstName} ${resident.lastName}`);
+    // Aquí podrías usar router.navigate(['/residents', resident.id, 'medications']);
+  }
+
+  viewMedicalHistory(resident: Resident): void {
+    console.log(`Viewing medical history for ${resident.firstName} ${resident.lastName}`);
+  }
+
+  viewMentalHealthRecords(resident: Resident): void {
+    console.log(`Viewing mental health records for ${resident.firstName} ${resident.lastName}`);
+  }
 }
