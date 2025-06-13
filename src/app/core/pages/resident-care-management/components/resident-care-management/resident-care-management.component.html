@@ -1,1 +1,39 @@
-<p>resident-care-management works!</p>
+<div class="form-container">
+  <h2>{{ editingResidentId ? 'Edit Resident' : 'Add Resident' }}</h2>
+  <form [formGroup]="residentForm" (ngSubmit)="onSubmit()">
+    <input formControlName="dni" placeholder="DNI" />
+    <input formControlName="firstName" placeholder="First Name" />
+    <input formControlName="lastName" placeholder="Last Name" />
+    <input formControlName="birthDate" type="date" />
+    <select formControlName="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <button type="submit">{{ editingResidentId ? 'Update' : 'Create' }}</button>
+    <button type="button" *ngIf="editingResidentId" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
+<hr />
+
+<div class="resident-cards-container">
+  <div class="resident-card" *ngFor="let resident of residents">
+    <h3>{{ resident.firstName }} {{ resident.lastName }}</h3>
+    <p><strong>DNI:</strong> {{ resident.dni }}</p>
+    <p><strong>Birth Date:</strong> {{ resident.birthDate | date }}</p>
+    <p><strong>Gender:</strong> {{ resident.gender }}</p>
+
+    <div class="card-actions">
+      <button (click)="editResident(resident)">Edit</button>
+      <button (click)="deleteResident(resident.id)">Delete</button>
+    </div>
+
+    <div class="card-actions-secondary">
+      <button (click)="viewMedications(resident)">View Medications</button>
+      <button (click)="viewMedicalHistory(resident)">View Medical History</button>
+      <button (click)="viewMentalHealthRecords(resident)">View Mental Health</button>
+    </div>
+  </div>
+</div>
