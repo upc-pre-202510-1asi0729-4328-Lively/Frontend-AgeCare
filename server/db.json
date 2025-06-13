@@ -1,4 +1,85 @@
 {
+  "residents": [
+    {
+      "id": 1,
+      "dni": "12345678",
+      "firstName": "Alice",
+      "lastName": "Parker",
+      "birthDate": "1942-05-15",
+      "gender": "Female",
+      "medications": [
+        1,
+        2
+      ],
+      "medicalHistory": [
+        1
+      ],
+      "mentalHealthRecords": [
+        1
+      ]
+    },
+    {
+      "dni": "87654321",
+      "firstName": "Robert",
+      "lastName": "Chavez",
+      "birthDate": "1938-09-30",
+      "gender": "Male",
+      "id": 2
+    },
+    {
+      "dni": "77153730",
+      "firstName": "Ramiro",
+      "lastName": "Guzman",
+      "birthDate": "2004-11-29",
+      "gender": "Male",
+      "id": 3
+    }
+  ],
+  "medications": [
+    {
+      "id": 1,
+      "name": "Insulin",
+      "frequency": "Twice daily"
+    },
+    {
+      "id": 2,
+      "name": "Aspirin",
+      "frequency": "Once daily"
+    },
+    {
+      "id": 3,
+      "name": "Lisinopril",
+      "frequency": "Once every morning"
+    }
+  ],
+  "medicalHistorys": [
+    {
+      "id": 1,
+      "recordDate": "2023-02-10",
+      "diagnosis": "Diabetes Type 2",
+      "treatment": "Insulin therapy"
+    },
+    {
+      "id": 2,
+      "recordDate": "2022-11-20",
+      "diagnosis": "Hypertension",
+      "treatment": "ACE inhibitors"
+    }
+  ],
+  "mentalHealthRecords": [
+    {
+      "id": 1,
+      "recordDate": "2023-01-05",
+      "diagnosis": "Mild Depression",
+      "treatment": "Therapy sessions and medication"
+    },
+    {
+      "id": 2,
+      "recordDate": "2023-03-12",
+      "diagnosis": "Anxiety",
+      "treatment": "Cognitive Behavioral Therapy"
+    }
+  ],
   "chats": [
     {
       "id": 1,

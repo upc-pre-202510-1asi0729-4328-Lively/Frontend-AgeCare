@@ -1,0 +1,33 @@
+.form-container {
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 12px;
+}
+
+.resident-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+.resident-card {
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 16px;
+  width: 300px;
+}
