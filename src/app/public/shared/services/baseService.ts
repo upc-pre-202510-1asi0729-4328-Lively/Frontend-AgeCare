@@ -39,13 +39,13 @@ export class BaseService<T> {
   }
 
   // POST: Create a new resource
-  create(item: T): Observable<T> {
+  create<U = T>(item: U): Observable<T> {
     return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   // PUT: Update an existing resource
-  update(id: number, item: T): Observable<T> {
+  update<U = T>(id: number, item: U): Observable<T> {
     return this.http.put<T>(`${this.resourcePath()}/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
