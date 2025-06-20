@@ -1,10 +1,35 @@
 {
   "header": {
     "appointments": "Appointments",
-    "notifications-alerts": "Notifications Alerts",
+    "notifications-alerts": "Notifications & Alerts",
     "resident": "Resident",
     "payment": "Payment",
     "user": "User"
+  },
+  "notifications": {
+    "form": {
+      "title": "Title",
+      "message": "Message",
+      "create": "Create Notification"
+    },
+    "filters": {
+      "all": "All",
+      "unread": "Unread",
+      "archived": "Archived"
+    },
+    "markAsRead": "Mark as read",
+    "archive": "Archive",
+    "delete": "Delete",
+    "status": "Status",
+    "statusValue": {
+      "unread": "Unread",
+      "read": "Read",
+      "archived": "Archived"
+    },
+    "confirmDelete": "Are you sure you want to delete this notification?",
+    "cancel": "Cancel",
+    "confirmStatusChange": "Are you sure you want to change the status to {{status}}?",
+    "confirm": "Confirm"
   },
   "footer": {
     "rights": "Copyright © 2025, All rights reserved",
