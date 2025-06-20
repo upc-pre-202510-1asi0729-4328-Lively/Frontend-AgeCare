@@ -1,0 +1,31 @@
+.notification-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  background: #fff;
+}
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.notification-message {
+  margin-bottom: 0.5rem;
+}
+.notification-actions button {
+  margin-right: 0.5rem;
+}
+.notification-status {
+  font-size: 0.85em;
+  color: #888;
+}
+.unread {
+  background: #e3f2fd;
+}
+.read {
+  background: #f1f8e9;
+}
+.archived {
+  background: #f5f5f5;
+  color: #aaa;
+}
