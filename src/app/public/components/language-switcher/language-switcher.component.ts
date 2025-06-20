@@ -12,10 +12,17 @@ export class LanguageSwitcherComponent {
   languages: string[] = ['en', 'es'];
 
   constructor(private translate: TranslateService) {
-    this.currentLang = translate.currentLang;
+    this.currentLang = translate.currentLang || 'en';
+    // Forzar idioma por defecto a inglés si no está definido
+    if (!translate.currentLang) {
+      translate.setDefaultLang('en');
+      translate.use('en');
+      this.currentLang = 'en';
+    }
   }
 
   useLanguage(language: string) : void {
     this.translate.use(language);
+    this.currentLang = language;
   }
 }
