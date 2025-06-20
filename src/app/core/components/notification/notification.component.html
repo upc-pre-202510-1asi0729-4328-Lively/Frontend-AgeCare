@@ -1,0 +1,13 @@
+<div class="notification-item" [ngClass]="notification.status">
+  <div class="notification-header">
+    <strong>{{ notification.title }}</strong>
+    <span class="date">{{ notification.createdAt | date:'short' }}</span>
+  </div>
+  <div class="notification-message">{{ notification.message }}</div>
+  <div class="notification-actions">
+    <button *ngIf="notification.status === 'unread'" (click)="onMarkAsRead()">{{ 'notifications.markAsRead' | translate }}</button>
+    <button *ngIf="notification.status !== 'archived'" (click)="onArchive()">{{ 'notifications.archive' | translate }}</button>
+    <button class="danger" (click)="onDelete()">{{ 'notifications.delete' | translate }}</button>
+  </div>
+  <div class="notification-status">{{ 'notifications.status' | translate }}: {{ 'notifications.statusValue.' + notification.status | translate }}</div>
+</div>
