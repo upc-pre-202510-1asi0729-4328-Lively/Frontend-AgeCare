@@ -1,0 +1,39 @@
+<section class="notifications-management-layout">
+  <div class="notifications-add-section">
+    <h2 class="notifications-title">{{ 'header.notifications-alerts' | translate }}</h2>
+    <form (ngSubmit)="onCreateNotification()" style="margin-bottom:2rem;display:flex;flex-direction:column;gap:0.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
+      <input type="text" [(ngModel)]="newNotification.title" name="title" [placeholder]="'notifications.form.title' | translate" required style="padding:0.5rem;border-radius:0.3rem;border:1px solid #ccc;">
+      <textarea [(ngModel)]="newNotification.message" name="message" [placeholder]="'notifications.form.message' | translate" required style="padding:0.5rem;border-radius:0.3rem;border:1px solid #ccc;"></textarea>
+      <button type="submit" style="background:#2563eb;color:#fff;border:none;padding:0.5rem 1.2rem;border-radius:0.5rem;cursor:pointer;">{{ 'notifications.form.create' | translate }}</button>
+    </form>
+  </div>
+  <div class="notifications-list-section">
+    <h2 class="notifications-title">{{ 'header.notifications-alerts' | translate }}</h2>
+    <div class="notifications-filters">
+      <button (click)="setFilter('all')" [class.active]="filter === 'all'">{{ 'notifications.filters.all' | translate }}</button>
+      <button (click)="setFilter('unread')" [class.active]="filter === 'unread'">{{ 'notifications.filters.unread' | translate }}</button>
+      <button (click)="setFilter('archived')" [class.active]="filter === 'archived'">{{ 'notifications.filters.archived' | translate }}</button>
+    </div>
+    <app-notifications-list
+      [notifications]="notifications"
+      (markAsRead)="onMarkAsRead($event)"
+      (archive)="onArchive($event)"
+      (delete)="confirmDelete($event)"
+      (updateStatus)="onUpdateStatus($event)">
+    </app-notifications-list>
+    <div *ngIf="showConfirmDeleteId" class="confirm-modal">
+      <div class="confirm-modal-content">
+        <p>{{ 'notifications.confirmDelete' | translate }}</p>
+        <button (click)="onDelete(showConfirmDeleteId!)" style="background:#dc2626;color:#fff;margin-right:1rem;">{{ 'notifications.delete' | translate }}</button>
+        <button (click)="cancelDelete()">{{ 'notifications.cancel' | translate }}</button>
+      </div>
+    </div>
+    <div *ngIf="pendingStatusChange" class="confirm-modal">
+      <div class="confirm-modal-content">
+        <p>{{ 'notifications.confirmStatusChange' | translate:{status: pendingStatusChange.status} }}</p>
+        <button (click)="confirmStatusChange()" style="background:#2563eb;color:#fff;margin-right:1rem;">{{ 'notifications.confirm' | translate }}</button>
+        <button (click)="cancelStatusChange()">{{ 'notifications.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</section>
