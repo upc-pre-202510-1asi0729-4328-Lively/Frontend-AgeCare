@@ -3,6 +3,10 @@ import { Resident } from '../../model/resident.entity';
 import { ResidentService } from '../../services/resident.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DatePipe, NgForOf, NgIf } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../confirm-dialog-component/confirm-dialog-component.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-resident-care-management',
@@ -11,7 +15,8 @@ import { DatePipe, NgForOf, NgIf } from '@angular/common';
     ReactiveFormsModule,
     NgForOf,
     DatePipe,
-    NgIf
+    NgIf,
+    MatSnackBarModule
   ],
   styleUrls: ['./resident-care-management.component.css']
 })
@@ -22,7 +27,9 @@ export class ResidentCareManagementComponent implements OnInit {
 
   constructor(
     private residentService: ResidentService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -78,14 +85,10 @@ export class ResidentCareManagementComponent implements OnInit {
       receiptId: Number(formValue.receiptId)
     };
 
-    console.log("Payload to send:", payload);
-    console.log("EditingResidentId:", this.editingResidentId);
-
     if (this.editingResidentId === null) {
       this.residentService.create(payload).subscribe({
         next: (created) => {
           this.residents.push(created);
-          console.log("Resident created:", created);
           this.residentForm.reset();
           this.editingResidentId = null;
         },
@@ -98,7 +101,6 @@ export class ResidentCareManagementComponent implements OnInit {
           if (index !== -1) {
             this.residents[index] = updated;
           }
-          console.log("Resident updated:", updated);
           this.cancelEdit();
         },
         error: (err) => console.error('Failed to update resident', err)
@@ -112,7 +114,6 @@ export class ResidentCareManagementComponent implements OnInit {
       return;
     }
 
-    console.log("Editing resident ID:", resident.id);
     this.editingResidentId = resident.id;
 
     this.residentForm.patchValue({
@@ -131,19 +132,34 @@ export class ResidentCareManagementComponent implements OnInit {
   }
 
   deleteResident(id: number | undefined): void {
-    console.log("Deleting resident ID:", id);
-
     if (id === undefined || id === null) {
       console.error("Invalid resident ID for delete");
       return;
     }
 
-    this.residentService.delete(id).subscribe({
-      next: () => {
-        this.residents = this.residents.filter((r) => r.id !== id);
-        console.log("Resident deleted, current residents:", this.residents);
-      },
-      error: (err) => console.error('Failed to delete resident', err)
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: {
+        title: 'Delete Resident',
+        message: 'Are you sure you want to delete this resident?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.residentService.delete(id).subscribe({
+          next: () => {
+            this.residents = this.residents.filter(r => r.id !== id);
+            this.snackBar.open('El residente se eliminó correctamente.', 'Cerrar', {
+              duration: 3000,
+              panelClass: 'custom-snackbar'
+            });
+          },
+          error: (err) => console.error('Failed to delete resident', err)
+        });
+      } else {
+        console.log("Deletion cancelled.");
+      }
     });
   }
 
