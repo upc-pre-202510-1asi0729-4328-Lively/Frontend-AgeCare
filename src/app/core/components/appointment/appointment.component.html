@@ -1,0 +1,18 @@
+<div class="appointment-card">
+  <div class="info">
+    <p><strong>{{ 'appointments.form.date' | translate }}:</strong> {{ appointment.date }}</p>
+    <p><strong>{{ 'appointments.form.time' | translate }}:</strong> {{ appointment.time }}</p>
+    <p><strong>{{ 'appointments.form.resident' | translate }}:</strong> {{ appointment.resident }}</p>
+    <p><strong>{{ 'appointments.form.doctor' | translate }}:</strong> {{ appointment.doctor }}</p>
+    <p><strong>{{ 'appointments.form.status' | translate }}:</strong>
+      <select [ngModel]="appointment.status" (ngModelChange)="onUpdateStatus($event)">
+        <option value="pending">{{ 'appointments.filters.pending' | translate }}</option>
+        <option value="completed">{{ 'appointments.filters.completed' | translate }}</option>
+      </select>
+    </p>
+  </div>
+
+  <button (click)="onDelete()" class="delete-btn">
+   {{ 'appointments.delete' | translate }}
+  </button>
+</div>

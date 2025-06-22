@@ -86,5 +86,39 @@
       "status": "unread",
       "createdAt": "2025-06-20T12:00:00.000Z"
     }
+  ],
+  "appointments": [
+    {
+      "id": "101",
+      "date": "2025-06-20",
+      "time": "10:00",
+      "doctor": "Jane Doe",
+      "resident": "Ana Torres",
+      "status": "pending"
+    },
+    {
+      "id": "102",
+      "date": "2025-06-20",
+      "time": "13:00",
+      "doctor": "Dr. House",
+      "resident": "Felix Gonzalez",
+      "status": "pending"
+    },
+    {
+      "id": "103",
+      "date": "2025-06-20",
+      "time": "15:00",
+      "doctor": "Dr. House",
+      "residenT": "Ana Torres",
+      "status": "completed"
+    },
+    {
+      "id": "044667bf-5419-48e5-a378-4b84a917c010",
+      "date": "2025-06-26",
+      "time": "16:41",
+      "resident": "Juan Morroco",
+      "doctor": "Franco Huang",
+      "status": "pending"
+    }
   ]
 }

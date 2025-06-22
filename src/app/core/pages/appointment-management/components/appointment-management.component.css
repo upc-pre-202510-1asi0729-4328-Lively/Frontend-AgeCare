@@ -1,0 +1,129 @@
+/* Botones generales */
+.btn {
+  display: inline-block;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #1e40af;
+}
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+.btn-danger {
+  background-color: #dc2626;
+  color: #fff;
+}
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+/* Layout del componente */
+.appointment-management-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Sección del formulario */
+.appointment-form-section {
+  flex: 1 1 320px;
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 360px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.appointment-form-section h2 {
+  color: #1e40af;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.appointment-form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  font-size: 0.9rem;
+}
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+/* Sección del listado */
+.appointment-list-section {
+  flex: 2 1 500px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+.appointment-list-section h2 {
+  color: #1e40af;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Modal de confirmación */
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.confirm-modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+.confirm-modal-content p {
+  margin-bottom: 1.5rem;
+  color: #1e40af;
+  font-size: 1rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

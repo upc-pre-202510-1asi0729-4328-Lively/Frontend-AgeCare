@@ -1,1 +1,57 @@
-<p>payment-management works!</p>
+<section class="appointment-management-layout">
+  <!-- Sección del formulario para registrar una nueva cita -->
+  <div class="appointment-form-section">
+    <h2>{{ 'appointments.register' | translate }}</h2>
+    <form (ngSubmit)="createAppointment()" novalidate>
+      <div class="form-group">
+        <label for="date">{{ 'appointments.form.date' | translate }}</label>
+        <input id="date" type="date" [(ngModel)]="newAppointment.date" name="date" required>
+      </div>
+      <div class="form-group">
+        <label for="time">{{ 'appointments.form.time' | translate }}</label>
+        <input id="time" type="time" [(ngModel)]="newAppointment.time" name="time" required>
+      </div>
+      <div class="form-group">
+        <label for="resident">{{ 'appointments.form.resident' | translate }}</label>
+        <input id="resident" type="text" [(ngModel)]="newAppointment.resident" name="resident" placeholder="{{ 'appointments.form.resident' | translate }}" required>
+      </div>
+      <div class="form-group">
+        <label for="doctor">{{ 'appointments.form.doctor' | translate }}</label>
+        <input id="doctor" type="text" [(ngModel)]="newAppointment.doctor" name="doctor" placeholder="{{ 'appointments.form.doctor' | translate }}" required>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ 'appointments.create' | translate }}</button>
+    </form>
+  </div>
+
+  <!-- Sección que muestra la lista de citas existentes -->
+  <div class="appointment-list-section">
+    <h2>{{ 'appointments.list' | translate }}</h2>
+    <app-list-appointments
+      [appointments]="appointments"
+      (delete)="confirmDelete($event)"
+      (updateStatus)="requestStatusChange($event)">
+    </app-list-appointments>
+  </div>
+
+  <!-- Modal de confirmación para eliminar cita -->
+  <div *ngIf="showConfirmDeleteId" class="confirm-modal">
+    <div class="confirm-modal-content">
+      <p>{{ 'appointments.confirmDelete' | translate }}</p>
+      <div class="modal-actions">
+        <button (click)="deleteAppointment(showConfirmDeleteId)" class="btn btn-danger">{{ 'appointments.delete' | translate }}</button>
+        <button (click)="cancelDelete()" class="btn btn-secondary">{{ 'appointments.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación para cambio de estado -->
+  <div *ngIf="pendingStatusChange" class="confirm-modal">
+    <div class="confirm-modal-content">
+      <p>{{ 'appointments.confirmStatusChange' | translate }} "{{ pendingStatusChange.status }}"?</p>
+      <div class="modal-actions">
+        <button (click)="confirmStatusChange()" class="btn btn-primary">{{ 'appointments.confirm' | translate }}</button>
+        <button (click)="cancelStatusChange()" class="btn btn-secondary">{{ 'appointments.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</section>
