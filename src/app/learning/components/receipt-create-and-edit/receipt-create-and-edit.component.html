@@ -1,0 +1,64 @@
+<h4>{{ editMode ? 'Edit Receipt' : 'New Receipt' }}</h4>
+
+<div class="form-section">
+  <form (submit)="onSubmit()" #receiptForm="ngForm" class="form-row">
+
+    <!-- Nombre del residente -->
+    <mat-form-field>
+      <input matInput placeholder="Resident Name" name="residentName" required [(ngModel)]="receipt.residentName">
+    </mat-form-field>
+
+    <!-- Monto total -->
+    <mat-form-field>
+      <input matInput type="number" placeholder="Amount (S/.)" name="amount" required [(ngModel)]="receipt.amount">
+    </mat-form-field>
+
+    <!-- Fecha de emisión -->
+    <mat-form-field>
+      <input matInput type="date" placeholder="Issue Date" name="issueDate" required [(ngModel)]="receipt.issueDate">
+    </mat-form-field>
+
+    <!-- Fecha de vencimiento (si lo agregaste en tu modelo) -->
+    <mat-form-field>
+      <input matInput type="date" placeholder="Due Date" name="dueDate" required [(ngModel)]="receipt.dueDate">
+    </mat-form-field>
+
+    <!-- Método de pago -->
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="Payment Method (card, yape, cash)" name="paymentMethod" required [(ngModel)]="receipt.paymentMethod">
+    </mat-form-field>
+
+
+    <!-- Estado del pago -->
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="Payment Status (true o false)" name="status" required [(ngModel)]="receipt.status">
+    </mat-form-field>
+
+
+    <!-- Detalles específicos por método de pago -->
+    <div *ngIf="receipt.paymentMethod === 'card'">
+      <mat-form-field>
+        <input matInput placeholder="Card Number" name="cardNumber" [(ngModel)]="receipt.cardNumber">
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="receipt.paymentMethod === 'yape'">
+      <p>Scan this QR with Yape:</p>
+      <img src="assets/yape-qr.png" alt="Yape QR" style="width: 120px; height: 120px;">
+    </div>
+
+    <div *ngIf="receipt.paymentMethod === 'cash'">
+      <p>Confirm that you received the cash physically.</p>
+    </div>
+
+    <!-- Botones de acción -->
+    <ng-container>
+      <button mat-raised-button color="primary" type="submit">
+        {{ editMode ? 'Update' : 'Add' }}
+      </button>
+      <button *ngIf="editMode" mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+    </ng-container>
+
+
+  </form>
+</div>

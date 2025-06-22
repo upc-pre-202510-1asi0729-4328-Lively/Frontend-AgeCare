@@ -1,0 +1,64 @@
+<!-- Student catalogue -->
+<div class="table-wrapper">
+  <h3>{{ 'title.receipts' | translate }}</h3>
+
+  <!--Add/Edit Form-->
+  <app-receipt-create-and-edit (editCanceled)="onCancelEdit()"
+                               (receiptAdded)="onReceiptAdded($event)"
+                               (receiptUpdated)="onReceiptUpdated($event)"
+                               [editMode]="isEditMode"
+                               [receipt]="receiptData" />
+  <!-- Data Table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="residentName" matSortDirection="asc">
+  <ng-container matColumnDef="residentName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'receipt.residentName' | translate }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.residentName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'receipt.amount' | translate }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.amount | currency:'PEN':'symbol' }} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="paymentMethod">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Método de Pago </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.paymentMethod === 'card' ? 'Tarjeta' : element.paymentMethod === 'yape' ? 'Yape' : 'Efectivo' }}
+      </td>
+    </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'receipt.status' | translate }} </th>
+    <td mat-cell *matCellDef="let element">
+   <span [ngClass]="element.status ? 'paid' : 'pending'">
+    {{ element.status ? 'Pagado' : 'Pendiente' }}
+</span>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="issueDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'receipt.issueDate' | translate }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.issueDate | date }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'receipt.dueDate' | translate }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.dueDate | date }} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element">
+      <a (click)="onEditItem(element)" href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
+      <a (click)="onDeleteItem(element)" href="javascript:void(0)"><mat-icon>delete</mat-icon></a>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns:displayedColumns" [ngClass]="{'editable-row': receiptData.id === row.id }" mat-row></tr>
+  <!-- Paginator child component-->
+  <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  </table>
+</div>
