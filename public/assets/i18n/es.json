@@ -1,14 +1,38 @@
 {
-  "header": {
-    "appointments": "Citas",
-    "notifications Alerts": "Alertas de notificaciones",
-    "resident": "Residente",
-    "payment": "Pago",
-    "user": "Usuario"
+  "filter": {
+    "label": "Filtrar",
+    "placeholder": "Ingresa texto para filtrar"
+  },
+  "title": {
+    "receipts": "Recibos",
+    "add": "Nuevo Recibo",
+    "edit": "Editar Recibo"
+  },
+  "receipt": {
+    "issueDate": "Fecha de Emisión",
+    "dueDate": "Fecha de Vencimiento",
+    "totalAmount": "Monto Total",
+    "status": "Estado",
+    "residentId": "ID del Residente",
+    "paymentId": "ID del Pago",
+    "paymentDate": "Fecha de Pago",
+    "amountPaid": "Monto Pagado",
+    "paymentMethod": "Método de Pago",
+    "type": "Tipo de Servicio",
+    "actions": "Acciones"
+  },
+  "status": {
+    "paid": "Pagado",
+    "pending": "Pendiente"
+  },
+  "paymentMethod": {
+    "1": "Yape",
+    "2": "Transferencia",
+    "3": "Efectivo"
   },
   "footer": {
-    "rights": "Derechos de autor © 2025, Todos los derechos reservados",
+    "rights": "Copyright © 2025 {{ api }}, Todos los derechos reservados",
     "intro": "Desarrollado ",
-    "author": "por el Equipo Lively"
+    "author": "por el equipo {{ team }}"
   }
 }
