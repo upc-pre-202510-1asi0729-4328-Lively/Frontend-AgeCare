@@ -61,6 +61,14 @@ export class BaseService<T> {
     return `${this.basePath}${this.resourceEndpoint}`;
   }
 
+  // ✅ Aquí agregamos el método que faltaba
+  protected defaultPipeOperators<R>() {
+    return (source: Observable<R>) => source.pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+  }
+
   // Default error handler
   protected handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

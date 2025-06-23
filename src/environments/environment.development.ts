@@ -5,6 +5,7 @@ export const environment = {
   //serverBasePath: 'http://localhost:8091/api/v1',
   residentsEndpointPath: '/residents',
   medicationsEndpointPath: '/medications',
-  mentalHealthRecordsEndpointPath: '/mentalHealthRecords',
-  medicalHistoryEndpointPath: '/medicalHistorys'
+  mentalHealthRecordsEndpointPath: '/mental-health-records',
+  medicalHistoryEndpointPath: '/medical-histories',
+  useJsonServer: true,
 };
