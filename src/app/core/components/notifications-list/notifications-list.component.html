@@ -1,0 +1,12 @@
+<div *ngIf="notifications.length === 0">No hay notificaciones.</div>
+<ul>
+  <li *ngFor="let notification of notifications">
+    <app-notification
+      [notification]="notification"
+      (markAsRead)="markAsRead.emit($event)"
+      (archive)="archive.emit($event)"
+      (delete)="delete.emit($event)"
+      (updateStatus)="updateStatus.emit($event)">
+    </app-notification>
+  </li>
+</ul>

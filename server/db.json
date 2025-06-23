@@ -82,40 +82,116 @@
   ],
   "chats": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Doctor Watson",
       "message": "The appointment is tomorrow at 10am",
       "avatar": "assets/avatars/doctor-watson.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Medic Thompson",
       "message": "I'll make sure he takes medicine",
       "avatar": "assets/avatars/medic-thompson.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Family Chat",
       "message": "Dad: Can someone go to the doctor with me?",
       "avatar": "assets/avatars/family-chat.png"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Hospital",
       "message": "We can book an appointment online",
       "avatar": "assets/avatars/hospital.png"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Psichologist",
       "message": "You can download the results in the portal",
       "avatar": "assets/avatars/psichologist.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Therapy",
       "message": "Don't forget to bring your ID",
       "avatar": "assets/avatars/therapy.jpg"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "4f44",
+      "title": "Bienvenida a AgeCare",
+      "message": "Tu cuenta ha sido creada correctamente.",
+      "userId": "user1",
+      "status": "archived",
+      "createdAt": "2025-06-20T06:39:44.674Z"
+    },
+    {
+      "id": "4f44",
+      "title": "Actualización médica de tu familiar",
+      "message": "El Dr. Pérez realizó una revisión médica a tu familiar y todo está en orden.",
+      "userId": "familiar1",
+      "status": "unread",
+      "createdAt": "2025-06-20T06:39:44.674Z"
+    },
+    {
+      "id": "a7b2",
+      "title": "Actividad completada",
+      "message": "Tu familiar participó hoy en la sesión de terapia ocupacional con gran entusiasmo.",
+      "userId": "familiar2",
+      "status": "unread",
+      "createdAt": "2025-06-19T14:25:12.874Z"
+    },
+    {
+      "id": "d912",
+      "title": "Recordatorio de visita",
+      "message": "Recuerda que puedes visitar a tu familiar este fin de semana de 10:00 a.m. a 5:00 p.m.",
+      "userId": "familiar1",
+      "status": "delivered",
+      "createdAt": "2025-06-18T09:10:00.000Z"
+    },
+    {
+      "id": "ce81",
+      "title": "Nuevo informe disponible",
+      "message": "Ya puedes revisar el informe mensual de salud y bienestar de tu familiar.",
+      "userId": "familiar3",
+      "status": "archived",
+      "createdAt": "2025-06-17T17:45:33.511Z"
+    },
+    {
+      "id": "fa03",
+      "title": "Cambio de medicación",
+      "message": "Se ha actualizado la medicación de tu familiar según indicaciones del especialista.",
+      "userId": "familiar2",
+      "status": "unread",
+      "createdAt": "2025-06-20T12:00:00.000Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "101",
+      "date": "2025-06-20",
+      "time": "10:00",
+      "doctor": "Jane Doe",
+      "resident": "Ana Torres",
+      "status": "pending"
+    },
+    {
+      "id": "102",
+      "date": "2025-06-20",
+      "time": "13:00",
+      "doctor": "Dr. House",
+      "resident": "Felix Gonzalez",
+      "status": "pending"
+    },
+    {
+      "id": "044667bf-5419-48e5-a378-4b84a917c010",
+      "date": "2025-06-26",
+      "time": "16:41",
+      "resident": "Juan Morroco",
+      "doctor": "Franco Huang",
+      "status": "pending"
     }
   ]
 }
