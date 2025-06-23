@@ -105,14 +105,6 @@
       "status": "pending"
     },
     {
-      "id": "103",
-      "date": "2025-06-20",
-      "time": "15:00",
-      "doctor": "Dr. House",
-      "residenT": "Ana Torres",
-      "status": "completed"
-    },
-    {
       "id": "044667bf-5419-48e5-a378-4b84a917c010",
       "date": "2025-06-26",
       "time": "16:41",
