@@ -1,0 +1,30 @@
+<h2>Selecciona tu método de pago</h2>
+
+<div class="payment-methods">
+  <div
+    class="method-card"
+    [class.selected]="selectedMethod === 'card'"
+    (click)="selectedMethod = 'card'"
+  >
+    💳 Tarjeta de Crédito
+  </div>
+
+  <div
+    class="method-card"
+    [class.selected]="selectedMethod === 'yape'"
+    (click)="selectedMethod = 'yape'"
+  >
+    📱 Yape
+  </div>
+</div>
+
+<!-- Renderiza el formulario según selección -->
+<div class="payment-form">
+  <app-credit-card-form *ngIf="selectedMethod === 'card'"></app-credit-card-form>
+
+  <div *ngIf="selectedMethod === 'yape'">
+    <h3>Escanea el código QR con Yape</h3>
+    <img src="assets/yape-qr.jpg" alt="QR de Yape" style="width: 200px; height: 200px;" />
+    <p>Una vez realizado el pago, por favor confirma con el encargado.</p>
+  </div>
+</div>

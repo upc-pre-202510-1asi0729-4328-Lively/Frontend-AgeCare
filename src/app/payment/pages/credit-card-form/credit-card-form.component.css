@@ -1,0 +1,73 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.credit-card {
+  width: 360px;
+  height: 200px;
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 24px;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card-chip {
+  width: 50px;
+  height: 35px;
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card-number {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.card-info label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #ddd;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  gap: 12px;
+}
+
+.card-form input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.card-form button {
+  padding: 12px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-form button:hover {
+  background-color: #0d47a1;
+}

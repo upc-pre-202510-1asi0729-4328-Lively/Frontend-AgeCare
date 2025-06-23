@@ -1,0 +1,24 @@
+<div class="card-container">
+  <div class="credit-card">
+    <div class="card-chip"></div>
+    <div class="card-number">{{ cardNumber || '#### #### #### ####' }}</div>
+    <div class="card-info">
+      <div class="card-holder">
+        <label>Card Holder</label>
+        <div>{{ cardHolder || 'FULL NAME' }}</div>
+      </div>
+      <div class="card-expiration">
+        <label>Expires</label>
+        <div>{{ expiration || 'MM/YY' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <form class="card-form" (ngSubmit)="submitCardPayment()">
+    <input type="text" maxlength="19" placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required />
+    <input type="text" placeholder="Card Holder" [(ngModel)]="cardHolder" name="cardHolder" required />
+    <input type="text" maxlength="5" placeholder="MM/YY" [(ngModel)]="expiration" name="expiration" required />
+    <input type="text" maxlength="3" placeholder="CVV" [(ngModel)]="cvv" name="cvv" required />
+    <button type="submit">Pagar</button>
+  </form>
+</div>

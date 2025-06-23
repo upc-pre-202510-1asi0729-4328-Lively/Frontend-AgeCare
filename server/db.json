@@ -1,571 +1,115 @@
 {
-  "residents": [
+  "receipts": [
     {
       "id": 1,
-      "dni": "12345678",
-      "firstName": "Alice",
-      "lastName": "Parker",
-      "birthDate": "1942-05-15",
-      "gender": "Female",
-      "city": "Lima",
-      "state": "Lima",
-      "country": "Perú",
-      "street": "Av. Arequipa",
-      "zipCode": "15046",
-      "receiptId": 1
+      "issueDate": "2025-06-01",
+      "dueDate": "2025-06-15",
+      "totalAmount": 300,
+      "status": true,
+      "residentId": "RES-001",
+      "paymentId": 101,
+      "paymentDate": "2025-06-10",
+      "amountPaid": 300,
+      "paymentMethod": 1,
+      "type": "Food"
     },
     {
       "id": 2,
-      "dni": "23456789",
-      "firstName": "Luis",
-      "lastName": "García",
-      "birthDate": "1950-08-12",
-      "gender": "Male",
-      "city": "Cusco",
-      "state": "Cusco",
-      "country": "Perú",
-      "street": "Calle Sacsayhuamán",
-      "zipCode": "08000",
-      "receiptId": 2
+      "issueDate": "2025-06-01",
+      "dueDate": "2025-06-20",
+      "totalAmount": 150,
+      "status": false,
+      "residentId": "RES-002",
+      "paymentId": 102,
+      "paymentDate": null,
+      "amountPaid": 0,
+      "paymentMethod": 2,
+      "type": "Medication"
     },
     {
       "id": 3,
-      "dni": "34567890",
-      "firstName": "María",
-      "lastName": "Lopez",
-      "birthDate": "1965-02-25",
-      "gender": "Female",
-      "city": "Arequipa",
-      "state": "Arequipa",
-      "country": "Perú",
-      "street": "Av. Ejército",
-      "zipCode": "04001",
-      "receiptId": 3
+      "issueDate": "2025-06-05",
+      "dueDate": "2025-06-18",
+      "totalAmount": 220.5,
+      "status": true,
+      "residentId": "RES-003",
+      "paymentId": 103,
+      "paymentDate": "2025-06-12",
+      "amountPaid": 220.5,
+      "paymentMethod": 3,
+      "type": "Utilities"
     },
     {
-      "id": 4,
-      "dni": "45678901",
-      "firstName": "Carlos",
-      "lastName": "Quispe",
-      "birthDate": "1945-11-30",
-      "gender": "Male",
-      "city": "Trujillo",
-      "state": "La Libertad",
-      "country": "Perú",
-      "street": "Av. España",
-      "zipCode": "13001",
-      "receiptId": 4
+      "residentName": "",
+      "amount": null,
+      "paymentMethod": "yape",
+      "id": 4
     },
     {
-      "id": 5,
-      "dni": "56789012",
-      "firstName": "Juana",
-      "lastName": "Paredes",
-      "birthDate": "1975-04-10",
-      "gender": "Female",
-      "city": "Piura",
-      "state": "Piura",
-      "country": "Perú",
-      "street": "Calle Libertad",
-      "zipCode": "20000",
-      "receiptId": 5
+      "residentName": "pepe",
+      "amount": 123,
+      "issueDate": "2025-02-02",
+      "dueDate": "2025-03-02",
+      "paymentMethod": "card",
+      "id": 5
     },
     {
-      "id": 6,
-      "dni": "67890123",
-      "firstName": "Miguel",
-      "lastName": "Salazar",
-      "birthDate": "1955-06-20",
-      "gender": "Male",
-      "city": "Chiclayo",
-      "state": "Lambayeque",
-      "country": "Perú",
-      "street": "Av. Bolognesi",
-      "zipCode": "14000",
-      "receiptId": 6
+      "residentName": "Draco",
+      "amount": 189919,
+      "issueDate": "2005-05-20",
+      "dueDate": "2006-02-02",
+      "paymentMethod": "Yape",
+      "status": "False",
+      "id": 6
     },
     {
-      "id": 7,
-      "dni": "78901234",
-      "firstName": "Rosa",
-      "lastName": "Torres",
-      "birthDate": "1960-07-15",
-      "gender": "Female",
-      "city": "Huancayo",
-      "state": "Junín",
-      "country": "Perú",
-      "street": "Jr. Real",
-      "zipCode": "12000",
-      "receiptId": 7
+      "residentName": "Pineas",
+      "amount": 912,
+      "issueDate": "2025-05-05",
+      "dueDate": "2025-06-06",
+      "paymentMethod": "Yape",
+      "status": "True",
+      "id": 7
     },
     {
       "id": 8,
-      "dni": "89012345",
-      "firstName": "Pedro",
-      "lastName": "Huamán",
-      "birthDate": "1948-09-22",
-      "gender": "Male",
-      "city": "Tacna",
-      "state": "Tacna",
-      "country": "Perú",
-      "street": "Av. San Martín",
-      "zipCode": "23000",
-      "receiptId": 8
+      "residentName": "Franco",
+      "amount": 200,
+      "issueDate": "2025-06-22T03:33:49.880Z",
+      "dueDate": "2025-06-22T03:33:49.880Z",
+      "paymentMethod": "card",
+      "status": true,
+      "cardNumber": "7162367812678"
     },
     {
       "id": 9,
-      "dni": "90123456",
-      "firstName": "Carmen",
-      "lastName": "Soto",
-      "birthDate": "1980-12-01",
-      "gender": "Female",
-      "city": "Iquitos",
-      "state": "Loreto",
-      "country": "Perú",
-      "street": "Calle Próspero",
-      "zipCode": "16000",
-      "receiptId": 9
+      "residentName": "Sinai",
+      "amount": 12000,
+      "issueDate": "2025-06-22T03:35:02.096Z",
+      "dueDate": "2025-06-22T03:35:02.096Z",
+      "paymentMethod": "card",
+      "status": true,
+      "cardNumber": "2132354567789"
     },
     {
       "id": 10,
-      "dni": "01234567",
-      "firstName": "Andrés",
-      "lastName": "Vega",
-      "birthDate": "1970-03-18",
-      "gender": "Male",
-      "city": "Puno",
-      "state": "Puno",
-      "country": "Perú",
-      "street": "Av. Titicaca",
-      "zipCode": "21000",
-      "receiptId": 10
-    }
-  ],
-  "medications": [
-    {
-      "id": 1,
-      "residentId": 1,
-      "name": "Insulina",
-      "frequency": "Diaria"
+      "residentName": "Franco Huang",
+      "amount": 0,
+      "issueDate": "2025-06-22T04:10:48.116Z",
+      "dueDate": "2025-06-22T04:10:48.116Z",
+      "paymentMethod": "card",
+      "status": true,
+      "cardNumber": "1234567887654321"
     },
     {
-      "id": 2,
-      "residentId": 2,
-      "name": "Losartán",
-      "frequency": "Una vez al día"
-    },
-    {
-      "id": 3,
-      "residentId": 3,
-      "name": "Paracetamol",
-      "frequency": "Cada 8 horas"
-    },
-    {
-      "id": 4,
-      "residentId": 4,
-      "name": "Metformina",
-      "frequency": "Dos veces al día"
-    },
-    {
-      "id": 5,
-      "residentId": 5,
-      "name": "Aspirina",
-      "frequency": "Una vez al día"
-    },
-    {
-      "id": 6,
-      "residentId": 6,
-      "name": "Atorvastatina",
-      "frequency": "Una vez al día"
-    },
-    {
-      "id": 7,
-      "residentId": 7,
-      "name": "Omeprazol",
-      "frequency": "Antes del desayuno"
-    },
-    {
-      "id": 8,
-      "residentId": 8,
-      "name": "Clopidogrel",
-      "frequency": "Una vez al día"
-    },
-    {
-      "id": 9,
-      "residentId": 9,
-      "name": "Ibuprofeno",
-      "frequency": "Cada 12 horas"
-    },
-    {
-      "id": 10,
-      "residentId": 10,
-      "name": "Levotiroxina",
-      "frequency": "En ayunas"
-    }
-  ],
-  "medical-histories": [
-    {
-      "id": 1,
-      "residentId": 1,
-      "recordDate": "2023-01-10",
-      "diagnosis": "Diabetes",
-      "treatment": "Insulina"
-    },
-    {
-      "id": 2,
-      "residentId": 2,
-      "recordDate": "2022-06-15",
-      "diagnosis": "Hipertensión",
-      "treatment": "Losartán"
-    },
-    {
-      "id": 3,
-      "residentId": 3,
-      "recordDate": "2021-11-20",
-      "diagnosis": "Migraña",
-      "treatment": "Paracetamol"
-    },
-    {
-      "id": 4,
-      "residentId": 4,
-      "recordDate": "2020-05-25",
-      "diagnosis": "Diabetes Tipo 2",
-      "treatment": "Metformina"
-    },
-    {
-      "id": 5,
-      "residentId": 5,
-      "recordDate": "2023-03-14",
-      "diagnosis": "Cardiopatía",
-      "treatment": "Aspirina"
-    },
-    {
-      "id": 6,
-      "residentId": 6,
-      "recordDate": "2022-08-10",
-      "diagnosis": "Colesterol alto",
-      "treatment": "Atorvastatina"
-    },
-    {
-      "id": 7,
-      "residentId": 7,
-      "recordDate": "2021-12-01",
-      "diagnosis": "Gastritis",
-      "treatment": "Omeprazol"
-    },
-    {
-      "id": 8,
-      "residentId": 8,
-      "recordDate": "2023-02-05",
-      "diagnosis": "Trombosis",
-      "treatment": "Clopidogrel"
-    },
-    {
-      "id": 9,
-      "residentId": 9,
-      "recordDate": "2022-09-30",
-      "diagnosis": "Artritis",
-      "treatment": "Ibuprofeno"
-    },
-    {
-      "id": 10,
-      "residentId": 10,
-      "recordDate": "2021-07-18",
-      "diagnosis": "Hipotiroidismo",
-      "treatment": "Levotiroxina"
-    }
-  ],
-  "mental-health-records": [
-    {
-      "id": 1,
-      "residentId": 1,
-      "recordDate": "2023-04-10",
-      "diagnosis": "Depresión leve",
-      "treatment": "Terapia psicológica"
-    },
-    {
-      "id": 2,
-      "residentId": 2,
-      "recordDate": "2023-03-12",
-      "diagnosis": "Ansiedad",
-      "treatment": "Terapia de relajación"
-    },
-    {
-      "id": 3,
-      "residentId": 3,
-      "recordDate": "2022-05-25",
-      "diagnosis": "Estrés crónico",
-      "treatment": "Mindfulness"
-    },
-    {
-      "id": 4,
-      "residentId": 4,
-      "recordDate": "2021-09-15",
-      "diagnosis": "Trastorno adaptativo",
-      "treatment": "Terapia de apoyo"
-    },
-    {
-      "id": 5,
-      "residentId": 5,
-      "recordDate": "2022-11-11",
-      "diagnosis": "Insomnio",
-      "treatment": "Higiene del sueño"
-    },
-    {
-      "id": 6,
-      "residentId": 6,
-      "recordDate": "2023-01-18",
-      "diagnosis": "Ansiedad generalizada",
-      "treatment": "Terapia cognitivo-conductual"
-    },
-    {
-      "id": 7,
-      "residentId": 7,
-      "recordDate": "2023-02-10",
-      "diagnosis": "Depresión moderada",
-      "treatment": "Terapia y medicación"
-    },
-    {
-      "id": 8,
-      "residentId": 8,
-      "recordDate": "2021-06-20",
-      "diagnosis": "Trastorno de pánico",
-      "treatment": "Psicoterapia"
-    },
-    {
-      "id": 9,
-      "residentId": 9,
-      "recordDate": "2022-10-14",
-      "diagnosis": "Fobia social",
-      "treatment": "Terapia de exposición"
-    },
-    {
-      "id": 10,
-      "residentId": 10,
-      "recordDate": "2022-03-05",
-      "diagnosis": "TOC",
-      "treatment": "Terapia cognitivo-conductual"
-    }
-  ],
-  "doctors": [
-    {
-      "id": 1,
-      "licenseNumber": "MD-2025-001",
-      "specialty": "Cardiology",
-      "fullName": {
-        "firstName": "Ana",
-        "lastName": "Gomez"
-      },
-      "contactInfo": {
-        "phone": "+51-987654321",
-        "address": {
-          "street": "Av. La Marina 123",
-          "city": "Lima",
-          "state": "Lima",
-          "zipCode": "15001",
-          "country": "Peru"
-        }
-      },
-      "schedules": [
-        {
-          "id": 101,
-          "day": "Monday",
-          "startTime": "09:00",
-          "endTime": "12:00",
-          "appointmentId": 1001
-        },
-        {
-          "id": 102,
-          "day": "Wednesday",
-          "startTime": "14:00",
-          "endTime": "18:00",
-          "appointmentId": 1002
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "licenseNumber": "MD-2025-002",
-      "specialty": "Pediatrics",
-      "fullName": {
-        "firstName": "Carlos",
-        "lastName": "Fernandez"
-      },
-      "contactInfo": {
-        "phone": "+51-912345678",
-        "address": {
-          "street": "Jr. Amazonas 456",
-          "city": "Lima",
-          "state": "Lima",
-          "zipCode": "15002",
-          "country": "Peru"
-        }
-      },
-      "schedules": [
-        {
-          "id": 201,
-          "day": "Tuesday",
-          "startTime": "08:00",
-          "endTime": "11:00",
-          "appointmentId": 2001
-        },
-        {
-          "id": 202,
-          "day": "Thursday",
-          "startTime": "13:00",
-          "endTime": "16:00",
-          "appointmentId": 2002
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "licenseNumber": "MD-2025-003",
-      "specialty": "Dermatology",
-      "fullName": {
-        "firstName": "María",
-        "lastName": "Lopez"
-      },
-      "contactInfo": {
-        "phone": "+51-976543210",
-        "address": {
-          "street": "Calle Paz 789",
-          "city": "Lima",
-          "state": "Lima",
-          "zipCode": "15003",
-          "country": "Peru"
-        }
-      },
-      "schedules": [
-        {
-          "id": 301,
-          "day": "Friday",
-          "startTime": "10:00",
-          "endTime": "13:00",
-          "appointmentId": 3001
-        },
-        {
-          "id": 302,
-          "day": "Saturday",
-          "startTime": "09:00",
-          "endTime": "12:00",
-          "appointmentId": 3002
-        }
-      ]
-    }
-  ],
-  "chats": [
-    {
-      "id": "1",
-      "name": "Doctor Watson",
-      "message": "The appointment is tomorrow at 10am",
-      "avatar": "assets/avatars/doctor-watson.jpg"
-    },
-    {
-      "id": "2",
-      "name": "Medic Thompson",
-      "message": "I'll make sure he takes medicine",
-      "avatar": "assets/avatars/medic-thompson.jpg"
-    },
-    {
-      "id": "3",
-      "name": "Family Chat",
-      "message": "Dad: Can someone go to the doctor with me?",
-      "avatar": "assets/avatars/family-chat.png"
-    },
-    {
-      "id": "4",
-      "name": "Hospital",
-      "message": "We can book an appointment online",
-      "avatar": "assets/avatars/hospital.png"
-    },
-    {
-      "id": "5",
-      "name": "Psichologist",
-      "message": "You can download the results in the portal",
-      "avatar": "assets/avatars/psichologist.jpg"
-    },
-    {
-      "id": "6",
-      "name": "Therapy",
-      "message": "Don't forget to bring your ID",
-      "avatar": "assets/avatars/therapy.jpg"
-    }
-  ],
-  "notifications": [
-    {
-      "id": "4f44",
-      "title": "Bienvenida a AgeCare",
-      "message": "Tu cuenta ha sido creada correctamente.",
-      "userId": "user1",
-      "status": "archived",
-      "createdAt": "2025-06-20T06:39:44.674Z"
-    },
-    {
-      "id": "4f44",
-      "title": "Actualización médica de tu familiar",
-      "message": "El Dr. Pérez realizó una revisión médica a tu familiar y todo está en orden.",
-      "userId": "familiar1",
-      "status": "unread",
-      "createdAt": "2025-06-20T06:39:44.674Z"
-    },
-    {
-      "id": "a7b2",
-      "title": "Actividad completada",
-      "message": "Tu familiar participó hoy en la sesión de terapia ocupacional con gran entusiasmo.",
-      "userId": "familiar2",
-      "status": "unread",
-      "createdAt": "2025-06-19T14:25:12.874Z"
-    },
-    {
-      "id": "d912",
-      "title": "Recordatorio de visita",
-      "message": "Recuerda que puedes visitar a tu familiar este fin de semana de 10:00 a.m. a 5:00 p.m.",
-      "userId": "familiar1",
-      "status": "delivered",
-      "createdAt": "2025-06-18T09:10:00.000Z"
-    },
-    {
-      "id": "ce81",
-      "title": "Nuevo informe disponible",
-      "message": "Ya puedes revisar el informe mensual de salud y bienestar de tu familiar.",
-      "userId": "familiar3",
-      "status": "archived",
-      "createdAt": "2025-06-17T17:45:33.511Z"
-    },
-    {
-      "id": "fa03",
-      "title": "Cambio de medicación",
-      "message": "Se ha actualizado la medicación de tu familiar según indicaciones del especialista.",
-      "userId": "familiar2",
-      "status": "unread",
-      "createdAt": "2025-06-20T12:00:00.000Z"
-    }
-  ],
-  "appointments": [
-    {
-      "id": "101",
-      "date": "2025-06-20",
-      "time": "10:00",
-      "doctor": "Jane Doe",
-      "resident": "Ana Torres",
-      "status": "pending"
-    },
-    {
-      "id": "102",
-      "date": "2025-06-20",
-      "time": "13:00",
-      "doctor": "Dr. House",
-      "resident": "Felix Gonzalez",
-      "status": "pending"
-    },
-    {
-      "id": "044667bf-5419-48e5-a378-4b84a917c010",
-      "date": "2025-06-26",
-      "time": "16:41",
-      "resident": "Juan Morroco",
-      "doctor": "Franco Huang",
-      "status": "pending"
+      "id": 11,
+      "residentName": "Pedro Pascal",
+      "amount": 5000,
+      "issueDate": "2005-02-05",
+      "dueDate": "2006-04-06",
+      "paymentMethod": "yape",
+      "status": "False",
+      "cardNumber": ""
     }
   ]
 }

@@ -1,63 +1,38 @@
 {
-  "header": {
-    "appointments": "Citas",
-    "notifications-alerts": "Notificaciones y Alertas",
-    "resident": "Residente",
-    "payment": "Pago",
-    "user": "Usuario"
+  "filter": {
+    "label": "Filtrar",
+    "placeholder": "Ingresa texto para filtrar"
   },
-  "notifications": {
-    "form": {
-      "title": "Título",
-      "message": "Mensaje",
-      "create": "Crear notificación"
-    },
-    "filters": {
-      "all": "Todas",
-      "unread": "No leídas",
-      "archived": "Archivadas"
-    },
-    "markAsRead": "Marcar como leída",
-    "archive": "Archivar",
-    "delete": "Eliminar",
+  "title": {
+    "receipts": "Recibos",
+    "add": "Nuevo Recibo",
+    "edit": "Editar Recibo"
+  },
+  "receipt": {
+    "issueDate": "Fecha de Emisión",
+    "dueDate": "Fecha de Vencimiento",
+    "totalAmount": "Monto Total",
     "status": "Estado",
-    "statusValue": {
-      "unread": "No leída",
-      "read": "Leída",
-      "archived": "Archivada"
-    },
-    "confirmDelete": "¿Seguro que deseas eliminar esta notificación?",
-    "cancel": "Cancelar",
-    "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta notificación a {{status}}?",
-    "confirm": "Confirmar"
+    "residentId": "ID del Residente",
+    "paymentId": "ID del Pago",
+    "paymentDate": "Fecha de Pago",
+    "amountPaid": "Monto Pagado",
+    "paymentMethod": "Método de Pago",
+    "type": "Tipo de Servicio",
+    "actions": "Acciones"
+  },
+  "status": {
+    "paid": "Pagado",
+    "pending": "Pendiente"
+  },
+  "paymentMethod": {
+    "1": "Yape",
+    "2": "Transferencia",
+    "3": "Efectivo"
   },
   "footer": {
-    "rights": "Derechos de autor © 2025, Todos los derechos reservados",
+    "rights": "Copyright © 2025 {{ api }}, Todos los derechos reservados",
     "intro": "Desarrollado ",
-    "author": "por el Equipo Lively"
-  },
-  "appointments": {
-    "form": {
-      "date": "Fecha",
-      "time": "Hora",
-      "resident": "Residente",
-      "doctor": "Doctor",
-      "create": "Crear cita",
-      "status": "Estatus"
-    },
-    "filters": {
-      "all": "Todas",
-      "pending": "Pendiente",
-      "completed": "Completada"
-    },
-    "list": "Lista de citas",
-    "delete": "Eliminar",
-    "confirmDelete": "¿Seguro que deseas eliminar esta cita?",
-    "cancel": "Cancelar",
-    "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta cita a",
-    "confirm": "Confirmar",
-    "create": "Crear nueva cita",
-    "register": "Registrar cita",
-    "none": "No se encontraron citas"
+    "author": "por el equipo {{ team }}"
   }
 }

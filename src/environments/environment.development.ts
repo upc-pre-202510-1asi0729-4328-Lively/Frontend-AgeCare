@@ -1,14 +1,10 @@
-// src/environments/environment.development.ts
 export const environment = {
   production: false,
-  agecareProviderApiBaseUrl: 'https://agecareapi.com',
-  // Para desarrollo con Swagger en el puerto 8091:
-  serverBasePath: 'http://localhost:8091/api/v1',
-  // si quisieras json-server, descomenta:
-  // serverBasePath: 'http://localhost:3000/api/v1',
-  residentsEndpointPath: '/residents',
-  medicationsEndpointPath: '/medications',
-  mentalHealthRecordsEndpointPath: '/mental-health-records',
-  medicalHistoryEndpointPath: '/medical-histories',
-  useJsonServer: false,
+  // Server Base Path for Fake REST API
+  serverBasePath: 'http://localhost:3000',
+  // Server Base Path for Spring Boot REST API (cuando esté activo)
+  // serverBasePath: 'http://localhost:8091/api/v1',
+
+  // Endpoint para la colección de recibos
+  receiptsEndpointPath: '/receipts'
 };
