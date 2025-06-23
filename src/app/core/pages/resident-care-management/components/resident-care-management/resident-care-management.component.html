@@ -4,13 +4,22 @@
     <input formControlName="dni" placeholder="DNI" />
     <input formControlName="firstName" placeholder="First Name" />
     <input formControlName="lastName" placeholder="Last Name" />
-    <input formControlName="birthDate" type="date" />
+    <input formControlName="birthDate" type="date" placeholder="Birth Date" />
+
     <select formControlName="gender">
       <option value="">Select Gender</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="Other">Other</option>
     </select>
+
+    <input formControlName="city" placeholder="City" />
+    <input formControlName="state" placeholder="State" />
+    <input formControlName="country" placeholder="Country" />
+    <input formControlName="street" placeholder="Street" />
+    <input formControlName="zipCode" placeholder="Zip Code" />
+    <input formControlName="receiptId" type="number" placeholder="Receipt ID" />
+
     <button type="submit">{{ editingResidentId ? 'Update' : 'Create' }}</button>
     <button type="button" *ngIf="editingResidentId" (click)="cancelEdit()">Cancel</button>
   </form>
@@ -24,6 +33,12 @@
     <p><strong>DNI:</strong> {{ resident.dni }}</p>
     <p><strong>Birth Date:</strong> {{ resident.birthDate | date }}</p>
     <p><strong>Gender:</strong> {{ resident.gender }}</p>
+    <p><strong>City:</strong> {{ resident.city }}</p>
+    <p><strong>State:</strong> {{ resident.state }}</p>
+    <p><strong>Country:</strong> {{ resident.country }}</p>
+    <p><strong>Street:</strong> {{ resident.street }}</p>
+    <p><strong>Zip Code:</strong> {{ resident.zipCode }}</p>
+    <p><strong>Receipt ID:</strong> {{ resident.receiptId }}</p>
 
     <div class="card-actions">
       <button (click)="editResident(resident)">Edit</button>
@@ -31,9 +46,7 @@
     </div>
 
     <div class="card-actions-secondary">
-      <button (click)="viewMedications(resident)">View Medications</button>
-      <button (click)="viewMedicalHistory(resident)">View Medical History</button>
-      <button (click)="viewMentalHealthRecords(resident)">View Mental Health</button>
+      <button (click)="viewMedications(resident)">View Details</button>
     </div>
   </div>
 </div>

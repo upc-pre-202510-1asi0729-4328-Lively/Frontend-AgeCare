@@ -7,77 +7,112 @@
       "lastName": "Parker",
       "birthDate": "1942-05-15",
       "gender": "Female",
-      "medications": [
-        1,
-        2
-      ],
-      "medicalHistory": [
-        1
-      ],
-      "mentalHealthRecords": [
-        1
-      ]
+      "city": "New York",
+      "state": "NY",
+      "country": "USA",
+      "street": "5th Avenue",
+      "zipCode": "10001",
+      "receiptId": 1
     },
     {
+      "dni": "73264095",
+      "firstName": "Maricielo Valeria",
+      "lastName": "Valdivia Salinas",
+      "birthDate": "2005-01-02",
+      "gender": "Male",
+      "city": "Ventanilla",
+      "state": "Callao",
+      "country": "Perú",
+      "street": "Av. La Paz",
+      "zipCode": "07006",
+      "receiptId": 7,
+      "id": 4
+    },
+    {
+      "id": 5,
       "dni": "87654321",
-      "firstName": "Robert",
-      "lastName": "Chavez",
-      "birthDate": "1938-09-30",
+      "firstName": "Carlos",
+      "lastName": "Quispe Huamán",
+      "birthDate": "1955-08-20",
       "gender": "Male",
-      "id": 2
+      "city": "Cusco",
+      "state": "Cusco",
+      "country": "Perú",
+      "street": "Calle Sacsayhuamán",
+      "zipCode": "08000",
+      "receiptId": 8
     },
     {
-      "dni": "77153730",
-      "firstName": "Rama",
-      "lastName": "Guzman",
-      "birthDate": "2004-11-29",
-      "gender": "Male",
-      "id": 3
+      "id": 6,
+      "dni": "56781234",
+      "firstName": "Rosa",
+      "lastName": "Torres Paredes",
+      "birthDate": "1970-03-14",
+      "gender": "Female",
+      "city": "Arequipa",
+      "state": "Arequipa",
+      "country": "Perú",
+      "street": "Av. Ejército",
+      "zipCode": "04001",
+      "receiptId": 9
     }
   ],
   "medications": [
     {
       "id": 1,
+      "residentId": 1,
       "name": "Insulin",
       "frequency": "Twice daily"
     },
     {
       "id": 2,
+      "residentId": 1,
       "name": "Aspirin",
       "frequency": "Once daily"
     },
     {
       "id": 3,
-      "name": "Lisinopril",
-      "frequency": "Once every morning"
+      "residentId": 4,
+      "name": "Paracetamol",
+      "frequency": "Cada 8 horas"
+    },
+    {
+      "id": 4,
+      "residentId": 5,
+      "name": "Losartán",
+      "frequency": "Una vez al día"
     }
   ],
-  "medicalHistorys": [
+  "medical-histories": [
     {
       "id": 1,
+      "residentId": 1,
       "recordDate": "2023-02-10",
       "diagnosis": "Diabetes Type 2",
       "treatment": "Insulin therapy"
     },
     {
       "id": 2,
-      "recordDate": "2022-11-20",
-      "diagnosis": "Hypertension",
-      "treatment": "ACE inhibitors"
+      "residentId": 5,
+      "recordDate": "2022-11-15",
+      "diagnosis": "Hipertensión",
+      "treatment": "Control con Losartán"
     }
   ],
-  "mentalHealthRecords": [
+  "mental-health-records": [
     {
       "id": 1,
+      "residentId": 1,
       "recordDate": "2023-01-05",
       "diagnosis": "Mild Depression",
       "treatment": "Therapy sessions and medication"
     },
     {
       "id": 2,
+      "residentId": 6,
       "recordDate": "2023-03-12",
-      "diagnosis": "Anxiety",
-      "treatment": "Cognitive Behavioral Therapy"
+      "diagnosis": "Ansiedad generalizada",
+      "treatment": "Terapia cognitivo-conductual"
     }
   ],
   "chats": [

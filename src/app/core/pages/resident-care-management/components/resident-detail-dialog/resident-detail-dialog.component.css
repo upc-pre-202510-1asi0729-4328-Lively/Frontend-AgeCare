@@ -1,0 +1,24 @@
+h3 {
+  color: #335A8E;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 4px;
+  color: #001F4D;
+}
+
+p {
+  font-style: italic;
+  color: #6c757d;
+}
+
+section {
+  margin-bottom: 12px;
+}
