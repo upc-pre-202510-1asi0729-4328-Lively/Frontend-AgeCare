@@ -14,6 +14,8 @@ import { UserManagementComponent } from './core/pages/user-management/components
 
 // Página no encontrada
 import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
+import {DoctorListComponent} from './core/pages/user-management/components/doctor-list/doctor-list.component';
+import {UserViewComponent} from './core/pages/user-management/components/user-view/user-view.component';
 
 export const routes: Routes = [
   {
@@ -26,7 +28,7 @@ export const routes: Routes = [
       { path: 'notifications-alerts', component: NotificationsAlertsManagementComponent },
       { path: 'payment', component: PaymentManagementComponent },
       { path: 'resident', component: ResidentCareManagementComponent },
-      { path: 'user', component: UserManagementComponent }
+      { path: 'user', component: UserViewComponent }
     ]
   },
 

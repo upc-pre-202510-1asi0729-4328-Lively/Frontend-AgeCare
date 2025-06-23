@@ -1,0 +1,11 @@
+<div class="user-view-wrapper">
+  <!-- Formulario a la izquierda -->
+  <div class="left-panel">
+    <app-create-doctor (created)="onDoctorCreated($event)"></app-create-doctor>
+  </div>
+
+  <!-- Lista a la derecha -->
+  <div class="right-panel">
+    <app-doctor-list></app-doctor-list>
+  </div>
+</div>
