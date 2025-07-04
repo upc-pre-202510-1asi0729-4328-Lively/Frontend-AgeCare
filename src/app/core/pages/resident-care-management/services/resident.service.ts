@@ -4,6 +4,7 @@ import { Resident } from '../model/resident.entity';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { Observable } from 'rxjs';
+import {ResidentDetails} from '../model/residentDetails.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,9 @@ export class ResidentService extends BaseService<Resident> {
     this.resourceEndpoint = environment.residentsEndpointPath;
   }
 
-  // 🔽 Nuevo método para obtener detalles completos
-  getResidentDetails(id: number): Observable<Resident> {
-    const url = `${this.basePath}${this.resourceEndpoint}/${id}/details`;
-    return this.http.get<Resident>(url, this.httpOptions)
-      .pipe(this.defaultPipeOperators());
-  }
+    getResidentDetails(id: number): Observable<ResidentDetails> {
+      return this.http.get<ResidentDetails>(`${this.resourcePath()}/${id}/details`, this.httpOptions)
+       .pipe(this.defaultPipeOperators());
+    }
+
 }

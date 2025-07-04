@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Resident } from '../../model/resident.entity';
-import { Medication } from '../../model/medication.entity';
-import { MedicalHistory } from '../../model/medicalHistory.entity';
-import { MentalHealthRecord } from '../../model/mentalHealthRecord.entity';
+import { ResidentDetails} from '../../model/residentDetails.entity'; // ✅ modelo con historial y medicación
 import { ResidentService } from '../../services/resident.service';
-import { MedicationService } from '../../services/medication.service';
-import { MedicalHistoryService} from '../../services/medicalHistory.service';
-import { MentalHealthRecordService} from '../../services/mentalHealthRecord.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, NgForOf, NgIf } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
@@ -33,9 +28,6 @@ export class ResidentCareManagementComponent implements OnInit {
 
   constructor(
     private residentService: ResidentService,
-    private medicationService: MedicationService,
-    private medicalHistoryService: MedicalHistoryService,
-    private mentalHealthRecordService: MentalHealthRecordService,
     private fb: FormBuilder,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
@@ -149,39 +141,19 @@ export class ResidentCareManagementComponent implements OnInit {
   }
 
   private loadResidentDetails(resident: Resident): void {
-    let medications: Medication[] = [];
-    let medicalHistories: MedicalHistory[] = [];
-    let mentalHealthRecords: MentalHealthRecord[] = [];
-
-    this.medicationService.getAll().subscribe({
-      next: (meds) => {
-        medications = meds.filter(m => m.residentId === resident.id);
-
-        this.medicalHistoryService.getAll().subscribe({
-          next: (histories) => {
-            medicalHistories = histories.filter(h => h.residentId === resident.id);
-
-            this.mentalHealthRecordService.getAll().subscribe({
-              next: (records) => {
-                mentalHealthRecords = records.filter(r => r.residentId === resident.id);
-
-                this.dialog.open(ResidentDetailDialogComponent, {
-                  width: '500px',
-                  data: {
-                    name: `${resident.firstName} ${resident.lastName}`,
-                    medications,
-                    medicalHistories,
-                    mentalHealthRecords
-                  }
-                });
-              },
-              error: (err) => console.error('Failed to load mental health records', err)
-            });
-          },
-          error: (err) => console.error('Failed to load medical histories', err)
+    this.residentService.getResidentDetails(resident.id!).subscribe({
+      next: (res: ResidentDetails) => {
+        this.dialog.open(ResidentDetailDialogComponent, {
+          width: '500px',
+          data: {
+            name: `${res.name} ${res.lastName}`,
+            medications: res.medications || [],
+            medicalHistories: res.medicalHistories || [],
+            mentalHealthRecords: res.mentalHealthRecords || []
+          }
         });
       },
-      error: (err) => console.error('Failed to load medications', err)
+      error: (err) => console.error('Failed to load resident details', err)
     });
   }
 }
