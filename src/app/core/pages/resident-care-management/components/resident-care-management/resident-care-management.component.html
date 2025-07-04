@@ -1,27 +1,34 @@
 <div class="form-container">
   <h2>{{ editingResidentId ? 'Edit Resident' : 'Add Resident' }}</h2>
+
   <form [formGroup]="residentForm" (ngSubmit)="onSubmit()">
-    <input formControlName="dni" placeholder="DNI" />
-    <input formControlName="firstName" placeholder="First Name" />
-    <input formControlName="lastName" placeholder="Last Name" />
-    <input formControlName="birthDate" type="date" placeholder="Birth Date" />
+    <div class="form-group">
+      <input formControlName="dni" placeholder="DNI" />
+      <input formControlName="firstName" placeholder="First Name" />
+      <input formControlName="lastName" placeholder="Last Name" />
+      <input formControlName="birthDate" type="date" placeholder="Birth Date" />
 
-    <select formControlName="gender">
-      <option value="">Select Gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Other">Other</option>
-    </select>
+      <select formControlName="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
 
-    <input formControlName="city" placeholder="City" />
-    <input formControlName="state" placeholder="State" />
-    <input formControlName="country" placeholder="Country" />
-    <input formControlName="street" placeholder="Street" />
-    <input formControlName="zipCode" placeholder="Zip Code" />
-    <input formControlName="receiptId" type="number" placeholder="Receipt ID" />
+      <input formControlName="city" placeholder="City" />
+      <input formControlName="state" placeholder="State" />
+      <input formControlName="country" placeholder="Country" />
+      <input formControlName="street" placeholder="Street" />
+      <input formControlName="zipCode" placeholder="Zip Code" />
+      <input formControlName="receiptId" type="number" placeholder="Receipt ID" />
+    </div>
 
-    <button type="submit">{{ editingResidentId ? 'Update' : 'Create' }}</button>
-    <button type="button" *ngIf="editingResidentId" (click)="cancelEdit()">Cancel</button>
+    <div class="form-buttons">
+      <button type="submit" [disabled]="residentForm.invalid">
+        {{ editingResidentId ? 'Update' : 'Create' }}
+      </button>
+      <button type="button" *ngIf="editingResidentId" (click)="cancelEdit()">Cancel</button>
+    </div>
   </form>
 </div>
 
@@ -30,15 +37,18 @@
 <div class="resident-cards-container">
   <div class="resident-card" *ngFor="let resident of residents">
     <h3>{{ resident.firstName }} {{ resident.lastName }}</h3>
-    <p><strong>DNI:</strong> {{ resident.dni }}</p>
-    <p><strong>Birth Date:</strong> {{ resident.birthDate | date }}</p>
-    <p><strong>Gender:</strong> {{ resident.gender }}</p>
-    <p><strong>City:</strong> {{ resident.city }}</p>
-    <p><strong>State:</strong> {{ resident.state }}</p>
-    <p><strong>Country:</strong> {{ resident.country }}</p>
-    <p><strong>Street:</strong> {{ resident.street }}</p>
-    <p><strong>Zip Code:</strong> {{ resident.zipCode }}</p>
-    <p><strong>Receipt ID:</strong> {{ resident.receiptId }}</p>
+
+    <ul>
+      <li><strong>DNI:</strong> {{ resident.dni }}</li>
+      <li><strong>Birth Date:</strong> {{ resident.birthDate | date }}</li>
+      <li><strong>Gender:</strong> {{ resident.gender }}</li>
+      <li><strong>City:</strong> {{ resident.city }}</li>
+      <li><strong>State:</strong> {{ resident.state }}</li>
+      <li><strong>Country:</strong> {{ resident.country }}</li>
+      <li><strong>Street:</strong> {{ resident.street }}</li>
+      <li><strong>Zip Code:</strong> {{ resident.zipCode }}</li>
+      <li><strong>Receipt ID:</strong> {{ resident.receiptId }}</li>
+    </ul>
 
     <div class="card-actions">
       <button (click)="editResident(resident)">Edit</button>
@@ -46,7 +56,7 @@
     </div>
 
     <div class="card-actions-secondary">
-      <button (click)="viewMedications(resident)">View Details</button>
+      <button (click)="viewMedications(resident)">View Medical Profile</button>
     </div>
   </div>
 </div>

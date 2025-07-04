@@ -15,7 +15,5 @@ export interface Resident {
   street: string;
   zipCode: string;
   receiptId: number;
-  medications?: Medication[];
-  medicalHistory?: MedicalHistory[];
-  mentalHealthRecords?: MentalHealthRecord[];
 }
+
