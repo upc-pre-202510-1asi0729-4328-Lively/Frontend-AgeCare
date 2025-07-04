@@ -1,0 +1,93 @@
+.list-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.list-container {
+  margin-left: auto;
+  width: 60%;
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Encabezado colapsable */
+.doctor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f4f7fa;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.doctor-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #2563eb;
+}
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Búsqueda */
+.search-bar {
+  padding: 0.5rem 1rem;
+}
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Lista y tarjetas */
+.doctor-list {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+.doctor-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Cabecera de cada tarjeta */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+.actions .edit {
+  color: #0066ff;
+}
+.actions .delete {
+  color: #ff3366;
+}
+
+/* Detalles */
+.address,
+.schedules {
+  margin-top: 0.5rem;
+}
+.schedules ul {
+  list-style: none;
+  padding: 0;
+}
+.schedules li {
+  margin: 0.25rem 0;
+}

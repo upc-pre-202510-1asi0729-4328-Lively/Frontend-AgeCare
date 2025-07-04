@@ -1,14 +1,63 @@
 {
   "header": {
     "appointments": "Citas",
-    "notifications Alerts": "Alertas de notificaciones",
+    "notifications-alerts": "Notificaciones y Alertas",
     "resident": "Residente",
     "payment": "Pago",
     "user": "Usuario"
+  },
+  "notifications": {
+    "form": {
+      "title": "Título",
+      "message": "Mensaje",
+      "create": "Crear notificación"
+    },
+    "filters": {
+      "all": "Todas",
+      "unread": "No leídas",
+      "archived": "Archivadas"
+    },
+    "markAsRead": "Marcar como leída",
+    "archive": "Archivar",
+    "delete": "Eliminar",
+    "status": "Estado",
+    "statusValue": {
+      "unread": "No leída",
+      "read": "Leída",
+      "archived": "Archivada"
+    },
+    "confirmDelete": "¿Seguro que deseas eliminar esta notificación?",
+    "cancel": "Cancelar",
+    "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta notificación a {{status}}?",
+    "confirm": "Confirmar"
   },
   "footer": {
     "rights": "Derechos de autor © 2025, Todos los derechos reservados",
     "intro": "Desarrollado ",
     "author": "por el Equipo Lively"
+  },
+  "appointments": {
+    "form": {
+      "date": "Fecha",
+      "time": "Hora",
+      "resident": "Residente",
+      "doctor": "Doctor",
+      "create": "Crear cita",
+      "status": "Estatus"
+    },
+    "filters": {
+      "all": "Todas",
+      "pending": "Pendiente",
+      "completed": "Completada"
+    },
+    "list": "Lista de citas",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Seguro que deseas eliminar esta cita?",
+    "cancel": "Cancelar",
+    "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta cita a",
+    "confirm": "Confirmar",
+    "create": "Crear nueva cita",
+    "register": "Registrar cita",
+    "none": "No se encontraron citas"
   }
 }

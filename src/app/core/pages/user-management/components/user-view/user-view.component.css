@@ -1,0 +1,21 @@
+.user-view-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  gap: 1rem;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+/* Panel del formulario: 35% del ancho */
+.left-panel {
+  flex: 0 0 35%;
+  overflow-y: auto;
+}
+
+/* Panel de la lista: 65% del ancho */
+.right-panel {
+  flex: 0 0 65%;
+  display: flex;
+  flex-direction: column;
+}
