@@ -567,5 +567,37 @@
       "doctor": "Franco Huang",
       "status": "pending"
     }
+  ],
+  "payments": [
+    {
+      "id": 1,
+      "residentId": 1,
+      "amount": 150,
+      "description": "Medicinas de abril",
+      "dueDate": "2025-07-01",
+      "paymentMethod": "card",
+      "status": "paid",
+      "paid": true
+    },
+    {
+      "id": 2,
+      "residentId": 2,
+      "amount": 100,
+      "description": "Consulta mensual",
+      "dueDate": "2025-07-05",
+      "paymentMethod": "cash",
+      "status": "paid",
+      "paid": true
+    },
+    {
+      "residentId": "1",
+      "amount": 123,
+      "description": "awawa",
+      "dueDate": "2025-06-27",
+      "paymentMethod": "tarjeta",
+      "status": "pending",
+      "paid": false,
+      "id": 3
+    }
   ]
 }
