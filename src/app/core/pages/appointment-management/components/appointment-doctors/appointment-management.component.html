@@ -26,8 +26,18 @@
   <!-- Sección que muestra la lista de citas existentes -->
   <div class="appointment-list-section">
     <h2>{{ 'appointments.list' | translate }}</h2>
+
+    <div class="search-section">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="{{ 'appointments.search' | translate }}"
+        class="search-input"
+      />
+    </div>
+
     <app-list-appointments
-      [appointments]="appointments"
+      [appointments]="filteredAppointments"
       (delete)="confirmDelete($event)"
       (updateStatus)="requestStatusChange($event)">
     </app-list-appointments>

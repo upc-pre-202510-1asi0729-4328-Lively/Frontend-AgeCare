@@ -1,0 +1,41 @@
+<section class="resident-view-layout">
+  <h2>Panel del familiar</h2>
+
+  <!-- Buscador por nombre de residente -->
+  <div class="search-section">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        [(ngModel)]="searchResident"
+        placeholder="Buscar por nombre del residente"
+        class="search-input"
+      />
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+
+  <!-- Citas filtradas del residente -->
+  <div class="appointments-section">
+    <h3>Citas del residente</h3>
+    <div *ngIf="filteredAppointments.length; else noResults">
+      <ul class="appointment-list">
+        <li *ngFor="let appt of filteredAppointments" class="appointment-card">
+          <strong>{{ appt.date }} a las {{ appt.time }}</strong><br>
+          Doctor: {{ appt.doctor }}<br>
+          Estado: <span class="badge badge-{{ appt.status }}">{{ appt.status | titlecase }}</span>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noResults>
+      <p>No hay citas registradas para este residente.</p>
+    </ng-template>
+  </div>
+
+  <!-- Cards de doctores disponibles -->
+  <div class="doctors-section">
+    <h3>Doctores disponibles</h3>
+    <div class="doctor-grid">
+
+    </div>
+  </div>
+</section>

@@ -1,6 +1,7 @@
 {
   "header": {
-    "appointments": "Appointments",
+    "appointments": "Appointments Doctors",
+    "appointmentsResidents": "Appointments Residents",
     "notifications-alerts": "Notifications & Alerts",
     "resident": "Resident",
     "payment": "Payment",
@@ -76,6 +77,7 @@
     "confirm": "Confirm",
     "create": "Create New Appointment",
     "register": "Register Appointment",
-    "none": "No appointments found"
+    "none": "No appointments found",
+    "search": "Search Appointments"
   }
 }

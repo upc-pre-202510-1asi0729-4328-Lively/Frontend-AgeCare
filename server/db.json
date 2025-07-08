@@ -533,7 +533,7 @@
       "time": "10:00",
       "doctor": "Jane Doe",
       "resident": "Ana Torres",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "102",

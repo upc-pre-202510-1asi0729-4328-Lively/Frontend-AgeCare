@@ -1,0 +1,99 @@
+.resident-view-layout {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-input {
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #1e3a8a;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.search-input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #1e3a8a;
+  pointer-events: none;
+}
+
+.appointments-section {
+  margin-bottom: 2rem;
+}
+
+.appointment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.appointment-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.doctors-section {
+  margin-top: 2rem;
+}
+
+.doctor-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.doctor-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.doctor-card h4 {
+  margin-bottom: 0.5rem;
+  color: #1e40af;
+}
+
+.doctor-card p {
+  font-size: 0.9rem;
+  color: #475569;
+}
