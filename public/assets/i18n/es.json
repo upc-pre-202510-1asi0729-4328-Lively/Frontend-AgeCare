@@ -1,6 +1,7 @@
 {
   "header": {
-    "appointments": "Citas",
+    "appointments": "Citas Doctores",
+    "appointmentsResidents": "Citas Residentes",
     "notifications-alerts": "Notificaciones y Alertas",
     "resident": "Residente",
     "payment": "Pago",
@@ -58,6 +59,7 @@
     "confirm": "Confirmar",
     "create": "Crear nueva cita",
     "register": "Registrar cita",
-    "none": "No se encontraron citas"
+    "none": "No se encontraron citas",
+    "search": "Buscar citas"
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointment } from '../../../model/appointment.entity';
-import { AppointmentsService } from '../../../services/appointments.service';
-import { ListAppointmentsComponent } from '../../../components/appointments-list/appointments-list.component';
+import { Appointment } from '../../../../model/appointment.entity';
+import { AppointmentsService } from '../../../../services/appointments.service';
+import { ListAppointmentsComponent } from '../appointments-list/appointments-list.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -21,8 +21,20 @@ export class AppointmentManagementComponent implements OnInit {
     time: '',
     resident: '',
     doctor: '',
-    status: 'pending'
+    status: 'pending',
+    
   };
+
+  searchQuery: string = '';
+  get filteredAppointments(): Appointment[] {
+  const query = this.searchQuery.trim().toLowerCase();
+  if (!query) return this.appointments;
+  return this.appointments.filter(a =>
+    a.resident.toLowerCase().includes(query) ||
+    a.doctor.toLowerCase().includes(query)
+  );
+}
+
 
   showConfirmDeleteId: string | null = null;
   pendingStatusChange: { id: string; status: Appointment['status'] } | null = null;
