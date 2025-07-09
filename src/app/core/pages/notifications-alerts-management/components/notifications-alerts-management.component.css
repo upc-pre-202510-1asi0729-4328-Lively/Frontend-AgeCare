@@ -143,6 +143,35 @@
   margin-bottom: 0; /* Eliminar margen inferior extra */
 }
 
+.notification-filters {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.notification-action-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notification-action-btn.active,
+.notification-action-btn:hover {
+  background: #1746a2;
+}
+
+.notification-action-btn:disabled {
+  background: #b3c6f7;
+  cursor: not-allowed;
+}
+
 @media (max-width: 900px) {
   .notifications-management-layout {
     flex-direction: column;
