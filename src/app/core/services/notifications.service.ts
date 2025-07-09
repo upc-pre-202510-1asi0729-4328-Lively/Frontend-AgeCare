@@ -17,6 +17,10 @@ export class NotificationsService {
     return this.http.get<Notification[]>(`${this.apiUrl}?status=unread`);
   }
 
+  getRead(): Observable<Notification[]> {
+    return this.http.get<Notification[]>(`${this.apiUrl}?status=read`);
+  }
+
   getArchived(): Observable<Notification[]> {
     return this.http.get<Notification[]>(`${this.apiUrl}?status=archived`);
   }
