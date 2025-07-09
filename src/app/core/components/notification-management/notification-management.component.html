@@ -1,0 +1,14 @@
+<div class="notification-sections-wrapper">
+  <section class="notification-create-section">
+    <!-- Formulario de creación -->
+    <form [formGroup]="notificationForm" (ngSubmit)="submit()">
+      <label>Título:
+        <input formControlName="title" />
+      </label>
+      <label>Mensaje:
+        <textarea formControlName="message"></textarea>
+      </label>
+      <button type="submit" [disabled]="!notificationForm.valid">Crear notificación</button>
+    </form>
+  </section>
+</div>
