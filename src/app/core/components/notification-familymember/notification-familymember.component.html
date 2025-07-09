@@ -1,0 +1,23 @@
+<ng-container *ngIf="showConfirm">
+  <div class="confirm-modal-backdrop">
+    <div class="confirm-modal confirm-modal-centered">
+      <p class="confirm-modal-message">{{ confirmMessage }}</p>
+      <div class="confirm-modal-actions">
+        <button (click)="confirmYes()" class="notification-action-btn">Sí</button>
+        <button (click)="confirmNo()" class="notification-action-btn cancel">No</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div class="notification-familymember">
+  <h4>{{ notification.title }}</h4>
+  <p>{{ notification.message }}</p>
+  <small>{{ notification.createdAt | date:'short' }}</small>
+  <div class="notification-actions">
+    <button *ngIf="notification.status !== 'read'" (click)="openConfirm('read', notification.id)">Marcar como leída</button>
+    <button *ngIf="notification.status !== 'archived'" (click)="openConfirm('archive', notification.id)">Archivar</button>
+    <button *ngIf="notification.status === 'archived'" (click)="openConfirm('unarchive', notification.id)">Desarchivar</button>
+    <button (click)="openConfirm('delete', notification.id)">Eliminar</button>
+  </div>
+</div>
