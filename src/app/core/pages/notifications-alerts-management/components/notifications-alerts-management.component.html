@@ -1,15 +1,15 @@
 <section class="notifications-management-layout">
   <div *ngIf="view !== 'family'" class="notifications-add-section">
-    <h2 class="notifications-title">Crear Nueva Notificación</h2>
+    <h2 class="notifications-title">{{ 'notifications.form.create' | translate }}</h2>
     <app-notification-management (createNotification)="onCreateNotification($event)"></app-notification-management>
   </div>
   <div *ngIf="view !== 'management'" class="notifications-list-section">
-    <h2 class="notifications-title">Notificaciones</h2>
+    <h2 class="notifications-title">{{ 'notifications.notifications' | translate }}</h2>
     <div class="notification-filters">
-      <button class="notification-action-btn" (click)="setFilter('all')" [class.active]="filter === 'all'">Todas</button>
-      <button class="notification-action-btn" (click)="setFilter('unread')" [class.active]="filter === 'unread'">No leídas</button>
-      <button class="notification-action-btn" (click)="setFilter('read')" [class.active]="filter === 'read'">Leídas</button>
-      <button class="notification-action-btn" (click)="setFilter('archived')" [class.active]="filter === 'archived'">Archivadas</button>
+      <button class="notification-action-btn" (click)="setFilter('all')" [class.active]="filter === 'all'">{{ 'notifications.filters.all' | translate }}</button>
+      <button class="notification-action-btn" (click)="setFilter('unread')" [class.active]="filter === 'unread'">{{ 'notifications.filters.unread' | translate }}</button>
+      <button class="notification-action-btn" (click)="setFilter('read')" [class.active]="filter === 'read'">{{ 'notifications.statusValue.read' | translate }}</button>
+      <button class="notification-action-btn" (click)="setFilter('archived')" [class.active]="filter === 'archived'">{{ 'notifications.filters.archived' | translate }}</button>
     </div>
     <app-notifications-list
       [notifications]="notifications"
@@ -19,8 +19,8 @@
   </div>
   <div *ngIf="showSuccessModal" class="confirm-modal">
     <div class="confirm-modal-content">
-      <p>¡Notificación creada exitosamente!</p>
-      <button (click)="closeSuccessModal()">Cerrar</button>
+      <p>{{ 'notifications.notificationCreatedSuccess' | translate }}</p>
+      <button (click)="closeSuccessModal()">{{ 'notifications.close' | translate }}</button>
     </div>
   </div>
 </section>

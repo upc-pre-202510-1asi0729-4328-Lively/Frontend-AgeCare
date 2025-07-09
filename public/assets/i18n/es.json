@@ -12,11 +12,6 @@
       "message": "Mensaje",
       "create": "Crear notificación"
     },
-    "filters": {
-      "all": "Todas",
-      "unread": "No leídas",
-      "archived": "Archivadas"
-    },
     "markAsRead": "Marcar como leída",
     "archive": "Archivar",
     "delete": "Eliminar",
@@ -24,12 +19,38 @@
     "statusValue": {
       "unread": "No leída",
       "read": "Leída",
-      "archived": "Archivada"
+      "archived": "Archivada",
+      "markAsRead": "Marcar como leída",
+      "archive": "Archivar",
+      "unarchive": "Desarchivar",
+      "delete": "Eliminar"
     },
     "confirmDelete": "¿Seguro que deseas eliminar esta notificación?",
     "cancel": "Cancelar",
     "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta notificación a {{status}}?",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "YES": "Sí",
+    "NO": "No",
+    "MARK_AS_READ": "Marcar como leída",
+    "ARCHIVE": "Archivar",
+    "UNARCHIVE": "Desarchivar",
+    "DELETE": "Eliminar",
+    "CREATE_NOTIFICATION": "Crear notificación",
+    "TITLE": "Título",
+    "MESSAGE": "Mensaje",
+    "CONFIRM_MARK_AS_READ": "¿Deseas marcar esta notificación como leída?",
+    "CONFIRM_ARCHIVE": "¿Deseas archivar esta notificación?",
+    "CONFIRM_UNARCHIVE": "¿Deseas desarchivar esta notificación?",
+    "CONFIRM_DELETE": "¿Deseas eliminar esta notificación?",
+    "CREATE NEW NOTIFICATION": "Crear nueva notificación",
+    "notifications": "Notificaciones",
+    "notificationCreatedSuccess": "¡Notificación creada con éxito!",
+    "close": "Cerrar",
+    "filters": {
+      "all": "Todas",
+      "unread": "No leídas",
+      "archived": "Archivadas"
+    }
   },
   "footer": {
     "rights": "Derechos de autor © 2025, Todos los derechos reservados",

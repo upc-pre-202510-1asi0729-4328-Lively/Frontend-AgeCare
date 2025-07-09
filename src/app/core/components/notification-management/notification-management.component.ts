@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, NgClass, NgFor, DatePipe } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 export interface NotificationStats {
   totalThisWeek: number;
@@ -14,7 +15,7 @@ export interface NotificationStats {
   selector: 'app-notification-management',
   templateUrl: './notification-management.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
   styleUrls: ['./notification-management.component.css']
 })
 export class NotificationManagementComponent {
@@ -22,7 +23,7 @@ export class NotificationManagementComponent {
   @Input() stats: NotificationStats | null = null;
   notificationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public translate: TranslateService) {
     this.notificationForm = this.fb.group({
       title: ['', Validators.required],
       message: ['', Validators.required]

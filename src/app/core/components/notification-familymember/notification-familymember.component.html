@@ -1,10 +1,10 @@
 <ng-container *ngIf="showConfirm">
   <div class="confirm-modal-backdrop">
     <div class="confirm-modal confirm-modal-centered">
-      <p class="confirm-modal-message">{{ confirmMessage }}</p>
+      <p class="confirm-modal-message">{{ getConfirmMessage() | translate }}</p>
       <div class="confirm-modal-actions">
-        <button (click)="confirmYes()" class="notification-action-btn">Sí</button>
-        <button (click)="confirmNo()" class="notification-action-btn cancel">No</button>
+        <button (click)="confirmYes()" class="notification-action-btn">{{ 'YES' | translate }}</button>
+        <button (click)="confirmNo()" class="notification-action-btn cancel">{{ 'NO' | translate }}</button>
       </div>
     </div>
   </div>
@@ -15,9 +15,9 @@
   <p>{{ notification.message }}</p>
   <small>{{ notification.createdAt | date:'short' }}</small>
   <div class="notification-actions">
-    <button *ngIf="notification.status !== 'read'" (click)="openConfirm('read', notification.id)">Marcar como leída</button>
-    <button *ngIf="notification.status !== 'archived'" (click)="openConfirm('archive', notification.id)">Archivar</button>
-    <button *ngIf="notification.status === 'archived'" (click)="openConfirm('unarchive', notification.id)">Desarchivar</button>
-    <button (click)="openConfirm('delete', notification.id)">Eliminar</button>
+    <button *ngIf="notification.status !== 'read'" (click)="openConfirm('read', notification.id)">{{ 'notifications.statusValue.markAsRead' | translate }}</button>
+    <button *ngIf="notification.status !== 'archived'" (click)="openConfirm('archive', notification.id)">{{ 'notifications.statusValue.archive' | translate }}</button>
+    <button *ngIf="notification.status === 'archived'" (click)="openConfirm('unarchive', notification.id)">{{ 'notifications.statusValue.unarchive' | translate }}</button>
+    <button (click)="openConfirm('delete', notification.id)">{{ 'notifications.statusValue.delete' | translate }}</button>
   </div>
 </div>

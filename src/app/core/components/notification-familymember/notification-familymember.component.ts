@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Notification } from '../../model/notification.model';
 
 @Component({
   selector: 'app-notification-familymember',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './notification-familymember.component.html',
   styleUrls: ['./notification-familymember.component.css']
 })
@@ -18,9 +19,8 @@ export class NotificationFamilymemberComponent {
   showConfirm: boolean = false;
   confirmAction: '' | 'read' | 'archive' | 'unarchive' | 'delete' = '';
   confirmId: string | null = null;
-  confirmMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public translate: TranslateService) {}
 
   onMarkAsRead(id: string) {
     this.http.patch(`http://localhost:3000/notifications/${id}`, { status: 'read' }).subscribe(() => {
@@ -49,20 +49,6 @@ export class NotificationFamilymemberComponent {
   openConfirm(action: 'read' | 'archive' | 'unarchive' | 'delete', id: string) {
     this.confirmAction = action;
     this.confirmId = id;
-    switch (action) {
-      case 'read':
-        this.confirmMessage = '¿Deseas marcar esta notificación como leída?';
-        break;
-      case 'archive':
-        this.confirmMessage = '¿Deseas archivar esta notificación?';
-        break;
-      case 'unarchive':
-        this.confirmMessage = '¿Deseas desarchivar esta notificación?';
-        break;
-      case 'delete':
-        this.confirmMessage = '¿Deseas eliminar esta notificación?';
-        break;
-    }
     this.showConfirm = true;
   }
 
@@ -91,5 +77,20 @@ export class NotificationFamilymemberComponent {
     this.showConfirm = false;
     this.confirmId = null;
     this.confirmAction = '';
+  }
+
+  getConfirmMessage(): string {
+    switch (this.confirmAction) {
+      case 'read':
+        return 'notifications.confirmMarkAsRead';
+      case 'archive':
+        return 'notifications.confirmArchive';
+      case 'unarchive':
+        return 'notifications.confirmUnarchive';
+      case 'delete':
+        return 'notifications.confirmDelete';
+      default:
+        return '';
+    }
   }
 }

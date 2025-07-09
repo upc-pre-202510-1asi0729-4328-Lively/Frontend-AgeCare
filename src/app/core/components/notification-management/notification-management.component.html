@@ -2,13 +2,13 @@
   <section class="notification-create-section">
     <!-- Formulario de creación -->
     <form [formGroup]="notificationForm" (ngSubmit)="submit()">
-      <label>Título:
+      <label>{{ 'notifications.form.title' | translate }}:
         <input formControlName="title" />
       </label>
-      <label>Mensaje:
+      <label>{{ 'notifications.form.message' | translate }}:
         <textarea formControlName="message"></textarea>
       </label>
-      <button type="submit" [disabled]="!notificationForm.valid">Crear notificación</button>
+      <button type="submit" [disabled]="!notificationForm.valid">{{ 'notifications.form.create' | translate }}</button>
     </form>
   </section>
 </div>
