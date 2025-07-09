@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointment } from '../../../../model/appointment.entity';
-import { AppointmentsService } from '../../../../services/appointments.service';
+import { Appointment } from '../../model/appointment.entity';
+import { AppointmentService } from '../../services/appointment.service';
 import { ListAppointmentsComponent } from '../appointments-list/appointments-list.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-appointment-management',
@@ -16,55 +15,66 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 })
 export class AppointmentManagementComponent implements OnInit {
   appointments: Appointment[] = [];
-  newAppointment: Omit<Appointment, 'id'> = {
+
+  newAppointment = {
     date: '',
-    time: '',
-    resident: '',
-    doctor: '',
-    status: 'pending',
-    
+    time: '', // Formato "HH:MM"
+    residentId: 0,
+    doctorId: 0
   };
 
   searchQuery: string = '';
-  get filteredAppointments(): Appointment[] {
-  const query = this.searchQuery.trim().toLowerCase();
-  if (!query) return this.appointments;
-  return this.appointments.filter(a =>
-    a.resident.toLowerCase().includes(query) ||
-    a.doctor.toLowerCase().includes(query)
-  );
-}
+  showConfirmDeleteId: number | null = null;
+  pendingStatusChange: { id: number; status: Appointment['status'] } | null = null;
 
-
-  showConfirmDeleteId: string | null = null;
-  pendingStatusChange: { id: string; status: Appointment['status'] } | null = null;
-
-  constructor(private appointmentsService: AppointmentsService) {}
+  constructor(private appointmentService: AppointmentService) {}
 
   ngOnInit(): void {
     this.loadAppointments();
   }
 
+  get filteredAppointments(): Appointment[] {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) return this.appointments;
+
+    return this.appointments.filter(a =>
+      (a.residentName || '').toLowerCase().includes(query) ||
+      (a.doctorName || '').toLowerCase().includes(query)
+    );
+  }
+
   loadAppointments() {
-    this.appointmentsService.getAll().subscribe(a => this.appointments = a);
+    this.appointmentService.getAll().subscribe(data => {
+      this.appointments = data;
+    });
   }
 
   createAppointment() {
-    const { date, time, resident, doctor } = this.newAppointment;
-    if (!date || !time || !resident || !doctor) return;
+    const { date, time, residentId, doctorId } = this.newAppointment;
 
-    const appointment: Appointment = {
-      id: crypto.randomUUID(),
-      ...this.newAppointment
+    if (!date || !time || !residentId || !doctorId) return;
+
+    const [hourStr, minuteStr] = time.split(':');
+    const appointment: Omit<Appointment, 'id'> = {
+      date,
+      time: {
+        hour: parseInt(hourStr, 10),
+        minute: parseInt(minuteStr, 10),
+        second: 0,
+        nano: 0
+      },
+      residentId,
+      doctorId,
+      status: 'Pending'
     };
 
-    this.appointmentsService.create(appointment).subscribe(() => {
-      this.newAppointment = { date: '', time: '', resident: '', doctor: '', status: 'pending' };
+    this.appointmentService.create(appointment).subscribe(() => {
+      this.newAppointment = { date: '', time: '', residentId: 0, doctorId: 0 };
       this.loadAppointments();
     });
   }
 
-  confirmDelete(id: string) {
+  confirmDelete(id: number) {
     this.showConfirmDeleteId = id;
   }
 
@@ -72,22 +82,38 @@ export class AppointmentManagementComponent implements OnInit {
     this.showConfirmDeleteId = null;
   }
 
-  deleteAppointment(id: string) {
-    this.appointmentsService.delete(id).subscribe(() => {
+  deleteAppointment(id: number) {
+    this.appointmentService.delete(id).subscribe(() => {
       this.showConfirmDeleteId = null;
       this.loadAppointments();
     });
   }
 
-  requestStatusChange(event: { id: string, status: Appointment['status'] }) {
-    this.pendingStatusChange = event;
+  requestStatusChange(event: { id: number; status: Appointment['status'] }) {
+    console.log('Llamando update con:', event); 
+
+    const appointment = this.appointments.find(a => a.id === event.id);
+    if (!appointment) return;
+
+    const updated = { ...appointment, status: event.status };
+
+    this.appointmentService.update(event.id, updated).subscribe(() => {
+      console.log('Actualización exitosa'); 
+      this.loadAppointments();
+    });
   }
+
 
   confirmStatusChange() {
     if (!this.pendingStatusChange) return;
     const { id, status } = this.pendingStatusChange;
 
-    this.appointmentsService.updateStatus(id, status).subscribe(() => {
+    const appointment = this.appointments.find(a => a.id === id);
+    if (!appointment) return;
+
+    const updated = { ...appointment, status };
+
+    this.appointmentService.update(id, updated).subscribe(() => {
       this.pendingStatusChange = null;
       this.loadAppointments();
     });
