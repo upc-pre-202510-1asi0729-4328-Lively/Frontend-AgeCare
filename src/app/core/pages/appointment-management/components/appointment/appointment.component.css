@@ -1,8 +1,7 @@
 .appointment-card {
   background-color: #ffffff;
   border: 1px solid #c7d2fe;
-  border-left: 5px solid #2563eb; /* Barra azul decorativa */
-  border-radius: 0.75rem;
+  border-left: 5px solid #2563eb; 
   padding: 1rem 1.25rem;
   margin: 1rem auto;
   width: 100%;
@@ -21,6 +20,16 @@
 .info p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
+}
+
+.status-action {
+  margin-top: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 select {

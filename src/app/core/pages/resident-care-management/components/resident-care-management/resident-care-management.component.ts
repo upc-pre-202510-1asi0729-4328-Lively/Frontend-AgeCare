@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Resident } from '../../model/resident.entity';
-import { ResidentDetails} from '../../model/residentDetails.entity'; // ✅ modelo con historial y medicación
+import { ResidentDetails} from '../../model/residentDetails.entity'; 
 import { ResidentService } from '../../services/resident.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe, NgForOf, NgIf } from '@angular/common';

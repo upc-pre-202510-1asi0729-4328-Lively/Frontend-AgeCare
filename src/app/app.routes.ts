@@ -28,8 +28,8 @@ export const routes: Routes = [
       { path: 'notifications-alerts', component: NotificationsAlertsManagementComponent },
       { path: 'payment', component: PaymentManagementComponent },
       { path: 'resident', component: ResidentCareManagementComponent },
-      { path: 'user', component: UserViewComponent },
-      { path: 'resident-view', component: ResidentViewComponent }
+      { path: 'user', component: UserViewComponent }
+      //{ path: 'resident-view', component: ResidentViewComponent }
     ]
   },
 
