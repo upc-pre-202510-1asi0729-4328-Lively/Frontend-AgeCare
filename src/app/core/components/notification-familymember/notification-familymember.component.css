@@ -1,0 +1,117 @@
+/* Archivo de estilos vacío para evitar error de compilación */
+
+.notification-familymember {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  border-left: 4px solid #2563eb;
+  transition: box-shadow 0.2s;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.notification-familymember h4 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.2rem;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.notification-familymember p {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.notification-familymember small {
+  color: #888;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.notification-familymember button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.35rem 1rem;
+  margin-right: 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notification-familymember button:last-child {
+  background: #dc2626;
+}
+
+.notification-familymember button:hover {
+  background: #1746a2;
+}
+
+.notification-familymember button:last-child:hover {
+  background: #a61b1b;
+}
+
+.notification-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+
+.confirm-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(37, 99, 235, 0.18); /* azul translúcido, coherente con la solución */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm-modal {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.18);
+  padding: 2.2rem 2.5rem 1.7rem 2.5rem;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  border: 2px solid #2563eb;
+}
+.confirm-modal-message {
+  font-size: 1.18rem;
+  color: #2563eb;
+  margin-bottom: 1.7rem;
+  font-weight: 600;
+}
+.confirm-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.notification-action-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.notification-action-btn.cancel {
+  background: #e5e7eb;
+  color: #1e293b;
+}
+.notification-action-btn.cancel:hover {
+  background: #cbd5e1;
+}
+.notification-action-btn:hover,
+.notification-action-btn.active {
+  background: #1746a2;
+  color: #fff;
+}
