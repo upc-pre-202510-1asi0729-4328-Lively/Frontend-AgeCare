@@ -70,6 +70,8 @@
     "notFound": "No resident found with the provided DNI",
     "birthDate": "Birth Date",
     "gender": "Gender",
-    "location": "Location"
+    "location": "Location",
+    "save": "Save",
+    "edit": "Edit"
   }
 }

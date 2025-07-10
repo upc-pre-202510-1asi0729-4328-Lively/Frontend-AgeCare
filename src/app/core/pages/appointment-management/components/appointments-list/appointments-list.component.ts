@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ResidentService } from '../../../../pages/resident-care-management/services/resident.service';
 import { DoctorService } from '../../../user-management/services/doctor.service';
+import { AppointmentService } from '../../services/appointment.service';
 import { Resident } from '../../../../pages/resident-care-management/model/resident.entity';
 import { Doctor } from '../../../../pages/user-management/model/doctor.model';
 
@@ -32,7 +33,8 @@ export class ListAppointmentsComponent implements OnChanges {
 
   constructor(
     private residentService: ResidentService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private appointmentService: AppointmentService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,5 +87,24 @@ export class ListAppointmentsComponent implements OnChanges {
 
   emitDelete(id: number) {
     this.delete.emit(id);
+  }
+
+  emitUpdateAppointment(updated: Appointment) {
+    this.appointmentService.update(updated.id, updated).subscribe({
+      next: () => {
+        console.log(`Cita con ID ${updated.id} actualizada exitosamente.`);
+        // Refrescar la lista si es necesario (opcional)
+        const index = this.enrichedAppointments.findIndex(a => a.id === updated.id);
+        if (index !== -1) {
+          this.enrichedAppointments[index] = {
+            ...this.enrichedAppointments[index],
+            ...updated
+          };
+        }
+      },
+      error: err => {
+        console.error(`Error al actualizar la cita con ID ${updated.id}`, err);
+      }
+    });
   }
 }

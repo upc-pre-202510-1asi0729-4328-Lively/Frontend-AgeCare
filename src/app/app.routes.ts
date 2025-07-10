@@ -31,7 +31,7 @@ export const routes: Routes = [
       { path: 'payment-doctor', component: PaymentManagementDoctorComponent },
       { path: 'resident', component: ResidentCareManagementComponent },
       { path: 'user', component: UserViewComponent },
-      { path: 'resident-view', component: ResidentViewComponent }
+      { path: 'resident-appointments', component: ResidentViewComponent },
     ]
   },
 
