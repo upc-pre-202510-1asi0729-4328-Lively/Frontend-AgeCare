@@ -1,6 +1,7 @@
 {
   "header": {
-    "appointments": "Citas",
+    "appointments": "Citas Doctores",
+    "appointmentsResidents": "Citas Residentes",
     "notifications-alerts": "Notificaciones y Alertas",
     "resident": "Residente",
     "payment": "Pago",
@@ -71,7 +72,9 @@
       "pending": "Pendiente",
       "completed": "Completada"
     },
+    "title": "Cita Medica",
     "list": "Lista de citas",
+    "appointmentsResidents": "Citas del residente",
     "delete": "Eliminar",
     "confirmDelete": "¿Seguro que deseas eliminar esta cita?",
     "cancel": "Cancelar",
@@ -79,6 +82,16 @@
     "confirm": "Confirmar",
     "create": "Crear nueva cita",
     "register": "Registrar cita",
-    "none": "No se encontraron citas"
+    "none": "No se encontraron citas",
+    "searchC": "Buscar citas",
+    "consult": "Consultar citas del residente",
+    "typeDni": "Ingrese el DNI del residente",
+    "search": "Buscar",
+    "notFound": "No se encontro el residente con el DNI proporcionado",
+    "birthDate": "Fecha de nacimiento",
+    "gender": "Género",
+    "location": "Ubicación",
+    "save": "Guardar",
+    "edit": "Editar"
   }
 }
