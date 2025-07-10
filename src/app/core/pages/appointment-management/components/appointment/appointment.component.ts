@@ -39,7 +39,6 @@ export class AppointmentComponent implements OnInit {
     const resId = this.appointment.residentId;
     const docId = this.appointment.doctorId;
 
-    // Obtener nombre del residente (con cache)
     if (AppointmentComponent.residentCache.has(resId)) {
       this.residentName = AppointmentComponent.residentCache.get(resId)!;
     } else {
@@ -55,7 +54,6 @@ export class AppointmentComponent implements OnInit {
       });
     }
 
-    // Obtener nombre del doctor (con cache)
     if (AppointmentComponent.doctorCache.has(docId)) {
       this.doctorName = AppointmentComponent.doctorCache.get(docId)!;
     } else {

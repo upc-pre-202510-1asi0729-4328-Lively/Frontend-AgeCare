@@ -72,7 +72,9 @@
       "pending": "Pendiente",
       "completed": "Completada"
     },
+    "title": "Cita Medica",
     "list": "Lista de citas",
+    "appointmentsResidents": "Citas del residente",
     "delete": "Eliminar",
     "confirmDelete": "¿Seguro que deseas eliminar esta cita?",
     "cancel": "Cancelar",
