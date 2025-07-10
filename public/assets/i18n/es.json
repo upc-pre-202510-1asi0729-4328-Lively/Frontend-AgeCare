@@ -1,6 +1,7 @@
 {
   "header": {
-    "appointments": "Citas",
+    "appointments": "Citas Doctores",
+    "appointmentsResidents": "Citas Residentes",
     "notifications-alerts": "Notificaciones y Alertas",
     "resident": "Residente",
     "payment": "Pago",
@@ -12,11 +13,6 @@
       "message": "Mensaje",
       "create": "Crear notificación"
     },
-    "filters": {
-      "all": "Todas",
-      "unread": "No leídas",
-      "archived": "Archivadas"
-    },
     "markAsRead": "Marcar como leída",
     "archive": "Archivar",
     "delete": "Eliminar",
@@ -24,12 +20,38 @@
     "statusValue": {
       "unread": "No leída",
       "read": "Leída",
-      "archived": "Archivada"
+      "archived": "Archivada",
+      "markAsRead": "Marcar como leída",
+      "archive": "Archivar",
+      "unarchive": "Desarchivar",
+      "delete": "Eliminar"
     },
     "confirmDelete": "¿Seguro que deseas eliminar esta notificación?",
     "cancel": "Cancelar",
     "confirmStatusChange": "¿Seguro que deseas cambiar el estado de esta notificación a {{status}}?",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "YES": "Sí",
+    "NO": "No",
+    "MARK_AS_READ": "Marcar como leída",
+    "ARCHIVE": "Archivar",
+    "UNARCHIVE": "Desarchivar",
+    "DELETE": "Eliminar",
+    "CREATE_NOTIFICATION": "Crear notificación",
+    "TITLE": "Título",
+    "MESSAGE": "Mensaje",
+    "CONFIRM_MARK_AS_READ": "¿Deseas marcar esta notificación como leída?",
+    "CONFIRM_ARCHIVE": "¿Deseas archivar esta notificación?",
+    "CONFIRM_UNARCHIVE": "¿Deseas desarchivar esta notificación?",
+    "CONFIRM_DELETE": "¿Deseas eliminar esta notificación?",
+    "CREATE NEW NOTIFICATION": "Crear nueva notificación",
+    "notifications": "Notificaciones",
+    "notificationCreatedSuccess": "¡Notificación creada con éxito!",
+    "close": "Cerrar",
+    "filters": {
+      "all": "Todas",
+      "unread": "No leídas",
+      "archived": "Archivadas"
+    }
   },
   "footer": {
     "rights": "Derechos de autor © 2025, Todos los derechos reservados",
@@ -50,7 +72,9 @@
       "pending": "Pendiente",
       "completed": "Completada"
     },
+    "title": "Cita Medica",
     "list": "Lista de citas",
+    "appointmentsResidents": "Citas del residente",
     "delete": "Eliminar",
     "confirmDelete": "¿Seguro que deseas eliminar esta cita?",
     "cancel": "Cancelar",
@@ -58,6 +82,16 @@
     "confirm": "Confirmar",
     "create": "Crear nueva cita",
     "register": "Registrar cita",
-    "none": "No se encontraron citas"
+    "none": "No se encontraron citas",
+    "searchC": "Buscar citas",
+    "consult": "Consultar citas del residente",
+    "typeDni": "Ingrese el DNI del residente",
+    "search": "Buscar",
+    "notFound": "No se encontro el residente con el DNI proporcionado",
+    "birthDate": "Fecha de nacimiento",
+    "gender": "Género",
+    "location": "Ubicación",
+    "save": "Guardar",
+    "edit": "Editar"
   }
 }

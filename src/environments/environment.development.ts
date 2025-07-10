@@ -13,5 +13,8 @@ export const environment = {
   mentalHealthRecordsEndpointPath: '/mental-health-records',
   medicalHistoryEndpointPath: '/medical-histories',
   paymentEndpoint: '/receipts',
-  useJsonServer: false
+  appointmentsEndpointPath: '/appointments',
+  doctorsEndpointPath: '/doctors',
+  useJsonServer: false,
+
 };
