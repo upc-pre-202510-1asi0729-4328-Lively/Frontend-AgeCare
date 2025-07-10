@@ -30,4 +30,13 @@ export class AppointmentService extends BaseService<Appointment> {
     ).pipe(this.defaultPipeOperators());
   }
 
+  override create<U = Appointment>(item: U): Observable<Appointment> {
+    return this.http.post<Appointment>(
+      this.resourcePath(),
+      JSON.stringify(item),
+      this.httpOptions
+    ).pipe(this.defaultPipeOperators());
+  }
+
+
 }
