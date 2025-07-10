@@ -1,57 +1,73 @@
-// src/app/core/pages/payment-management/services/receipt.service.ts
+// src/app/core/pages/payment-management/services/payment.service.ts
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Receipt } from '../model/receipt.model';
+import { Payment } from '../model/payment.model';
+import { Resident } from '../../resident-care-management/model/resident.entity';
 import { environment } from '../../../../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
-export class ReceiptService {
+export class PaymentService {
   private base = `${environment.serverBasePath}/receipts`;
 
   constructor(private http: HttpClient) {}
 
+  getAllResidents(): Observable<Resident[]> {
+    return this.http.get<Resident[]>(`${environment.serverBasePath}/residents`);
+  }
+
   /** GET /api/v1/receipts */
-  getAllReceipts(): Observable<Receipt[]> {
-    return this.http.get<Receipt[]>(this.base);
+  getAllReceipts(): Observable<Payment[]> {
+    return this.http.get<Payment[]>(this.base);
   }
 
   /** GET /api/v1/receipts/{residentId} */
-  getReceiptsByResidentId(residentId: number): Observable<Receipt[]> {
-    return this.http.get<Receipt[]>(`${this.base}/${residentId}`);
+  getReceiptsByResidentId(residentId: number): Observable<Payment[]> {
+    return this.http.get<Payment[]>(`${this.base}/${residentId}`);
   }
 
   /** GET /api/v1/receipts/searchByReceiptId?receiptId= */
-  getReceiptById(receiptId: number): Observable<Receipt> {
-    return this.http.get<Receipt>(`${this.base}/searchByReceiptId?receiptId=${receiptId}`);
+  getReceiptById(receiptId: number): Observable<Payment> {
+    return this.http.get<Payment>(`${this.base}/searchByReceiptId?receiptId=${receiptId}`);
   }
 
   /** POST /api/v1/receipts */
-  createReceipt(receipt: Receipt): Observable<Receipt> {
-    return this.http.post<Receipt>(this.base, {
-      residentId: receipt.residentId,
-      amount:     receipt.amount,
-      description: receipt.description,
-      dueDate:    receipt.dueDate,
-      paymentMethod: receipt.paymentMethod,
-      status:     receipt.status,
-      paid:       receipt.paid
+  createReceipt(payment: Payment): Observable<Payment> {
+    return this.http.post<Payment>(this.base, {
+      receiptId: payment.receiptId,
+      issueDate: payment.issueDate,
+      dueDate: payment.dueDate,
+      totalAmount: payment.totalAmount,
+      status: payment.status,
+      residentId: payment.residentId,
+      paymentId: payment.paymentId,
+      paymentDate: payment.paymentDate,
+      amountPaid: payment.amountPaid,
+      paymentMethod: payment.paymentMethod,
+      type: payment.type
     });
   }
 
+
+
   /** PUT /api/v1/receipts/{receiptId} */
-  updateReceipt(receipt: Receipt): Observable<Receipt> {
-    return this.http.put<Receipt>(`${this.base}/${receipt.id}`, {
-      residentId: receipt.residentId,
-      amount:     receipt.amount,
-      description: receipt.description,
-      dueDate:    receipt.dueDate,
-      paymentMethod: receipt.paymentMethod,
-      status:     receipt.status,
-      paid:       receipt.paid
+  updateReceipt(payment: Payment): Observable<Payment> {
+    return this.http.put<Payment>(`${this.base}/${payment.receiptId}`, {
+      receiptId: payment.receiptId,
+      issueDate: payment.issueDate,
+      dueDate: payment.dueDate,
+      totalAmount: payment.totalAmount,
+      status: payment.status,
+      residentId: payment.residentId,
+      paymentId: payment.paymentId,
+      paymentDate: payment.paymentDate,
+      amountPaid: payment.amountPaid,
+      paymentMethod: payment.paymentMethod,
+      type: payment.type
     });
   }
+
 
   /** DELETE /api/v1/receipts/{receiptId} */
   deleteReceipt(receiptId: number): Observable<void> {

@@ -1,0 +1,75 @@
+<form (ngSubmit)="createPayment()" #paymentForm="ngForm">
+  <!-- Selección del residente -->
+  <select name="residentId" [(ngModel)]="newPayment.residentId" required>
+    <option [ngValue]="null" disabled selected>Seleccione un residente</option>
+    <option *ngFor="let resident of residents" [ngValue]="resident.id">
+      {{ resident.firstName }} {{ resident.lastName }}
+    </option>
+  </select>
+
+  <!-- ID de boleta -->
+  <div class="form-group">
+    <label for="receiptId">ID de Boleta</label>
+    <input
+      type="number"
+      id="receiptId"
+      name="receiptId"
+      [(ngModel)]="newPayment.receiptId"
+      required
+    />
+  </div>
+
+  <!-- Monto total -->
+  <input
+    type="number"
+    name="totalAmount"
+    placeholder="Monto total (S/.)"
+    [(ngModel)]="newPayment.totalAmount"
+    required
+    min="0.1"
+    step="0.01"
+  />
+
+  <!-- Monto pagado -->
+  <input
+    type="number"
+    name="amountPaid"
+    placeholder="Monto pagado (S/.)"
+    [(ngModel)]="newPayment.amountPaid"
+    required
+    min="0"
+    [max]="newPayment.totalAmount"
+    step="0.01"
+  />
+
+  <!-- Tipo de boleta -->
+  <input
+    type="text"
+    name="type"
+    placeholder="Tipo de boleta (ej. Consulta, Emergencia...)"
+    [(ngModel)]="newPayment.type"
+    required
+  />
+
+  <!-- Fecha límite -->
+  <input
+    type="date"
+    name="dueDate"
+    [(ngModel)]="newPayment.dueDate"
+    required
+  />
+
+  <!-- Método de pago -->
+  <select name="paymentMethod" [(ngModel)]="newPayment.paymentMethod" required>
+    <option [ngValue]="null" disabled selected>Método de pago</option>
+    <option [ngValue]="0">Tarjeta</option>
+    <option [ngValue]="1">Yape</option>
+    <option [ngValue]="2">Efectivo</option>
+  </select>
+
+  <!-- Campo oculto para el estado -->
+  <input type="hidden" name="status" [(ngModel)]="newPayment.status" />
+
+  <!-- Botón -->
+  <button type="submit" [disabled]="paymentForm.invalid">Registrar boleta</button>
+</form>

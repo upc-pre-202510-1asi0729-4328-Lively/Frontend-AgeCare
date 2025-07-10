@@ -1,20 +1,24 @@
 <div class="payment-container">
   <h2>Boletas pendientes</h2>
 
-  <div *ngIf="filteredPayments.length === 0">
-    <p>No tienes boletas pendientes.</p>
-  </div>
+  <label for="residentSelect">Selecciona tu nombre:</label>
+  <select id="residentSelect" [(ngModel)]="residentId" name="residentId" (change)="loadReceipts()">
+    <option [ngValue]="null">-- Selecciona un residente --</option>
+    <option *ngFor="let resident of residents" [ngValue]="resident.id">
+      {{ resident.firstName }} {{ resident.lastName }}
+    </option>
+  </select>
 
   <div *ngFor="let payment of filteredPayments" class="payment-card">
-    <h3>Boleta #{{ payment.id }}</h3>
-    <p><strong>Monto:</strong> S/. {{ payment.amount }}</p>
-    <p><strong>Descripción:</strong> {{ payment.description }}</p>
-    <p><strong>Fecha límite:</strong> {{ payment.dueDate }}</p>
+    <h3>Boleta #{{ payment.receiptId }}</h3>
+    <p><strong>Monto:</strong> S/. {{ payment.totalAmount }}</p>
+    <p><strong>Tipo:</strong> {{ payment.type }}</p>
+    <p><strong>Fecha límite:</strong> {{ payment.dueDate | date: 'shortDate' }}</p>
 
     <button (click)="expandPayment(payment)">Ver detalles</button>
     <button (click)="pay(payment)">Pagar</button>
 
-    <div *ngIf="selectedPayment?.id === payment.id && selectedPayment === payment && !showPaymentForm">
+    <div *ngIf="selectedPayment?.receiptId === payment.receiptId && selectedPayment === payment && !showPaymentForm">
       <p><em>Detalles adicionales de la boleta</em></p>
       <p>Este espacio puede usarse para mostrar citas médicas u observaciones.</p>
     </div>
@@ -70,7 +74,7 @@
       <p>Se generará un ticket que podrás mostrar en caja.</p>
       <button *ngIf="!ticketGenerated" (click)="generateCashTicket()">Generar Ticket</button>
       <div *ngIf="ticketGenerated">
-        <p><strong>Ticket generado:</strong> #{{ selectedPayment.id }} - Monto: S/. {{ selectedPayment.amount }}</p>
+        <p><strong>Ticket generado:</strong> #{{ selectedPayment.receiptId }} - Monto: S/. {{ selectedPayment.totalAmount }}</p>
         <p>Preséntalo en recepción para completar el pago.</p>
       </div>
     </div>

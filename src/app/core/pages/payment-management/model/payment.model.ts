@@ -1,13 +1,13 @@
-export type PaymentMethod = 'CARD' | 'YAPE' | 'CASH' | 'UNSPECIFIED';
-export type PaymentStatus = 'PAID' | 'PENDING' | 'OVERDUE';
-
 export interface Payment {
-  id: number;
-  residentId: number;
-  amount: number;
-  description: string;
+  receiptId: number;
+  issueDate: string;
   dueDate: string;
-  paymentMethod: PaymentMethod;
-  status: PaymentStatus;
-  paid: boolean;
+  totalAmount: number;
+  status: boolean;
+  residentId: number | null;
+  paymentId: number | null;
+  paymentDate: string;
+  amountPaid: number;
+  paymentMethod: number; // 0: Tarjeta, 1: Yape, 2: Efectivo
+  type: string;
 }

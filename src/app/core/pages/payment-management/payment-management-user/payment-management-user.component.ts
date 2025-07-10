@@ -6,6 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Payment } from '../model/payment.model';
 import { PaymentService } from '../services/payment.service';
 
+import { Resident } from '../../resident-care-management/model/resident.entity';
+import { ResidentService } from '../../resident-care-management/services/resident.service';
+
 @Component({
   selector: 'app-payment-management-user',
   standalone: true,
@@ -19,10 +22,12 @@ import { PaymentService } from '../services/payment.service';
 })
 export class PaymentManagementUserComponent implements OnInit {
 
-  residentId: number = 2;
-  receipts: Payment[] = [];
-  filteredReceipts: Payment[] = [];
-  selectedReceipt: Payment | null = null;
+  residentId: number | null = null; // Ya no está hardcodeado
+  residents: Resident[] = [];
+
+  payments: Payment[] = [];
+  filteredPayments: Payment[] = [];
+  selectedPayment: Payment | null = null;
 
   showPaymentForm: boolean = false;
   selectedMethod: 'card' | 'yape' | 'cash' | null = null;
@@ -37,24 +42,45 @@ export class PaymentManagementUserComponent implements OnInit {
   yapeReceipt: File | null = null;
   ticketGenerated: boolean = false;
 
-  constructor(private paymentService: PaymentService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private residentService: ResidentService
+  ) {}
 
   ngOnInit(): void {
-    this.loadReceipts();
+    this.loadResidents();
+  }
+
+  loadResidents(): void {
+    this.residentService.getAll().subscribe({
+      next: (data) => this.residents = data,
+      error: (err) => console.error('Error al cargar residentes:', err)
+    });
   }
 
   loadReceipts(): void {
-    this.paymentService.getByResidentId(this.residentId)
-      .subscribe({
-        next: data => {
-          this.payments = data;
-          this.filteredPayments = data.filter(r => !r.paid);
-        },
-        error: err => console.error('Error al cargar boletas:', err)
-      });
+    this.filteredPayments = [];
+    this.payments = [];
+
+    if (!this.residentId) {
+      console.warn('Ningún residente seleccionado');
+      return;
+    }
+
+    this.paymentService.getReceiptsByResidentId(this.residentId).subscribe({
+      next: (data) => {
+        console.log('Boletas recibidas del backend:', data);
+        this.payments = data;
+        this.filteredPayments = data.filter(p => !p.status); // boletas pendientes
+      },
+      error: (err) => {
+        console.error('Error al cargar boletas:', err);
+      }
+    });
   }
 
-  expandReceipt(payment: Payment): void {
+
+  expandPayment(payment: Payment): void {
     this.selectedPayment = payment;
   }
 
@@ -86,8 +112,7 @@ export class PaymentManagementUserComponent implements OnInit {
 
     const updatedReceipt: Payment = {
       ...this.selectedPayment,
-      paid: true,
-      status: 'PAID' // Usa 'PAID' si el backend espera una cadena exacta, o usa enum si aplicas tipos
+      status: true // Usa 'PAID' si el backend espera una cadena exacta, o usa enum si aplicas tipos
     };
 
     this.paymentService.updateReceipt(updatedReceipt)
@@ -107,7 +132,7 @@ export class PaymentManagementUserComponent implements OnInit {
   cancelPayment(): void {
     this.showPaymentForm = false;
     this.selectedMethod = null;
-    this.selectedReceipt = null;
+    this.selectedPayment = null;
     this.cardInfo = { number: '', name: '', expiry: '', ccv: '' };
     this.yapeReceipt = null;
     this.ticketGenerated = false;
