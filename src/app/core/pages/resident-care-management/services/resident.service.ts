@@ -26,4 +26,13 @@ export class ResidentService extends BaseService<Resident> {
         this.httpOptions
       ).pipe(this.defaultPipeOperators());
     }
+
+    searchByDni(dni: string): Observable<Resident> {
+      return this.http.get<Resident>(
+        `${this.resourcePath()}/searchByDni?dni=${dni}`,
+        this.httpOptions
+      ).pipe(this.defaultPipeOperators());
+    }
+
+
 }

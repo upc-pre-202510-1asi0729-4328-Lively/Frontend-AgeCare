@@ -24,6 +24,7 @@ type EnrichedAppointment = Appointment & {
 export class ListAppointmentsComponent implements OnChanges {
   @Input() appointments: Appointment[] = [];
   @Input() searchQuery: string = '';
+  @Input() readonly: boolean = false; 
   @Output() updateStatus = new EventEmitter<{ id: number; status: Appointment['status'] }>();
   @Output() delete = new EventEmitter<number>();
 
@@ -46,7 +47,6 @@ export class ListAppointmentsComponent implements OnChanges {
     this.appointments.forEach(app => {
       const enriched: EnrichedAppointment = { ...app };
 
-      // Obtener nombre del residente
       this.residentService.getById(app.residentId).subscribe({
         next: (resident: Resident) => {
           enriched.residentName = `${resident.firstName} ${resident.lastName}`;
@@ -56,7 +56,6 @@ export class ListAppointmentsComponent implements OnChanges {
         }
       });
 
-      // Obtener nombre del doctor
       this.doctorService.getDoctorById(app.doctorId).subscribe({
         next: (doctor: Doctor) => {
           enriched.doctorName = `${doctor.fullName.firstName} ${doctor.fullName.lastName}`;

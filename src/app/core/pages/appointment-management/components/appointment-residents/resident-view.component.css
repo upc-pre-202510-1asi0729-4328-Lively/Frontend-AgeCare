@@ -1,40 +1,59 @@
-.resident-view-layout {
+/* Layout general */
+.appointment-management-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
-  max-width: 960px;
-  margin: 0 auto;
+  background-color: #f1f5f9;
 }
 
-h2, h3 {
+/* Sub-layout que agrupa buscador y tarjeta */
+.resident-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Sección de búsqueda */
+.resident-search-section {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
   text-align: center;
+  flex-shrink: 0;
+}
+
+.resident-search-section h2 {
   color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.resident-search-section p {
   margin-bottom: 1rem;
+  color: #475569;
 }
 
 .search-section {
   display: flex;
+  gap: 1rem;
   justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
+  flex-wrap: wrap;
 }
 
 .search-input {
-  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 0.375rem;
+  padding: 0.6rem 1rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 0.5rem;
   font-size: 1rem;
   background-color: #ffffff;
-  color: #1e3a8a;
-  transition: border-color 0.2s ease;
-  width: 100%;
-}
-
-.search-input::placeholder {
-  color: #94a3b8;
+  color: #1e293b;
+  width: 220px;
+  transition: border-color 0.3s ease;
 }
 
 .search-input:focus {
@@ -42,58 +61,136 @@ h2, h3 {
   outline: none;
 }
 
-.search-icon {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #1e3a8a;
-  pointer-events: none;
-}
-
-.appointments-section {
-  margin-bottom: 2rem;
-}
-
-.appointment-list {
-  list-style: none;
-  padding: 0;
-}
-
-.appointment-card {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+/* Mensaje de no encontrado */
+.not-found-message {
+  margin-top: 1rem;
+  color: #dc2626;
+  background-color: #fef2f2;
+  padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  justify-content: center;
+  font-size: 0.95rem;
 }
 
-.doctors-section {
-  margin-top: 2rem;
+/* Tarjeta de datos del residente */
+.resident-dni-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+  gap: 2rem;
+  flex-grow: 1;
+  min-width: 320px;
 }
 
-.doctor-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+.resident-dni-photo {
+  flex: 0 0 120px;
+  height: 120px;
+  background-color: #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: #94a3b8;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.doctor-card {
-  border: 1px solid #cbd5e1;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  background-color: #f9fafb;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+.resident-dni-photo i {
+  font-size: 5rem;
 }
 
-.doctor-card h4 {
+.resident-dni-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #1e293b;
+}
+
+.resident-dni-info h3 {
+  font-size: 1.5rem;
+  color: #1e40af;
   margin-bottom: 0.5rem;
+}
+
+.resident-dni-info p {
+  margin: 0;
+  font-size: 1rem;
+  color: #334155;
+}
+
+i{
   color: #1e40af;
 }
 
-.doctor-card p {
-  font-size: 0.9rem;
-  color: #475569;
+/* Botones */
+.btn {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+/* Sección de citas */
+.appointments-section {
+  width: 100%;
+  max-width: 1024px;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.appointments-section h2 {
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.no-appointments-message {
+  text-align: center;
+  color: #64748b;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resident-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resident-dni-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resident-dni-photo {
+    margin: 0 auto 1rem auto;
+  }
 }
