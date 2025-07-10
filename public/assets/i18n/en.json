@@ -78,6 +78,13 @@
     "create": "Create New Appointment",
     "register": "Register Appointment",
     "none": "No appointments found",
-    "search": "Search Appointments"
+    "searchC": "Search Appointments",
+    "consult": "Consult Resident Appointments",
+    "typeDni": "Enter Resident DNI",
+    "search": "Search",
+    "notFound": "No resident found with the provided DNI",
+    "birthDate": "Birth Date",
+    "gender": "Gender",
+    "location": "Location"
   }
 }

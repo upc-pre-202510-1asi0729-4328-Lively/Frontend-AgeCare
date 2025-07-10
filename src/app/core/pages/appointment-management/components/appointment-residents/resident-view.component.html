@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<section class="appointment-management-layout">
+
+  <section class="resident-layout">
+
+    <div class="resident-search-section">
+      <h2>{{ 'appointments.consult' | translate }}</h2>
+      <p>{{ 'appointments.typeDni' | translate }}:</p>
+
+      <div class="search-section">
+        <input
+          type="text"
+          [(ngModel)]="residentDniInput"
+          placeholder="DNI"
+          class="search-input"
+        />
+        <button (click)="searchResidentByDni()" class="btn btn-primary">{{ 'appointments.search' | translate }}</button>
+      </div>
+
+      <div *ngIf="notFound" class="not-found-message">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ 'appointments.notFound' | translate }}
+      </div>
+    </div>
+
+    <div class="resident-dni-card" *ngIf="resident">
+      <div class="resident-dni-photo">
+        <i class="fas fa-user-circle"></i>
+      </div>
+
+      <div class="resident-dni-info">
+        <h3>{{ resident.firstName }} {{ resident.lastName }}</h3>
+        <p><strong>ID:</strong> {{ resident.id }}</p>
+        <p><strong>DNI:</strong> {{ resident.dni }}</p>
+        <p><strong>{{ 'appointments.birthDate' | translate }}:</strong> {{ resident.birthDate | date }}</p>
+        <p><strong>{{ 'appointments.gender' | translate }}:</strong> {{ resident.gender }}</p>
+        <p><strong>{{ 'appointments.location' | translate }}:</strong>
+          {{ resident.street }}, {{ resident.city }}, {{ resident.state }},
+          {{ resident.country }} - {{ resident.zipCode }}
+        </p>
+      </div>
+    </div>
+
+  </section>
+</section>
+
+
+<section class="appointments-section" *ngIf="resident">
+  <h2>Citas del residente</h2>
+  <div *ngIf="appointments.length > 0; else noAppointments">
+    <ul class="appointment-list">
+      <li *ngFor="let appointment of appointments" class="appointment-card">
+        <p><strong>ID:</strong> {{ appointment.id }}</p>
+        <p><strong>Fecha:</strong> {{ appointment.date | date }}</p>
+        <p><strong>Hora:</strong> {{ appointment.time.hour }}:{{ appointment.time.minute | number:'2.0' }}</p>
+        <p><strong>Estado:</strong> {{ appointment.status }}</p>
+        <p><strong>Médico:</strong> {{ appointment.doctorName || ('appointments.unknownDoctor' | translate) }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noAppointments>
+    <p>No se encontraron citas para este residente.</p>
+  </ng-template>
+
+
+</section>

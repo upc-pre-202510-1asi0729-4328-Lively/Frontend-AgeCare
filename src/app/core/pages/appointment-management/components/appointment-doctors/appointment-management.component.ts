@@ -18,7 +18,7 @@ export class AppointmentManagementComponent implements OnInit {
 
   newAppointment = {
     date: '',
-    time: '', // Formato "HH:MM"
+    time: '', 
     residentId: 0,
     doctorId: 0
   };

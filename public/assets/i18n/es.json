@@ -81,6 +81,13 @@
     "create": "Crear nueva cita",
     "register": "Registrar cita",
     "none": "No se encontraron citas",
-    "search": "Buscar citas"
+    "searchC": "Buscar citas",
+    "consult": "Consultar citas del residente",
+    "typeDni": "Ingrese el DNI del residente",
+    "search": "Buscar",
+    "notFound": "No se encontro el residente con el DNI proporcionado",
+    "birthDate": "Fecha de nacimiento",
+    "gender": "Género",
+    "location": "Ubicación"
   }
 }
