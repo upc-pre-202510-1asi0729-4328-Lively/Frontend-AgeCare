@@ -20,4 +20,19 @@ export class ResidentService extends BaseService<Resident> {
        .pipe(this.defaultPipeOperators());
     }
 
+    override getById(id: number): Observable<Resident> {
+      return this.http.get<Resident>(
+        `${this.resourcePath()}/${id}`,
+        this.httpOptions
+      ).pipe(this.defaultPipeOperators());
+    }
+
+    searchByDni(dni: string): Observable<Resident> {
+      return this.http.get<Resident>(
+        `${this.resourcePath()}/searchByDni?dni=${dni}`,
+        this.httpOptions
+      ).pipe(this.defaultPipeOperators());
+    }
+
+
 }

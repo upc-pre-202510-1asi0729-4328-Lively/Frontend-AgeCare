@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<section class="appointment-management-layout">
+
+  <!-- Sección de búsqueda de residente -->
+  <section class="resident-layout">
+    <div class="resident-search-section">
+      <h2>{{ 'appointments.consult' | translate }}</h2>
+      <p>{{ 'appointments.typeDni' | translate }}:</p>
+
+      <div class="search-section">
+        <input
+          type="text"
+          [(ngModel)]="residentDniInput"
+          placeholder="DNI"
+          class="search-input"
+        />
+        <button (click)="searchResidentByDni()" class="btn btn-primary">
+          {{ 'appointments.search' | translate }}
+        </button>
+      </div>
+
+      <div *ngIf="notFound" class="not-found-message">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ 'appointments.notFound' | translate }}
+      </div>
+    </div>
+
+    <!-- Tarjeta del residente -->
+    <div class="resident-dni-card" *ngIf="resident">
+      <div class="resident-dni-photo">
+        <i class="fas fa-user-circle"></i>
+      </div>
+
+      <div class="resident-dni-info">
+        <h3>{{ resident.firstName }} {{ resident.lastName }}</h3>
+        <p><strong>DNI:</strong> {{ resident.dni }}</p>
+        <p><strong>{{ 'appointments.birthDate' | translate }}:</strong> {{ resident.birthDate | date }}</p>
+        <p><strong>{{ 'appointments.gender' | translate }}:</strong> {{ resident.gender }}</p>
+        <p><strong>{{ 'appointments.location' | translate }}:</strong>
+          {{ resident.street }}, {{ resident.city }}, {{ resident.state }},
+          {{ resident.country }} - {{ resident.zipCode }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección que muestra todas las citas -->
+  <section class="appointments-section">
+    <h2>{{ 'appointments.appointmentsResidents' | translate }}</h2>
+
+    <div *ngIf="resident && filteredAppointments().length > 0; else noAppointments" class="appointments-grid">
+      <div class="appointment-card" *ngFor="let appt of filteredAppointments()">
+        <h3><i class="fas fa-calendar-check"></i> {{ 'appointments.title' | translate }}</h3>
+
+        <div class="appointment-info">
+          <p><strong>{{ 'appointments.form.date' | translate }}:</strong> {{ appt.date | date: 'fullDate' }}</p>
+          <p><strong>{{ 'appointments.form.time' | translate }}:</strong> {{ appt.time }}</p>
+          <p><strong>{{ 'appointments.form.doctor' | translate }}:</strong> {{ doctorNames.get(appt.doctorId)}}</p>
+          <p><strong>{{ 'appointments.form.status' | translate }}: </strong> 
+            <span [ngClass]="{
+              'status-pending': appt.status === 'Pending',
+              'status-completed': appt.status === 'Completed'
+            }">{{ appt.status }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noAppointments>
+      <p class="no-appointments-message" *ngIf="resident">{{ 'appointments.none' | translate }}</p>
+    </ng-template>
+  </section>

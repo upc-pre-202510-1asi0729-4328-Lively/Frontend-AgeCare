@@ -1,0 +1,13 @@
+<div *ngIf="filteredAppointments.length === 0">
+  <p><strong>{{ 'appointments.none' | translate }}</strong></p>
+</div>
+
+<ul class="appointment-list" *ngIf="filteredAppointments.length > 0">
+  <li *ngFor="let appointment of filteredAppointments">
+    <app-appointment
+      [appointment]="appointment"
+      (updateStatus)="emitUpdateStatus($event)"
+      (delete)="emitDelete($event)">
+    </app-appointment>
+  </li>
+</ul>

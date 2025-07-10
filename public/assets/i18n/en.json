@@ -1,6 +1,7 @@
 {
   "header": {
-    "appointments": "Appointments",
+    "appointments": "Appointments Doctors",
+    "appointmentsResidents": "Appointments Residents",
     "notifications-alerts": "Notifications & Alerts",
     "resident": "Resident",
     "payment": "Payment",
@@ -50,7 +51,9 @@
       "pending": "Pending",
       "completed": "Completed"
     },
+    "title": "Appointment",
     "list": "Appointment List",
+    "appointmentsResidents": "Resident Appointments",
     "delete": "Delete",
     "status": "Status",
     "confirmDelete": "Are you sure you want to delete this appointment?",
@@ -59,6 +62,14 @@
     "confirm": "Confirm",
     "create": "Create New Appointment",
     "register": "Register Appointment",
-    "none": "No appointments found"
+    "none": "No appointments found",
+    "searchC": "Search Appointments",
+    "consult": "Consult Resident Appointments",
+    "typeDni": "Enter Resident DNI",
+    "search": "Search",
+    "notFound": "No resident found with the provided DNI",
+    "birthDate": "Birth Date",
+    "gender": "Gender",
+    "location": "Location"
   }
 }
