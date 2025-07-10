@@ -14,9 +14,8 @@
     <button (click)="expandPayment(payment)">Ver detalles</button>
     <button (click)="pay(payment)">Pagar</button>
 
-    <div *ngIf="selectedPayment?.id === payment.id && selectedPayment === payment && showPaymentForm === false">
+    <div *ngIf="selectedPayment?.id === payment.id && selectedPayment === payment && !showPaymentForm">
       <p><em>Detalles adicionales de la boleta</em></p>
-      <!-- Aquí puedes incluir appointments u otros datos relacionados -->
       <p>Este espacio puede usarse para mostrar citas médicas u observaciones.</p>
     </div>
   </div>
@@ -32,7 +31,7 @@
       <button (click)="cancelPayment()">Cancelar</button>
     </div>
 
-    <!-- Tarjeta de Crédito Interactiva -->
+    <!-- Tarjeta -->
     <div *ngIf="selectedMethod === 'card'" class="card-form">
       <div class="credit-card-display">
         <div class="card-number">{{ cardInfo.number || 'XXXX XXXX XXXX XXXX' }}</div>
@@ -56,7 +55,6 @@
         <button type="button" (click)="submitCardPayment()">Confirmar Pago</button>
       </form>
     </div>
-
 
     <!-- Yape -->
     <div *ngIf="selectedMethod === 'yape'" class="yape-form">

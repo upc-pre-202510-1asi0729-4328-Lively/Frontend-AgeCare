@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { Payment } from '../model/payment.model';
+import { PaymentService } from '../services/payment.service';
 
 @Component({
   selector: 'app-payment-management-user',
-    standalone: true,
-    imports: [
-      CommonModule,
-      FormsModule,
-      HttpClientModule,
-      TranslateModule
-    ],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule
+  ],
   templateUrl: './payment-management-user.component.html',
   styleUrls: ['./payment-management-user.component.css']
 })
 export class PaymentManagementUserComponent implements OnInit {
 
   residentId: number = 2;
-  payments: any[] = [];
-  filteredPayments: any[] = [];
-  selectedPayment: any | null = null;
+  receipts: Payment[] = [];
+  filteredReceipts: Payment[] = [];
+  selectedReceipt: Payment | null = null;
 
   showPaymentForm: boolean = false;
   selectedMethod: 'card' | 'yape' | 'cash' | null = null;
@@ -33,32 +34,31 @@ export class PaymentManagementUserComponent implements OnInit {
     ccv: ''
   };
 
-
   yapeReceipt: File | null = null;
   ticketGenerated: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit(): void {
-    this.loadPayments();
+    this.loadReceipts();
   }
 
-  loadPayments(): void {
-    this.http.get<any[]>('http://localhost:3000/payments')
+  loadReceipts(): void {
+    this.paymentService.getByResidentId(this.residentId)
       .subscribe({
-        next: (data) => {
+        next: data => {
           this.payments = data;
-          this.filteredPayments = this.payments.filter(p => p.residentId === this.residentId && !p.paid);
+          this.filteredPayments = data.filter(r => !r.paid);
         },
-        error: err => console.error('Error al cargar pagos:', err)
+        error: err => console.error('Error al cargar boletas:', err)
       });
   }
 
-  expandPayment(payment: any): void {
+  expandReceipt(payment: Payment): void {
     this.selectedPayment = payment;
   }
 
-  pay(payment: any): void {
+  pay(payment: Payment): void {
     this.selectedPayment = payment;
     this.showPaymentForm = true;
     this.selectedMethod = null;
@@ -67,13 +67,13 @@ export class PaymentManagementUserComponent implements OnInit {
 
   submitCardPayment(): void {
     if (this.cardInfo.number && this.cardInfo.name && this.cardInfo.ccv && this.cardInfo.expiry) {
-        this.updatePaymentStatus();
+      this.updateReceiptStatus();
     }
   }
 
   submitYapePayment(): void {
     if (this.yapeReceipt) {
-      this.updatePaymentStatus();
+      this.updateReceiptStatus();
     }
   }
 
@@ -81,20 +81,22 @@ export class PaymentManagementUserComponent implements OnInit {
     this.ticketGenerated = true;
   }
 
-  updatePaymentStatus(): void {
-    const updated = {
+  updateReceiptStatus(): void {
+    if (!this.selectedPayment) return;
+
+    const updatedReceipt: Payment = {
       ...this.selectedPayment,
       paid: true,
-      status: 'paid'
+      status: 'PAID' // Usa 'PAID' si el backend espera una cadena exacta, o usa enum si aplicas tipos
     };
 
-    this.http.put(`http://localhost:3000/payments/${this.selectedPayment.id}`, updated)
+    this.paymentService.updateReceipt(updatedReceipt)
       .subscribe({
         next: () => {
           this.showPaymentForm = false;
-          this.loadPayments();
+          this.loadReceipts();
         },
-        error: err => console.error('Error al actualizar estado del pago:', err)
+        error: err => console.error('Error al actualizar boleta:', err)
       });
   }
 
@@ -105,10 +107,9 @@ export class PaymentManagementUserComponent implements OnInit {
   cancelPayment(): void {
     this.showPaymentForm = false;
     this.selectedMethod = null;
-    this.selectedPayment = null;
+    this.selectedReceipt = null;
     this.cardInfo = { number: '', name: '', expiry: '', ccv: '' };
     this.yapeReceipt = null;
     this.ticketGenerated = false;
   }
-
 }

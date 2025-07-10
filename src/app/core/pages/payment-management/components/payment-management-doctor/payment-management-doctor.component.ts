@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { Payment } from '../../model/payment.model';
+import { PaymentService } from '../../services/payment.service';
+
 @Component({
   selector: 'app-payment-management-doctor',
   standalone: true,
@@ -17,21 +20,25 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./payment-management-doctor.component.css']
 })
 export class PaymentManagementDoctorComponent implements OnInit {
-  payments: any[] = [];
+  payments: Payment[] = [];
   residents: any[] = [];
   successMessage: string = '';
 
-  newPayment = {
-    residentId: '',
-    amount: null,
+  newPayment: Payment = {
+    id: 0,
+    residentId: 0,
+    amount: 0,
     description: '',
     dueDate: '',
-    paymentMethod: '',
-    status: 'pending',
+    paymentMethod: 'UNSPECIFIED',
+    status: 'PENDING',
     paid: false
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private paymentService: PaymentService
+  ) {}
 
   ngOnInit(): void {
     this.loadResidents();
@@ -44,49 +51,45 @@ export class PaymentManagementDoctorComponent implements OnInit {
   }
 
   loadResidents(): void {
-    this.http.get<any[]>('http://localhost:3000/residents')
-      .subscribe({
-        next: data => this.residents = data,
-        error: err => console.error('Error al cargar residentes:', err)
-      });
+    this.http.get<any[]>('http://localhost:3000/residents').subscribe({
+      next: data => this.residents = data,
+      error: err => console.error('Error al cargar residentes:', err)
+    });
   }
 
   loadPayments(): void {
-    this.http.get<any[]>('http://localhost:3000/payments')
-      .subscribe({
-        next: data => this.payments = data,
-        error: err => console.error('Error al cargar pagos:', err)
-      });
-
+    this.paymentService.getAllReceipts().subscribe({
+      next: data => this.payments = data,
+      error: err => console.error('Error al cargar pagos:', err)
+    });
   }
 
   createPayment(): void {
-    const payment = { ...this.newPayment };
+    const paymentToCreate: Payment = { ...this.newPayment };
 
-    this.http.post('http://localhost:3000/payments', payment)
-      .subscribe({
-        next: () => {
-          this.successMessage = 'Boleta registrada exitosamente.';
-          this.resetForm();
+    this.paymentService.createReceipt(paymentToCreate).subscribe({
+      next: () => {
+        this.successMessage = 'Boleta registrada exitosamente.';
+        this.resetForm();
+        this.loadPayments();
 
-          setTimeout(() => {
-            this.successMessage = '';
-          }, 3000);
-        },
-        error: err => {
-          console.error('Error al registrar boleta:', err);
-        }
-      });
+        setTimeout(() => this.successMessage = '', 3000);
+      },
+      error: err => {
+        console.error('Error al registrar boleta:', err);
+      }
+    });
   }
 
   resetForm(): void {
     this.newPayment = {
-      residentId: '',
-      amount: null,
+      id: 0,
+      residentId: 0,
+      amount: 0,
       description: '',
       dueDate: '',
-      paymentMethod: '',
-      status: 'pending',
+      paymentMethod: 'UNSPECIFIED',
+      status: 'PENDING',
       paid: false
     };
   }

@@ -1,13 +1,81 @@
+.payment-container {
+  padding: 24px;
+  background-color: #f5f9ff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: #003366;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.payment-card {
+  background-color: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-4px);
+}
+
+.payment-card h3 {
+  margin-top: 0;
+  color: #335A8E;
+}
+
+.payment-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.payment-card button {
+  margin-top: 8px;
+  margin-right: 8px;
+  background-color: #335A8E;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.payment-card button:hover {
+  background-color: #003366;
+}
+
+.payment-form {
+  margin-top: 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
 .method-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  justify-content: center;
 }
 
 .method-buttons button {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 15px;
   border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
@@ -21,9 +89,9 @@
 }
 
 .method-buttons button.active {
-  background-color: #007bff;
+  background-color: #335A8E;
   color: white;
-  border-color: #0056b3;
+  border-color: #003366;
 }
 
 .method-buttons button:last-child {
@@ -35,22 +103,22 @@
   background-color: #d32f2f;
 }
 
+/* Tarjeta */
 .card-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .credit-card-display {
   width: 350px;
   height: 200px;
-  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+  background: linear-gradient(135deg, #335A8E, #6BAED6);
   border-radius: 16px;
   color: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
   font-family: 'Courier New', Courier, monospace;
   position: relative;
   overflow: hidden;
@@ -70,7 +138,7 @@
 .card-number {
   font-size: 20px;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .card-holder,
@@ -82,19 +150,19 @@
 .card-holder {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 24px;
 }
 
 .card-expiry {
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  right: 24px;
 }
 
 .card-inputs {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   width: 320px;
 }
 
@@ -107,13 +175,13 @@
   padding: 10px;
   font-size: 14px;
   border-radius: 6px;
-  border: 1px solid #aaa;
+  border: 1px solid #bbb;
 }
 
 .card-inputs input:focus {
   border-color: #335A8E;
   outline: none;
-  box-shadow: 0 0 5px rgba(51, 90, 142, 0.6);
+  box-shadow: 0 0 6px rgba(51, 90, 142, 0.6);
 }
 
 .card-inputs button {
@@ -129,5 +197,62 @@
 }
 
 .card-inputs button:hover {
+  background-color: #003366;
+}
+
+/* Yape */
+.yape-form {
+  text-align: center;
+}
+
+.yape-form img {
+  margin: 20px 0;
+  border-radius: 12px;
+  border: 2px solid #6BAED6;
+}
+
+.yape-form input[type="file"] {
+  margin-top: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.yape-form button {
+  margin-top: 12px;
+  background-color: #335A8E;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.yape-form button:hover {
+  background-color: #003366;
+}
+
+/* Efectivo */
+.cash-form {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cash-form p {
+  margin-bottom: 12px;
+}
+
+.cash-form button {
+  background-color: #335A8E;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cash-form button:hover {
   background-color: #003366;
 }

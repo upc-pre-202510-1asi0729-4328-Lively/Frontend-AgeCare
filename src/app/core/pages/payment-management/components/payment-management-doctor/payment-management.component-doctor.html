@@ -2,43 +2,48 @@
   <h2>Asignar nueva boleta de pago</h2>
 
   <form (ngSubmit)="createPayment()" #paymentForm="ngForm">
+    <!-- Selección del residente -->
     <select name="residentId" [(ngModel)]="newPayment.residentId" required>
-      <option value="" disabled selected>Seleccione un residente</option>
-      <option *ngFor="let resident of residents" [value]="resident.id">
+      <option [ngValue]="null" disabled>Seleccione un residente</option>
+      <option *ngFor="let resident of residents" [ngValue]="resident.id">
         {{ resident.firstName }} {{ resident.lastName }}
       </option>
     </select>
 
+    <!-- Monto -->
     <input
-      type="number"
-      name="amount"
-      placeholder="Monto (S/.)"
-      [(ngModel)]="newPayment.amount"
-      required
-      min="0.1"
-      step="0.01"
+            type="number"
+            name="amount"
+            placeholder="Monto (S/.)"
+            [(ngModel)]="newPayment.amount"
+            required
+            min="0.1"
+            step="0.01"
     />
 
+    <!-- Descripción -->
     <input
-      type="text"
-      name="description"
-      placeholder="Descripción"
-      [(ngModel)]="newPayment.description"
-      required
+            type="text"
+            name="description"
+            placeholder="Descripción"
+            [(ngModel)]="newPayment.description"
+            required
     />
 
+    <!-- Fecha límite -->
     <input
-      type="date"
-      name="dueDate"
-      [(ngModel)]="newPayment.dueDate"
-      required
+            type="date"
+            name="dueDate"
+            [(ngModel)]="newPayment.dueDate"
+            required
     />
 
+    <!-- Método de pago -->
     <select name="paymentMethod" [(ngModel)]="newPayment.paymentMethod" required>
-      <option value="" disabled selected>Método de pago</option>
-      <option value="tarjeta">Tarjeta</option>
-      <option value="yape">Yape</option>
-      <option value="efectivo">Efectivo</option>
+      <option [ngValue]="null" disabled>Método de pago</option>
+      <option value="CARD">Tarjeta</option>
+      <option value="YAPE">Yape</option>
+      <option value="CASH">Efectivo</option>
     </select>
 
     <button type="submit" [disabled]="paymentForm.invalid">Registrar boleta</button>
@@ -49,6 +54,7 @@
   </div>
 </div>
 
+<!-- Tabla de boletas -->
 <div class="form-container">
   <h2>Boletas registradas</h2>
   <table class="payment-table">
@@ -67,9 +73,21 @@
       <td>{{ getResidentName(payment.residentId) }}</td>
       <td>S/ {{ payment.amount }}</td>
       <td>{{ payment.description }}</td>
-      <td>{{ payment.dueDate }}</td>
-      <td>{{ payment.paymentMethod }}</td>
-      <td>{{ payment.status === 'pending' ? 'Pendiente' : 'Pagado' }}</td>
+      <td>{{ payment.dueDate | date: 'shortDate' }}</td>
+      <td>
+        {{
+        payment.paymentMethod === 'CARD'
+        ? 'Tarjeta'
+        : payment.paymentMethod === 'YAPE'
+        ? 'Yape'
+        : 'Efectivo'
+        }}
+      </td>
+      <td>
+          <span [ngClass]="payment.paid ? 'paid' : 'pending'">
+            {{ payment.paid ? 'Pagado' : 'Pendiente' }}
+          </span>
+      </td>
     </tr>
     </tbody>
   </table>
