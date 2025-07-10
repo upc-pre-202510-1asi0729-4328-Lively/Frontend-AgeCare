@@ -11,7 +11,7 @@
     "form": {
       "title": "Title",
       "message": "Message",
-      "create": "Create Notification"
+      "create": "Create notification"
     },
     "filters": {
       "all": "All",
@@ -25,12 +25,29 @@
     "statusValue": {
       "unread": "Unread",
       "read": "Read",
-      "archived": "Archived"
+      "archived": "Archived",
+      "markAsRead": "Mark as read",
+      "archive": "Archive",
+      "unarchive": "Unarchive",
+      "delete": "Delete"
     },
-    "confirmDelete": "Are you sure you want to delete this notification?",
+    "confirmDelete": "Do you want to delete this notification?",
     "cancel": "Cancel",
     "confirmStatusChange": "Are you sure you want to change the status to {{status}}?",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "YES": "Yes",
+    "NO": "No",
+    "MARK_AS_READ": "Mark as read",
+    "ARCHIVE": "Archive",
+    "UNARCHIVE": "Unarchive",
+    "DELETE": "Delete",
+    "CREATE_NOTIFICATION": "Create notification",
+    "notifications": "Notifications",
+    "notificationCreatedSuccess": "Notification created successfully!",
+    "close": "Close",
+    "confirmMarkAsRead": "Do you want to mark this notification as read?",
+    "confirmArchive": "Do you want to archive this notification?",
+    "confirmUnarchive": "Do you want to unarchive this notification?"
   },
   "footer": {
     "rights": "Copyright © 2025, All rights reserved",

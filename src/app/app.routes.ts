@@ -7,7 +7,7 @@ import { HomeManagementComponent } from './public/pages/home-management/home-man
 import { AppointmentManagementComponent } from './core/pages/appointment-management/components/appointment-doctors/appointment-management.component';
 import { NotificationsAlertsManagementComponent } from './core/pages/notifications-alerts-management/components/notifications-alerts-management.component';
 import { PaymentManagementDoctorComponent } from './core/pages/payment-management/components/payment-management-doctor/payment-management-doctor.component';
-import { PaymentManagementUserComponent} from './core/pages/payment-management/components/payment-management-user/payment-management-user.component';
+// import { PaymentManagementUserComponent} from './core/pages/payment-management/components/payment-management-user/payment-management-user.component'; // Comentado por error de ruta/no existe
 import { ResidentCareManagementComponent } from './core/pages/resident-care-management/components/resident-care-management/resident-care-management.component';
 import { UserManagementComponent } from './core/pages/user-management/components/user-management/user-management.component';
 import {ResidentViewComponent} from './core/pages/appointment-management/components/appointment-residents/resident-view.component';
@@ -25,8 +25,9 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeManagementComponent },
+      { path: 'notifications-family', component: NotificationsAlertsManagementComponent, data: { view: 'family' } },
+      { path: 'notifications-management', component: NotificationsAlertsManagementComponent, data: { view: 'management' } },
       { path: 'appointments-doctors', component: AppointmentManagementComponent },
-      { path: 'notifications-alerts', component: NotificationsAlertsManagementComponent },
       { path: 'payment', component: PaymentManagementUserComponent },
       { path: 'payment-doctor', component: PaymentManagementDoctorComponent },
       { path: 'resident', component: ResidentCareManagementComponent },
