@@ -156,6 +156,7 @@ i{
 
 /* Sección de citas */
 .appointments-section {
+  margin-top: 2rem;
   width: 100%;
   max-width: 1024px;
   padding: 2rem;
@@ -177,6 +178,51 @@ i{
   font-size: 1rem;
   margin-top: 1rem;
 }
+
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.appointment-card {
+  background-color: #fff;
+  border: 2px dashed #cbd5e1;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+}
+
+.appointment-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.appointment-info p {
+  margin: 0.5rem 0;
+}
+
+.status-pending {
+  color: #b45309;
+  font-weight: bold;
+}
+
+.status-completed {
+  color: #059669;
+  font-weight: bold;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
