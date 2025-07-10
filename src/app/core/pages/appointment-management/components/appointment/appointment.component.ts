@@ -20,12 +20,18 @@ import { Doctor } from '../../../../pages/user-management/model/doctor.model';
 export class AppointmentComponent implements OnInit {
   @Input() appointment!: Appointment;
   @Output() updateStatus = new EventEmitter<{ id: number, status: Appointment['status'] }>();
+  @Output() updateAppointment = new EventEmitter<Appointment>();
   @Output() delete = new EventEmitter<number>();
 
   statuses: Appointment['status'][] = ['Pending', 'Completed'];
 
   residentName: string = '';
   doctorName: string = '';
+
+  editMode: boolean = false;
+  editedDate: string = '';
+  editedTime: string = '';
+  editedStatus: Appointment['status'] = 'Pending';
 
   private static residentCache = new Map<number, string>();
   private static doctorCache = new Map<number, string>();
@@ -39,6 +45,7 @@ export class AppointmentComponent implements OnInit {
     const resId = this.appointment.residentId;
     const docId = this.appointment.doctorId;
 
+    // Cache Resident
     if (AppointmentComponent.residentCache.has(resId)) {
       this.residentName = AppointmentComponent.residentCache.get(resId)!;
     } else {
@@ -68,27 +75,42 @@ export class AppointmentComponent implements OnInit {
         }
       });
     }
+
+    this.editedDate = this.appointment.date;
+    this.editedTime = this.appointment.time;
+    this.editedStatus = this.appointment.status;
   }
 
-  onUpdateStatus(event: any) {
-    if (typeof event === 'string') {
-      this.updateStatus.emit({ id: this.appointment.id, status: event as Appointment['status'] });
-    }
+  toggleEdit() {
+    this.editMode = true;
+  }
+
+  saveChanges() {
+    const updated: Appointment = {
+      ...this.appointment,
+      date: this.editedDate,
+      time: this.editedTime,
+      status: this.editedStatus
+    };
+
+    this.updateAppointment.emit(updated);
+    this.editMode = false;
+  }
+
+  cancelEdit() {
+    this.editMode = false;
+    this.editedDate = this.appointment.date;
+    this.editedTime = this.appointment.time;
+    this.editedStatus = this.appointment.status;
   }
 
   onDelete() {
     this.delete.emit(this.appointment.id);
   }
 
-  get formattedTime(): string {
-    if (!this.appointment?.time) return '';
-    const h = this.appointment.time.hour.toString().padStart(2, '0');
-    const m = this.appointment.time.minute.toString().padStart(2, '0');
-    return `${h}:${m}`;
-  }
-
-  toggleStatus() {
-    const newStatus = this.appointment.status === 'Pending' ? 'Completed' : 'Pending';
-    this.updateStatus.emit({ id: this.appointment.id, status: newStatus });
+  onUpdateStatus(event: any) {
+    if (typeof event === 'string') {
+      this.updateStatus.emit({ id: this.appointment.id, status: event as Appointment['status'] });
+    }
   }
 }

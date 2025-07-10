@@ -6,12 +6,12 @@
     <form (ngSubmit)="createAppointment()" novalidate>
       <div class="form-group">
         <label for="date">{{ 'appointments.form.date' | translate }}</label>
-        <input id="date" type="date" [(ngModel)]="newAppointment.date" name="date" required>
+        <input id="date" type="date" [(ngModel)]="newAppointment.date" name="date" required />
       </div>
 
       <div class="form-group">
         <label for="time">{{ 'appointments.form.time' | translate }}</label>
-        <input id="time" type="time" [(ngModel)]="newAppointment.time" name="time" required>
+        <input id="time" type="text" [(ngModel)]="newAppointment.time" name="time" required />
       </div>
 
       <div class="form-group">
@@ -21,9 +21,9 @@
           type="number"
           [(ngModel)]="newAppointment.residentId"
           name="residentId"
-          placeholder="{{ 'appointments.form.resident' | translate }}"
           required
-        >
+          min="1"
+        />
       </div>
 
       <div class="form-group">
@@ -33,9 +33,9 @@
           type="number"
           [(ngModel)]="newAppointment.doctorId"
           name="doctorId"
-          placeholder="{{ 'appointments.form.doctor' | translate }}"
           required
-        >
+          min="1"
+        />
       </div>
 
       <button type="submit" class="btn btn-primary">
@@ -43,6 +43,7 @@
       </button>
     </form>
   </div>
+
 
   <!-- Sección que muestra la lista de citas existentes -->
   <div class="appointment-list-section">

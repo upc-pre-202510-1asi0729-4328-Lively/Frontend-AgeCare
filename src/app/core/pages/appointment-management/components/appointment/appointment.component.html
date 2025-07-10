@@ -1,21 +1,52 @@
 <div class="appointment-card">
   <div class="info">
-    <p><strong>{{ 'appointments.form.date' | translate }}:</strong> {{ appointment.date }}</p>
+
+    <div *ngIf="!editMode; else editForm">
+      <p><strong>{{ 'appointments.form.date' | translate }}:</strong> {{ appointment.date }}</p>
+      <p><strong>{{ 'appointments.form.time' | translate }}:</strong> {{ appointment.time }}</p>
+      <p><strong>{{ 'appointments.form.status' | translate }}:</strong> {{ appointment.status }}</p>
+    </div>
+
+    <ng-template #editForm>
+      <p>
+        <strong>{{ 'appointments.form.date' | translate }}:</strong>
+        <input type="date" [(ngModel)]="editedDate" />
+      </p>
+
+      <p>
+        <strong>{{ 'appointments.form.time' | translate }}:</strong>
+        <input type="time" [(ngModel)]="editedTime" />
+      </p>
+
+      <p>
+        <strong>{{ 'appointments.form.status' | translate }}:</strong>
+        <select [(ngModel)]="editedStatus">
+          <option value="Pending">{{ 'appointments.filters.pending' | translate }}</option>
+          <option value="Completed">{{ 'appointments.filters.completed' | translate }}</option>
+        </select>
+      </p>
+    </ng-template>
+
     <p><strong>{{ 'appointments.form.resident' | translate }}:</strong> {{ residentName }}</p>
     <p><strong>{{ 'appointments.form.doctor' | translate }}:</strong> {{ doctorName }}</p>
 
-    <p><strong>{{ 'appointments.form.time' | translate }}:</strong> {{ appointment.time }}</p>
-    <p><strong>{{ 'appointments.form.status' | translate }}:</strong> 
-      <select id="statusSelect" [ngModel]="appointment.status" (ngModelChange)="onUpdateStatus($event)">
-        <option value="Pending">{{ 'appointments.filters.pending' | translate }}</option>
-        <option value="Completed">{{ 'appointments.filters.completed' | translate }}</option>
-      </select>
-    </p>
-
     <div class="actions">
       <button (click)="onDelete()" class="delete-btn">
-        🗑 {{ 'appointments.delete' | translate }}
+         {{ 'appointments.delete' | translate }}
       </button>
+
+      <button *ngIf="!editMode" (click)="toggleEdit()" class="edit-btn">
+       {{ 'appointments.edit' | translate }}
+      </button>
+
+      <ng-container *ngIf="editMode">
+        <button (click)="saveChanges()" class="save-btn">
+         {{ 'appointments.save' | translate }}
+        </button>
+        <button (click)="cancelEdit()" class="cancel-btn">
+         {{ 'appointments.cancel' | translate }}
+        </button>
+      </ng-container>
     </div>
   </div>
 </div>

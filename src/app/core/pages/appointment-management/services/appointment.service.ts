@@ -30,6 +30,4 @@ export class AppointmentService extends BaseService<Appointment> {
     ).pipe(this.defaultPipeOperators());
   }
 
-
-
 }

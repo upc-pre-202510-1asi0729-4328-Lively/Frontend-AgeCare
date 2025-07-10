@@ -1,12 +1,7 @@
 export interface Appointment {
     id: number;
     date: string;
-    time: {
-        hour: number;
-        minute: number;
-        second: number;
-        nano: number;
-    };
+    time: string;
     residentId: number;
     doctorId: number;
     status: 'Pending' | 'Completed';
