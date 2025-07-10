@@ -90,6 +90,8 @@
     "notFound": "No se encontro el residente con el DNI proporcionado",
     "birthDate": "Fecha de nacimiento",
     "gender": "Género",
-    "location": "Ubicación"
+    "location": "Ubicación",
+    "save": "Guardar",
+    "edit": "Editar"
   }
 }
