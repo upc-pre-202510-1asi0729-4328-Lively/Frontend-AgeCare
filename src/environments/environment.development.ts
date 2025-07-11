@@ -14,6 +14,5 @@ export const environment = {
   medicalHistoryEndpointPath: '/medical-histories',
   appointmentsEndpointPath: '/appointments',
   doctorsEndpointPath: '/doctors',
-  notificationsEndpointPath:'/notifications',
   useJsonServer: false,
 };
