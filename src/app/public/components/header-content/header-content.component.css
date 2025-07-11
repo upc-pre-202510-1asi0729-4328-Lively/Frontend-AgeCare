@@ -1,85 +1,86 @@
+/* Estructura principal del header */
 .header-container {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo */
 .logo img {
-  height: 80px;
+  height: 40px;
+  width: auto;
 }
 
-.nav-links {
-  display: flex;
-  gap: 30px;
-  font-size: 18px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-}
-
-.nav-links a.active-link {
-  border-bottom: 2px solid black;
-}
-
-.login-button .btn-login {
-  padding: 8px 20px;
-  background-color: #002d5c;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
+/* Botón de menú (hamburguesa) solo visible en móviles */
 .menu-toggle {
+  display: none;
   background: none;
   border: none;
-  font-size: 28px;
+  color: white;
+  font-size: 1.8rem;
   cursor: pointer;
-  display: none;
 }
 
-.login-button.hide {
-  display: none;
+/* Navegación principal */
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-/* === Responsive === */
+/* Enlaces de navegación */
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active-link {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Lenguaje switcher */
+span app-language-switcher {
+  margin-left: 1rem;
+}
+
+/* RESPONSIVE - Vista móvil */
 @media (max-width: 768px) {
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    background: white;
-    width: 100%;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-  }
-
-  .nav-links.open {
-    transform: scaleY(1);
-  }
-
   .menu-toggle {
     display: block;
   }
 
-  .login-button {
-    order: 3;
-    margin-top: 10px;
+  nav {
     width: 100%;
-    text-align: right;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none; /* Se mostrará solo si toggleMenu() lo activa */
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  span app-language-switcher {
+    margin-top: 1rem;
   }
 }
