@@ -50,9 +50,10 @@
     "confirmUnarchive": "Do you want to unarchive this notification?"
   },
   "footer": {
-    "rights": "Copyright © 2025, All rights reserved",
-    "intro": "Developed ",
-    "author": ",by Lively Team"
+    "description": "AgeCare improves the lives of older adults and their families through warm and reliable technology.",
+    "rights": "© 2025 All rights reserved. Data provided by {{api}}.",
+    "intro": "Developed with dedication by the",
+    "author": "{{team}} team."
   },
   "appointments": {
     "form": {
