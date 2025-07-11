@@ -22,20 +22,16 @@ export class NotificationsListComponent {
   }
 
   get filteredNotifications() {
-    const filtered = (() => {
-      switch (this.filter) {
-        case 'unread':
-          return this.notifications.filter(n => n.status === 'unread');
-        case 'read':
-          return this.notifications.filter(n => n.status === 'READ');
-        case 'archived':
-          return this.notifications.filter(n => n.status === 'ARCHIVED');
-        default:
-          return this.notifications;
-      }
-    })();
-    console.log(`Filtered notifications:`, filtered); // Debugging log
-    return filtered;
+    switch (this.filter) {
+      case 'unread':
+        return this.notifications.filter(n => n.status === 'unread');
+      case 'read':
+        return this.notifications.filter(n => n.status === 'read');
+      case 'archived':
+        return this.notifications.filter(n => n.status === 'archived');
+      default:
+        return this.notifications;
+    }
   }
 
   onDeleteConfirmed(id: string) {
@@ -44,5 +40,7 @@ export class NotificationsListComponent {
 
   onUpdateStatus(event: {id: string, status: Notification['status']}) {
     this.updateStatus.emit(event);
+    const n = this.notifications.find(n => n.id === event.id);
+    if (n) n.status = event.status;
   }
 }

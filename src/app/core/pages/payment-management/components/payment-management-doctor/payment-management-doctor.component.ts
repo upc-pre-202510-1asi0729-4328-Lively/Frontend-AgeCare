@@ -18,7 +18,7 @@ import { ResidentService } from '../../../resident-care-management/services/resi
     HttpClientModule,
     TranslateModule
   ],
-  templateUrl: './payment-management-doctor.component.html', // ERROR: No existe el archivo de plantilla, por eso el componente no tiene template y Angular lanza el error TS-992001
+  templateUrl: './payment-management-doctor.component.html',
   styleUrls: ['./payment-management-doctor.component.css']
 })
 export class PaymentManagementDoctorComponent implements OnInit {

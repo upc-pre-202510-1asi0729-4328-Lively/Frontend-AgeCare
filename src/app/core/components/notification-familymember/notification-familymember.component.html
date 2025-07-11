@@ -12,27 +12,12 @@
 
 <div class="notification-familymember">
   <h4>{{ notification.title }}</h4>
-  <p>{{ notification.content }}</p>
+  <p>{{ notification.message }}</p>
   <small>{{ notification.createdAt | date:'short' }}</small>
   <div class="notification-actions">
-    <!-- Conditionally render the "Mark as Read" button -->
-    <button *ngIf="notification.status !== 'READ' && notification.status !== 'ARCHIVED'" (click)="openConfirm('read', notification.id)">
-      {{ 'notifications.statusValue.markAsRead' | translate }}
-    </button>
-
-    <!-- Conditionally render the "Archive" button -->
-    <button *ngIf="notification.status !== 'ARCHIVED'" (click)="openConfirm('archive', notification.id)">
-      {{ 'notifications.statusValue.archive' | translate }}
-    </button>
-
-    <!-- Conditionally render the "Unarchive" button -->
-    <button *ngIf="notification.status === 'ARCHIVED'" (click)="openConfirm('unarchive', notification.id)">
-      {{ 'notifications.statusValue.unarchive' | translate }}
-    </button>
-
-    <!-- Always render the "Delete" button -->
-    <button (click)="openConfirm('delete', notification.id)">
-      {{ 'notifications.statusValue.delete' | translate }}
-    </button>
+    <button *ngIf="notification.status !== 'read'" (click)="openConfirm('read', notification.id)">{{ 'notifications.statusValue.markAsRead' | translate }}</button>
+    <button *ngIf="notification.status !== 'archived'" (click)="openConfirm('archive', notification.id)">{{ 'notifications.statusValue.archive' | translate }}</button>
+    <button *ngIf="notification.status === 'archived'" (click)="openConfirm('unarchive', notification.id)">{{ 'notifications.statusValue.unarchive' | translate }}</button>
+    <button (click)="openConfirm('delete', notification.id)">{{ 'notifications.statusValue.delete' | translate }}</button>
   </div>
 </div>

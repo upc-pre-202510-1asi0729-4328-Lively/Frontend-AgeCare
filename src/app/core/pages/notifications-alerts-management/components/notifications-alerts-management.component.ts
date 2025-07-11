@@ -5,9 +5,10 @@ import { NotificationsListComponent } from '../../../components/notifications-li
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { NotificationManagementComponent } from '../../../components/notification-management/notification-management.component';
+import {
+  NotificationManagementComponent
+} from '../../../components/notification-management/notification-management.component';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-notifications-alerts-management',
@@ -18,12 +19,11 @@ import { Observable } from 'rxjs';
 })
 export class NotificationsAlertsManagementComponent implements OnInit {
   notifications: Notification[] = [];
-  existingNotificationIds: Set<string> = new Set(); // Track existing notification IDs
   filter: 'all' | 'unread' | 'read' | 'archived' = 'all';
   newNotification = {
     title: '',
     message: '',
-    userId: 1,
+    userId: 'user1',
     status: 'unread' as const
   };
   showConfirmDeleteId: string | null = null;
@@ -31,7 +31,10 @@ export class NotificationsAlertsManagementComponent implements OnInit {
   view: 'all' | 'family' | 'management' = 'all';
   showSuccessModal: boolean = false;
 
+
+
   constructor(private notificationsService: NotificationsService, private translate: TranslateService, private route: ActivatedRoute) {
+    // Forzar idioma por defecto a inglés solo para este componente
     if (!translate.currentLang || translate.currentLang !== 'en') {
       translate.setDefaultLang('en');
       translate.use('en');
@@ -48,73 +51,39 @@ export class NotificationsAlertsManagementComponent implements OnInit {
   }
 
   loadNotifications() {
-    console.log(`Loading notifications with filter: ${this.filter}`); // Debugging log
-    let request: Observable<Notification[]>;
-
-    switch (this.filter) {
-      case 'unread':
-        request = this.notificationsService.filterByStatus('unread');
-        break;
-      case 'read':
-        request = this.notificationsService.filterByStatus('READ');
-        break;
-      case 'archived':
-        request = this.notificationsService.filterByStatus('ARCHIVED');
-        break;
-      default:
-        request = this.notificationsService.getAll();
+    if (this.filter === 'all') {
+      this.notificationsService.getAll().subscribe((n: Notification[]) => this.notifications = n);
+    } else if (this.filter === 'unread') {
+      this.notificationsService.getUnread().subscribe((n: Notification[]) => this.notifications = n);
+    } else if (this.filter === 'read') {
+      this.notificationsService.getRead().subscribe((n: Notification[]) => this.notifications = n);
+    } else if (this.filter === 'archived') {
+      this.notificationsService.getArchived().subscribe((n: Notification[]) => this.notifications = n);
     }
-
-    request.subscribe({
-      next: (notifications: Notification[]) => {
-        console.log(`Loaded notifications:`, notifications); // Debugging log
-        this.notifications = notifications;
-        this.existingNotificationIds = new Set(notifications.map(n => n.id)); // Update the set with current IDs
-      },
-      error: (error) => console.error('Error loading notifications:', error)
-    });
   }
 
   setFilter(filter: 'all' | 'unread' | 'read' | 'archived') {
-    console.log(`Setting filter to: ${filter}`); // Debugging log
     this.filter = filter;
     this.loadNotifications();
   }
 
   onMarkAsRead(id: string) {
-    this.notificationsService.markAsRead(id).subscribe(() => {
-      const notification = this.notifications.find(n => n.id === id);
-      if (notification) {
-        notification.status = 'READ';
-      }
-    });
+    this.notificationsService.markAsRead(id).subscribe(() => this.loadNotifications());
   }
 
   onArchive(id: string) {
-    this.notificationsService.archive(id).subscribe(() => {
-      const notification = this.notifications.find(n => n.id === id);
-      if (notification) {
-        notification.status = 'ARCHIVED';
-        this.loadNotifications(); // Reload notifications to reflect changes
-      }
-    });
+    this.notificationsService.archive(id).subscribe(() => this.loadNotifications());
   }
 
-  onCreateNotification(notificationData: { title: string; content: string }) {
-    const newId = 'some-unique-id'; // Generate or assign a unique ID for the new notification
-    if (this.existingNotificationIds.has(newId)) {
-      console.error('Notification with this ID already exists.');
-      return;
-    }
-
+  onCreateNotification(notificationData: { title: string; message: string }) {
+    if (!notificationData.title.trim() || !notificationData.message.trim()) return;
     this.notificationsService.create({
-      id: newId,
       title: notificationData.title,
-      content: notificationData.content,
-      userId: this.newNotification.userId
-    }).subscribe((newNotification: Notification) => {
-      this.notifications.push(newNotification);
-      this.existingNotificationIds.add(newNotification.id); // Add new ID to the set
+      message: notificationData.message,
+      userId: 'user1',
+      status: 'unread'
+    }).subscribe(() => {
+      this.loadNotifications();
       this.showSuccessModal = true;
     });
   }
@@ -125,12 +94,12 @@ export class NotificationsAlertsManagementComponent implements OnInit {
 
   confirmDelete(id: string) {
     this.notificationsService.delete(id).subscribe(() => {
+      // Eliminar la notificación del array local sin recargar toda la lista
       this.notifications = this.notifications.filter(n => n.id !== id);
-      this.existingNotificationIds.delete(id); // Remove ID from the set
     });
   }
 
-  onUpdateStatus(event: {id: string, status: 'unread' | 'READ' | 'ARCHIVED'}) {
+  onUpdateStatus(event: {id: string, status: import('../../../model/notification.model').Notification['status']}) {
     if (event && typeof event === 'object' && 'id' in event && 'status' in event) {
       this.notificationsService.updateStatus(event.id, event.status).subscribe(() => this.loadNotifications());
     }
