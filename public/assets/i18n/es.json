@@ -5,7 +5,7 @@
     "notifications-alerts": "Notificaciones y Alertas",
     "resident": "Residente",
     "payment": "Pago",
-    "user": "Usuario"
+    "doctor": "Doctor"
   },
   "notifications": {
     "form": {
@@ -54,9 +54,10 @@
     }
   },
   "footer": {
-    "rights": "Derechos de autor © 2025, Todos los derechos reservados",
-    "intro": "Desarrollado ",
-    "author": "por el Equipo Lively"
+    "description": "AgeCare mejora la vida de adultos mayores y sus familias a través de tecnología cálida y confiable.",
+    "rights": "© 2025 Todos los derechos reservados. Datos proporcionados por {{api}}.",
+    "intro": "Desarrollado con dedicación por el equipo",
+    "author": "{{team}}."
   },
   "appointments": {
     "form": {
