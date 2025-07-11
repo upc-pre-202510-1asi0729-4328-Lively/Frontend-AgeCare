@@ -18,7 +18,7 @@ import { ResidentService } from '../../../resident-care-management/services/resi
     HttpClientModule,
     TranslateModule
   ],
-  templateUrl: './payment-management.component-doctor.html',
+  templateUrl: './payment-management-doctor.component.html',
   styleUrls: ['./payment-management-doctor.component.css']
 })
 export class PaymentManagementDoctorComponent implements OnInit {
