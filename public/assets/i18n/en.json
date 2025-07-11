@@ -5,7 +5,7 @@
     "notifications-alerts": "Notifications & Alerts",
     "resident": "Resident",
     "payment": "Payment",
-    "user": "User"
+    "doctor": "Doctor"
   },
   "notifications": {
     "form": {
