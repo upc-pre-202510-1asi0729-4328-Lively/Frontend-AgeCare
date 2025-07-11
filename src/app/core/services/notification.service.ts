@@ -4,32 +4,6 @@ import { Notification } from '../model/notification.model';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
-  private notifications: Notification[] = [
-    {
-      id: '1',
-      title: 'Bienvenido',
-      message: 'Tu cuenta ha sido creada.',
-      createdAt: new Date(),
-      status: 'unread',
-      userId: 'user1'
-    },
-    {
-      id: '2',
-      title: 'Recordatorio',
-      message: 'Tienes una cita mañana.',
-      createdAt: new Date(),
-      status: 'unread',
-      userId: 'user1'
-    },
-    {
-      id: '3',
-      title: 'Actualización',
-      message: 'Se ha actualizado tu perfil.',
-      createdAt: new Date(),
-      status: 'archived',
-      userId: 'user1'
-    }
-  ];
 
   getAll(): Observable<Notification[]> {
     return of(this.notifications);

@@ -27,6 +27,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeManagementComponent },
+      { path: 'notifications-family', component: NotificationsAlertsManagementComponent, data: { view: 'family' } },
+      { path: 'notifications-management', component: NotificationsAlertsManagementComponent, data: { view: 'management' } },
       { path: 'appointments-doctors', component: AppointmentManagementComponent },
       { path: 'notifications-alerts', component: NotificationsAlertsManagementComponent },
       { path: 'payment', component: PaymentManagementUserComponent },
@@ -35,7 +37,8 @@ export const routes: Routes = [
       { path: 'user', component: UserViewComponent },
       { path: 'sign-in', component: SignInComponent },
       { path: 'sign-up', component: SignUpComponent},
-      { path: 'resident-view', component: ResidentViewComponent }
+      { path: 'resident-view', component: ResidentViewComponent },
+      { path: 'resident-appointments', component: ResidentViewComponent }
     ]
   },
 

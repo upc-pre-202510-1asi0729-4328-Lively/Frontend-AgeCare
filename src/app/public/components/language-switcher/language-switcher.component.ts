@@ -12,17 +12,17 @@ export class LanguageSwitcherComponent {
   languages: string[] = ['en', 'es'];
 
   constructor(private translate: TranslateService) {
-    this.currentLang = translate.currentLang || 'en';
-    // Forzar idioma por defecto a inglés si no está definido
-    if (!translate.currentLang) {
-      translate.setDefaultLang('en');
-      translate.use('en');
-      this.currentLang = 'en';
-    }
+    // Forzar idioma por defecto a inglés siempre
+    translate.setDefaultLang('en');
+    // Usar el idioma guardado en localStorage o el navegador, si existe
+    const browserLang = localStorage.getItem('lang') || translate.getBrowserLang() || 'en';
+    this.currentLang = browserLang;
+    translate.use(browserLang);
   }
 
   useLanguage(language: string) : void {
     this.translate.use(language);
     this.currentLang = language;
+    localStorage.setItem('lang', language);
   }
 }

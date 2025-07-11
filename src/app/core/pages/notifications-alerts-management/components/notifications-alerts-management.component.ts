@@ -5,17 +5,21 @@ import { NotificationsListComponent } from '../../../components/notifications-li
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import {
+  NotificationManagementComponent
+} from '../../../components/notification-management/notification-management.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notifications-alerts-management',
   standalone: true,
-  imports: [NotificationsListComponent, CommonModule, FormsModule, TranslateModule],
+  imports: [NotificationsListComponent, CommonModule, FormsModule, TranslateModule, NotificationManagementComponent],
   templateUrl: './notifications-alerts-management.component.html',
   styleUrls: ['./notifications-alerts-management.component.css']
 })
 export class NotificationsAlertsManagementComponent implements OnInit {
   notifications: Notification[] = [];
-  filter: 'all' | 'unread' | 'archived' = 'all';
+  filter: 'all' | 'unread' | 'read' | 'archived' = 'all';
   newNotification = {
     title: '',
     message: '',
@@ -24,13 +28,22 @@ export class NotificationsAlertsManagementComponent implements OnInit {
   };
   showConfirmDeleteId: string | null = null;
   pendingStatusChange: {id: string, status: Notification['status']} | null = null;
+  view: 'all' | 'family' | 'management' = 'all';
+  showSuccessModal: boolean = false;
 
-  constructor(private notificationsService: NotificationsService, private translate: TranslateService) {
+
+
+  constructor(private notificationsService: NotificationsService, private translate: TranslateService, private route: ActivatedRoute) {
     // Forzar idioma por defecto a inglés solo para este componente
     if (!translate.currentLang || translate.currentLang !== 'en') {
       translate.setDefaultLang('en');
       translate.use('en');
     }
+    this.route.data.subscribe(data => {
+      if (data && data['view']) {
+        this.view = data['view'];
+      }
+    });
   }
 
   ngOnInit() {
@@ -42,12 +55,14 @@ export class NotificationsAlertsManagementComponent implements OnInit {
       this.notificationsService.getAll().subscribe((n: Notification[]) => this.notifications = n);
     } else if (this.filter === 'unread') {
       this.notificationsService.getUnread().subscribe((n: Notification[]) => this.notifications = n);
+    } else if (this.filter === 'read') {
+      this.notificationsService.getRead().subscribe((n: Notification[]) => this.notifications = n);
     } else if (this.filter === 'archived') {
       this.notificationsService.getArchived().subscribe((n: Notification[]) => this.notifications = n);
     }
   }
 
-  setFilter(filter: 'all' | 'unread' | 'archived') {
+  setFilter(filter: 'all' | 'unread' | 'read' | 'archived') {
     this.filter = filter;
     this.loadNotifications();
   }
@@ -60,53 +75,33 @@ export class NotificationsAlertsManagementComponent implements OnInit {
     this.notificationsService.archive(id).subscribe(() => this.loadNotifications());
   }
 
-  onCreateNotification() {
-    if (!this.newNotification.title.trim() || !this.newNotification.message.trim()) return;
+  onCreateNotification(notificationData: { title: string; message: string }) {
+    if (!notificationData.title.trim() || !notificationData.message.trim()) return;
     this.notificationsService.create({
-      title: this.newNotification.title,
-      message: this.newNotification.message,
-      userId: this.newNotification.userId,
+      title: notificationData.title,
+      message: notificationData.message,
+      userId: 'user1',
       status: 'unread'
     }).subscribe(() => {
-      this.newNotification = { title: '', message: '', userId: 'user1', status: 'unread' };
       this.loadNotifications();
+      this.showSuccessModal = true;
     });
   }
 
+  closeSuccessModal() {
+    this.showSuccessModal = false;
+  }
+
   confirmDelete(id: string) {
-    this.showConfirmDeleteId = id;
+    this.notificationsService.delete(id).subscribe(() => {
+      // Eliminar la notificación del array local sin recargar toda la lista
+      this.notifications = this.notifications.filter(n => n.id !== id);
+    });
   }
 
-  cancelDelete() {
-    this.showConfirmDeleteId = null;
-  }
-
-  onDelete(id: string) {
-    if (this.showConfirmDeleteId === id) {
-      this.notificationsService.delete(id).subscribe(() => {
-        this.showConfirmDeleteId = null;
-        this.loadNotifications();
-      });
-    } else {
-      this.confirmDelete(id);
-    }
-  }
-
-  onUpdateStatus(event: {id: string, status: Notification['status']}) {
-    // Solo aceptar el objeto correcto
+  onUpdateStatus(event: {id: string, status: import('../../../model/notification.model').Notification['status']}) {
     if (event && typeof event === 'object' && 'id' in event && 'status' in event) {
-      this.pendingStatusChange = event;
+      this.notificationsService.updateStatus(event.id, event.status).subscribe(() => this.loadNotifications());
     }
-  }
-
-  confirmStatusChange() {
-    if (!this.pendingStatusChange) return;
-    const { id, status } = this.pendingStatusChange;
-    this.notificationsService.updateStatus(id, status).subscribe(() => this.loadNotifications());
-    this.pendingStatusChange = null;
-  }
-
-  cancelStatusChange() {
-    this.pendingStatusChange = null;
   }
 }

@@ -19,8 +19,8 @@ export class AppointmentManagementComponent implements OnInit {
   newAppointment = {
     date: '',
     time: '', 
-    residentId: 0,
-    doctorId: 0
+    residentId: null as number | null,
+    doctorId: null as number | null
   };
 
   searchQuery: string = '';
@@ -52,25 +52,34 @@ export class AppointmentManagementComponent implements OnInit {
   createAppointment() {
     const { date, time, residentId, doctorId } = this.newAppointment;
 
-    if (!date || !time || !residentId || !doctorId) return;
+    if (!date || !time || !residentId || !doctorId) {
+      alert('Todos los campos son obligatorios.');
+      return;
+    }
 
     const [hourStr, minuteStr] = time.split(':');
+    if (!hourStr || !minuteStr) {
+      alert('Formato de hora inválido.');
+      return;
+    }
+
     const appointment: Omit<Appointment, 'id'> = {
       date,
-      time: {
-        hour: parseInt(hourStr, 10),
-        minute: parseInt(minuteStr, 10),
-        second: 0,
-        nano: 0
-      },
-      residentId,
-      doctorId,
+      time,
+      residentId: Number(residentId),
+      doctorId: Number(doctorId),
       status: 'Pending'
     };
 
-    this.appointmentService.create(appointment).subscribe(() => {
-      this.newAppointment = { date: '', time: '', residentId: 0, doctorId: 0 };
-      this.loadAppointments();
+    this.appointmentService.create(appointment).subscribe({
+      next: () => {
+        this.newAppointment = { date: '', time: '', residentId: null, doctorId: null };
+        this.loadAppointments();
+      },
+      error: (err) => {
+        console.error('Error al crear cita:', err);
+        alert('Ocurrió un error al crear la cita. Verifica que los IDs existan.');
+      }
     });
   }
 
@@ -90,19 +99,21 @@ export class AppointmentManagementComponent implements OnInit {
   }
 
   requestStatusChange(event: { id: number; status: Appointment['status'] }) {
-    console.log('Llamando update con:', event); 
-
     const appointment = this.appointments.find(a => a.id === event.id);
     if (!appointment) return;
 
-    const updated = { ...appointment, status: event.status };
+    const updated: Appointment = {
+      ...appointment,
+      status: event.status
+    };
+
+    delete (updated as any).residentName;
+    delete (updated as any).doctorName;
 
     this.appointmentService.update(event.id, updated).subscribe(() => {
-      console.log('Actualización exitosa'); 
       this.loadAppointments();
     });
   }
-
 
   confirmStatusChange() {
     if (!this.pendingStatusChange) return;
@@ -111,7 +122,10 @@ export class AppointmentManagementComponent implements OnInit {
     const appointment = this.appointments.find(a => a.id === id);
     if (!appointment) return;
 
-    const updated = { ...appointment, status };
+    const updated: Appointment = { ...appointment, status };
+
+    delete (updated as any).residentName;
+    delete (updated as any).doctorName;
 
     this.appointmentService.update(id, updated).subscribe(() => {
       this.pendingStatusChange = null;

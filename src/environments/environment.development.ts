@@ -12,7 +12,9 @@ export const environment = {
   medicationsEndpointPath: '/medications',
   mentalHealthRecordsEndpointPath: '/mental-health-records',
   medicalHistoryEndpointPath: '/medical-histories',
+  paymentEndpoint: '/receipts',
   appointmentsEndpointPath: '/appointments',
   doctorsEndpointPath: '/doctors',
   useJsonServer: false,
+
 };
