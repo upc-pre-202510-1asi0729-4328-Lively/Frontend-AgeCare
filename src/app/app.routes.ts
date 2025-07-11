@@ -27,7 +27,7 @@ export const routes: Routes = [
       { path: 'notifications-family', component: NotificationsAlertsManagementComponent, data: { view: 'family' } },
       { path: 'notifications-management', component: NotificationsAlertsManagementComponent, data: { view: 'management' } },
       { path: 'appointments-doctors', component: AppointmentManagementComponent },
-      { path: 'payment', component: PaymentManagementUserComponent },
+      //{ path: 'payment', component: PaymentManagementUserComponent }, //no existe
       { path: 'payment-doctor', component: PaymentManagementDoctorComponent },
       { path: 'resident', component: ResidentCareManagementComponent },
       { path: 'user', component: UserViewComponent },
