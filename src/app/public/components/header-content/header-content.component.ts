@@ -4,7 +4,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
-import {NgIf, NgOptimizedImage} from '@angular/common';
 import {TranslateModule, TranslatePipe} from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from "../language-switcher/language-switcher.component";
 @Component({
@@ -17,8 +16,6 @@ import { LanguageSwitcherComponent } from "../language-switcher/language-switche
     MatIconModule,
     MatMenuModule,
     RouterModule,
-    NgOptimizedImage,
-    NgIf,
     LanguageSwitcherComponent,
     TranslateModule,
   ]

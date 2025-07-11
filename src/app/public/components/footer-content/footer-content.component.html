@@ -1,7 +1,19 @@
-<footer style="background-color: #333; color: #fff; text-align: center; padding: 10px;">
-  <p>{{ 'footer.rights' | translate: {api: 'Fake Store API'} }}</p>
-  <p>
-    {{ 'footer.intro' | translate }}
-    {{ 'footer.author' | translate: {team: 'DAOS'} }}
-  </p>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Sección 1: Logo y descripción -->
+    <div class="footer-section">
+      <p class="footer-description">
+        {{ 'footer.description' | translate }}
+      </p>
+    </div>
+
+    <!-- Sección 2: Derechos -->
+    <div class="footer-section credits">
+      <p>{{ 'footer.rights' | translate: { api: 'AgeCare' } }}</p>
+      <p>
+        {{ 'footer.intro' | translate }}
+        {{ 'footer.author' | translate: { team: 'Lively' } }}
+      </p>
+    </div>
+  </div>
 </footer>

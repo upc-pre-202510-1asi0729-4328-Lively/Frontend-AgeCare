@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h5 class="modal-title">Remove Member</h5>
+  <button type="button"
+          class="btn-close btn-close-white"
+          aria-label="Close"
+          (click)="cancel()"></button>
+</div>
+<div class="modal-body">
+  <p>
+    You are about to remove
+    <strong>{{ doctor.fullName.firstName }} {{ doctor.fullName.lastName }}</strong>,
+    which will not allow this person to login into your organization anymore.
+  </p>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-secondary" (click)="cancel()">Keep Member</button>
+  <button class="btn btn-danger" (click)="confirm()">Remove Member</button>
+</div>

@@ -1,0 +1,13 @@
+<div class="notifications-list">
+  <div *ngIf="filteredNotifications.length === 0">No hay notificaciones.</div>
+  <ul>
+    <li *ngFor="let notification of filteredNotifications">
+      <app-notification-familymember
+        [notification]="notification"
+        (deleteConfirmed)="onDeleteConfirmed($event)"
+        (updateStatus)="onUpdateStatus($event)"
+      >
+      </app-notification-familymember>
+    </li>
+  </ul>
+</div>

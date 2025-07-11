@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Details for {{ data.name }}</h2>
+
+<mat-dialog-content>
+
+  <section>
+    <h3>Medications</h3>
+    <ul *ngIf="data.medications.length > 0; else noMeds">
+      <li *ngFor="let med of data.medications">
+        {{ med.name }} - {{ med.frequency }}
+      </li>
+    </ul>
+    <ng-template #noMeds><p>No medications available.</p></ng-template>
+  </section>
+
+  <section>
+    <h3>Medical History</h3>
+    <ul *ngIf="data.medicalHistories.length > 0; else noHistory">
+      <li *ngFor="let hist of data.medicalHistories">
+        {{ hist.recordDate | date: 'mediumDate' }}:
+        <strong>{{ hist.diagnosis }}</strong> ({{ hist.treatment }})
+      </li>
+    </ul>
+    <ng-template #noHistory><p>No medical history records available.</p></ng-template>
+  </section>
+
+  <section>
+    <h3>Mental Health Records</h3>
+    <ul *ngIf="data.mentalHealthRecords.length > 0; else noMental">
+      <li *ngFor="let rec of data.mentalHealthRecords">
+        {{ rec.recordDate | date: 'mediumDate' }}:
+        <strong>{{ rec.diagnosis }}</strong> ({{ rec.treatment }})
+      </li>
+    </ul>
+    <ng-template #noMental><p>No mental health records available.</p></ng-template>
+  </section>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="close()">Close</button>
+</mat-dialog-actions>

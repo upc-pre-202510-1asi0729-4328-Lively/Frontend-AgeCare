@@ -1,0 +1,82 @@
+<div class="payment-container">
+  <h2>Boletas pendientes</h2>
+
+  <label for="residentSelect">Selecciona tu nombre:</label>
+  <select id="residentSelect" [(ngModel)]="residentId" name="residentId" (change)="loadReceipts()">
+    <option [ngValue]="null">-- Selecciona un residente --</option>
+    <option *ngFor="let resident of residents" [ngValue]="resident.id">
+      {{ resident.firstName }} {{ resident.lastName }}
+    </option>
+  </select>
+
+  <div *ngFor="let payment of filteredPayments" class="payment-card">
+    <h3>Boleta #{{ payment.receiptId }}</h3>
+    <p><strong>Monto:</strong> S/. {{ payment.totalAmount }}</p>
+    <p><strong>Tipo:</strong> {{ payment.type }}</p>
+    <p><strong>Fecha límite:</strong> {{ payment.dueDate | date: 'shortDate' }}</p>
+
+    <button (click)="expandPayment(payment)">Ver detalles</button>
+    <button (click)="pay(payment)">Pagar</button>
+
+    <div *ngIf="selectedPayment?.receiptId === payment.receiptId && selectedPayment === payment && !showPaymentForm">
+      <p><em>Detalles adicionales de la boleta</em></p>
+      <p>Este espacio puede usarse para mostrar citas médicas u observaciones.</p>
+    </div>
+  </div>
+
+  <!-- Formulario de pago -->
+  <div *ngIf="showPaymentForm && selectedPayment" class="payment-form">
+    <h3>Selecciona método de pago</h3>
+
+    <div class="method-buttons">
+      <button (click)="selectedMethod = 'card'" [class.active]="selectedMethod === 'card'">Tarjeta</button>
+      <button (click)="selectedMethod = 'yape'" [class.active]="selectedMethod === 'yape'">Yape</button>
+      <button (click)="selectedMethod = 'cash'" [class.active]="selectedMethod === 'cash'">Efectivo</button>
+      <button (click)="cancelPayment()">Cancelar</button>
+    </div>
+
+    <!-- Tarjeta -->
+    <div *ngIf="selectedMethod === 'card'" class="card-form">
+      <div class="credit-card-display">
+        <div class="card-number">{{ cardInfo.number || 'XXXX XXXX XXXX XXXX' }}</div>
+        <div class="card-holder">{{ cardInfo.name || 'NOMBRE DEL TITULAR' }}</div>
+        <div class="card-expiry">{{ cardInfo.expiry || 'MM/AA' }}</div>
+      </div>
+
+      <form class="card-inputs">
+        <label>Número de Tarjeta:</label>
+        <input type="text" [(ngModel)]="cardInfo.number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" />
+
+        <label>Nombre del Titular:</label>
+        <input type="text" [(ngModel)]="cardInfo.name" name="cardName" placeholder="Nombre Apellido" />
+
+        <label>Fecha de Expiración (MM/AA):</label>
+        <input type="text" [(ngModel)]="cardInfo.expiry" name="expiry" placeholder="MM/AA" />
+
+        <label>CCV:</label>
+        <input type="text" [(ngModel)]="cardInfo.ccv" name="ccv" placeholder="123" />
+
+        <button type="button" (click)="submitCardPayment()">Confirmar Pago</button>
+      </form>
+    </div>
+
+    <!-- Yape -->
+    <div *ngIf="selectedMethod === 'yape'" class="yape-form">
+      <p><strong>Escanea este QR con tu app de Yape:</strong></p>
+      <img src="assets/yape-qr.jpg" alt="Código QR de Yape" width="500" />
+      <p>Sube la captura de tu Yapeo:</p>
+      <input type="file" (change)="handleYapeFileUpload($event)" />
+      <button (click)="submitYapePayment()">Enviar Comprobante</button>
+    </div>
+
+    <!-- Efectivo -->
+    <div *ngIf="selectedMethod === 'cash'" class="cash-form">
+      <p>Se generará un ticket que podrás mostrar en caja.</p>
+      <button *ngIf="!ticketGenerated" (click)="generateCashTicket()">Generar Ticket</button>
+      <div *ngIf="ticketGenerated">
+        <p><strong>Ticket generado:</strong> #{{ selectedPayment.receiptId }} - Monto: S/. {{ selectedPayment.totalAmount }}</p>
+        <p>Preséntalo en recepción para completar el pago.</p>
+      </div>
+    </div>
+  </div>
+</div>

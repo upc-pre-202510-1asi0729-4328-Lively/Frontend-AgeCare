@@ -1,6 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  color: black;
+}
+html, body {
+  height: 100%;
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+app-root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container, .notifications-management-layout {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-list-section {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+footer, .footer-content {
+  flex-shrink: 0;
+}
 
 /*Prueba*/
+/* 1) BACKDROP SEMITRANSPARENTE POR ENCIMA DEL FOOTER */
+.modal-backdrop {
+  position: fixed !important;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5) !important;
+  z-index: 9990 !important;        /* más alto que tu footer */
+}
+
+/* 2) CONTENEDOR DEL MODAL, CENTRADO Y FIXED */
+ngb-modal-window {
+
+  color: rgba(120, 255, 251, 0.65);
+  position: fixed !important;
+  top: 0; left: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%; height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 10000 !important;       /* muy por encima del resto */
+}
+
+/* 3) DIÁLOGO EN SÍ, SIN MÁRGENES */
+.modal-dialog {
+  margin: 0 !important;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* 4) FINO ESTILO DE FONDO Y SOMBRA */
+.modal-content {
+  background-color: #F4F7FA !important;
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}

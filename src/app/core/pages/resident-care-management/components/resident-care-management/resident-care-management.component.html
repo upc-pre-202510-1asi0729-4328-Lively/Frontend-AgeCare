@@ -1,1 +1,62 @@
-<p>resident-care-management works!</p>
+<div class="form-container">
+  <h2>{{ editingResidentId ? 'Edit Resident' : 'Add Resident' }}</h2>
+
+  <form [formGroup]="residentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input formControlName="dni" placeholder="DNI" />
+      <input formControlName="firstName" placeholder="First Name" />
+      <input formControlName="lastName" placeholder="Last Name" />
+      <input formControlName="birthDate" type="date" placeholder="Birth Date" />
+
+      <select formControlName="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input formControlName="city" placeholder="City" />
+      <input formControlName="state" placeholder="State" />
+      <input formControlName="country" placeholder="Country" />
+      <input formControlName="street" placeholder="Street" />
+      <input formControlName="zipCode" placeholder="Zip Code" />
+      <input formControlName="receiptId" type="number" placeholder="Receipt ID" />
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" [disabled]="residentForm.invalid">
+        {{ editingResidentId ? 'Update' : 'Create' }}
+      </button>
+      <button type="button" *ngIf="editingResidentId" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<div class="resident-cards-container">
+  <div class="resident-card" *ngFor="let resident of residents">
+    <h3>{{ resident.firstName }} {{ resident.lastName }}</h3>
+
+    <ul>
+      <li><strong>DNI:</strong> {{ resident.dni }}</li>
+      <li><strong>Birth Date:</strong> {{ resident.birthDate | date }}</li>
+      <li><strong>Gender:</strong> {{ resident.gender }}</li>
+      <li><strong>City:</strong> {{ resident.city }}</li>
+      <li><strong>State:</strong> {{ resident.state }}</li>
+      <li><strong>Country:</strong> {{ resident.country }}</li>
+      <li><strong>Street:</strong> {{ resident.street }}</li>
+      <li><strong>Zip Code:</strong> {{ resident.zipCode }}</li>
+      <li><strong>Receipt ID:</strong> {{ resident.receiptId }}</li>
+    </ul>
+
+    <div class="card-actions">
+      <button (click)="editResident(resident)">Edit</button>
+      <button (click)="deleteResident(resident.id)">Delete</button>
+    </div>
+
+    <div class="card-actions-secondary">
+      <button (click)="viewMedications(resident)">View Medical Profile</button>
+    </div>
+  </div>
+</div>

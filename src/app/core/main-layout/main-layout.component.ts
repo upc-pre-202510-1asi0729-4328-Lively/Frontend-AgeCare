@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {HeaderContentComponent} from '../../public/components/header-content/header-content.component';
 import {FooterContentComponent } from '../../public/components/footer-content/footer-content.component';
 import {CommonModule} from '@angular/common';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,8 +18,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     HeaderContentComponent,
     FooterContentComponent,
     CommonModule,
-    RouterLink,
-    RouterLinkActive,
     RouterOutlet,
     MatSidenavModule,
     MatListModule,

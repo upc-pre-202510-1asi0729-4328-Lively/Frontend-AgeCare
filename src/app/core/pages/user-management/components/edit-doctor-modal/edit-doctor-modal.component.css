@@ -1,0 +1,67 @@
+
+:host ::ng-deep .modal-content {
+  background: #1f1f1f; color: #f1f1f1; border-radius: 8px; border: none;
+}
+.modal-header, .modal-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.75rem 1.5rem; border-color: #333;
+}
+.modal-body { padding: 1rem 1.5rem; }
+.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1rem; }
+label { font-size: 0.875rem; color: #000000; margin-bottom: 0.25rem; display: block; }
+.form-control {
+  background: #2b2b2b; border: 1px solid #444; border-radius: 4px;
+  padding: 0.5rem; color: #e0e0e0;
+}
+.form-control:focus { background: #333; border-color: #666; box-shadow: none; }
+/* -------------------------------------------------- */
+/* Estilos comunes para los botones del modal-footer  */
+/* -------------------------------------------------- */
+.modal-footer .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  transition:
+    background-color 0.2s ease,
+    color            0.2s ease,
+    border-color     0.2s ease;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------- */
+/* Botón “Cancel” (outline secondary)                 */
+/* -------------------------------------------------- */
+.modal-footer .btn-outline-secondary {
+  background-color: transparent;
+  border: 1px solid #9EA3A6;    /* gris medio */
+  color: #9EA3A6;
+}
+
+.modal-footer .btn-outline-secondary:hover {
+  background-color: #F4F7FA;    /* gris claro de fondo */
+  border-color:    #6E8CDC;     /* azul suave */
+  color:           #3451B5;     /* azul más oscuro */
+}
+
+/* -------------------------------------------------- */
+/* Botón “Save” (primary)                             */
+/* -------------------------------------------------- */
+.modal-footer .btn-primary {
+  background-color: #2563EB;    /* azul principal */
+  border:           1px solid #2563EB;
+  color:            #FFFFFF;
+}
+
+.modal-footer .btn-primary:hover:not(:disabled) {
+  background-color: #3451B5;    /* azul hover */
+  border-color:    #3451B5;
+}
+
+.modal-footer .btn-primary:disabled {
+  background-color: #B9C7DB;    /* gris-azul apagado */
+  border-color:    #B9C7DB;
+  color:            #FFFFFF;
+  opacity:          0.6;
+  cursor:           not-allowed;
+}

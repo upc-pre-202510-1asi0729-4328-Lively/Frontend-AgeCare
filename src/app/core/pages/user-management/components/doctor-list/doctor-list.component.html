@@ -1,0 +1,58 @@
+<div class="list-wrapper">
+  <div class="list-container">
+
+    <!-- Encabezado colapsable -->
+    <div class="doctor-header" (click)="toggleCollapse()">
+      <h2>Doctors</h2>
+      <button class="toggle-btn" aria-label="Toggle list">
+        {{ isCollapsed ? '+' : '−' }}
+      </button>
+    </div>
+
+    <!-- Lista de doctores, se muestra solo si está expandida -->
+    <section *ngIf="!isCollapsed" class="doctor-list">
+      <div class="search-bar">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          [(ngModel)]="filterText"
+          (ngModelChange)="applyFilter()"
+        />
+      </div>
+
+      <div *ngFor="let doc of filteredDoctors" class="doctor-card">
+        <div class="card-header">
+          <h3>{{ doc.fullName.firstName }} {{ doc.fullName.lastName }}</h3>
+          <div class="actions">
+            <button class="btn edit" (click)="onEdit(doc)">✎ Edit</button>
+            <button class="btn delete" (click)="onDelete(doc)">🗑️ Delete</button>
+          </div>
+        </div>
+
+        <p><strong>License:</strong> {{ doc.licenseNumber }}</p>
+        <p><strong>Specialty:</strong> {{ doc.specialty }}</p>
+        <p><strong>Phone:</strong> {{ doc.contactInfo.phone }}</p>
+
+        <div class="address">
+          <p>{{ doc.contactInfo.address.street }}, {{ doc.contactInfo.address.city }}</p>
+          <p>
+            {{ doc.contactInfo.address.state }}
+            {{ doc.contactInfo.address.zipCode }},
+            {{ doc.contactInfo.address.country }}
+          </p>
+        </div>
+
+        <div class="schedules">
+          <h4>Schedules</h4>
+          <ul>
+            <li *ngFor="let s of doc.schedules">
+              {{ s.day }}: {{ s.startTime }} - {{ s.endTime }}
+              (Appt ID: {{ s.appointmentId }})
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
