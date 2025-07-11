@@ -13,8 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
       HttpClientModule,
       TranslateModule
     ],
-  templateUrl: './payment-management-user.component.html',
-  styleUrls: ['./payment-management-user.component.css']
+  templateUrl: './payment-management-user.html',
+  styleUrls: ['./payment-management-user.css']
 })
 export class PaymentManagementUserComponent implements OnInit {
 

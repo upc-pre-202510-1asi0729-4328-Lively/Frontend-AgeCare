@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     TranslateModule
   ],
-  templateUrl: './payment-management-doctor.component.html',
+  templateUrl: './payment-management.component-doctor.html',
   styleUrls: ['./payment-management-doctor.component.css']
 })
 export class PaymentManagementDoctorComponent implements OnInit {
