@@ -5,7 +5,5 @@ export const environment = {
   residentsEndpointPath: '/residents',
   medicationsEndpointPath: '/medications',
   mentalHealthRecordsEndpointPath: '/mentalHealthRecords',
-  medicalHistoryEndpointPath: '/medicalHistorys',
-  appointmentsEndpointPath: '/appointments',
-  doctorsEndpointPath: '/doctors'
+  medicalHistoryEndpointPath: '/medicalHistorys'
 };

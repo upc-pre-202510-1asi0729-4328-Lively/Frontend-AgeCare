@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     TranslateModule
   ],
-  templateUrl: './payment-management-doctor.component.html',
+  templateUrl: './payment-management-doctor.component.html', // ERROR: No existe el archivo de plantilla, por eso el componente no tiene template y Angular lanza el error TS-992001
   styleUrls: ['./payment-management-doctor.component.css']
 })
 export class PaymentManagementDoctorComponent implements OnInit {

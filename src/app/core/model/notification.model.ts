@@ -1,8 +1,8 @@
 export interface Notification {
   id: string;
   title: string;
-  message: string;
+  content: string;
   createdAt: Date;
-  status: 'unread' | 'read' | 'archived';
-  userId: string;
+  status: 'unread' | 'READ' | 'ARCHIVED';
+  userId: number;
 }

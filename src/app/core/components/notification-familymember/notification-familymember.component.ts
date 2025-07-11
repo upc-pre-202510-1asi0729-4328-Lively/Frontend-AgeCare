@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../model/notification.model';
 
 @Component({
@@ -11,7 +12,7 @@ import { Notification } from '../../model/notification.model';
   templateUrl: './notification-familymember.component.html',
   styleUrls: ['./notification-familymember.component.css']
 })
-export class NotificationFamilymemberComponent {
+export class NotificationFamilymemberComponent implements OnInit {
   @Input() notification!: Notification;
   @Output() deleteConfirmed = new EventEmitter<string>();
   @Output() updateStatus = new EventEmitter<{id: string, status: Notification['status']}>();
@@ -19,29 +20,54 @@ export class NotificationFamilymemberComponent {
   showConfirm: boolean = false;
   confirmAction: '' | 'read' | 'archive' | 'unarchive' | 'delete' = '';
   confirmId: string | null = null;
+  notifications: Notification[] = [];
 
-  constructor(private http: HttpClient, public translate: TranslateService) {}
+  constructor(private http: HttpClient, public translate: TranslateService, private notificationService: NotificationService) {}
+
+  ngOnInit() {
+    this.loadNotifications();
+  }
+
+  loadNotifications() {
+    this.notificationService.getAll().subscribe({
+      next: (notifications) => this.notifications = notifications,
+      error: (error) => console.error('Error loading notifications:', error)
+    });
+  }
 
   onMarkAsRead(id: string) {
-    this.http.patch(`http://localhost:3000/notifications/${id}`, { status: 'read' }).subscribe(() => {
-      this.updateStatus.emit({ id, status: 'read' });
+    this.notificationService.markAsRead(id).subscribe(() => {
+      const notification = this.notifications.find(n => n.id === id);
+      if (notification) {
+        notification.status = 'READ';
+        this.updateStatus.emit({ id, status: 'READ' });
+      }
     });
   }
 
   onArchive(id: string) {
-    this.http.patch(`http://localhost:3000/notifications/${id}`, { status: 'archived' }).subscribe(() => {
-      this.updateStatus.emit({ id, status: 'archived' });
+    this.notificationService.archive(id).subscribe(() => {
+      const notification = this.notifications.find(n => n.id === id);
+      if (notification) {
+        notification.status = 'ARCHIVED';
+        this.updateStatus.emit({ id, status: 'ARCHIVED' });
+      }
     });
   }
 
   onUnarchive(id: string) {
-    this.http.patch(`http://localhost:3000/notifications/${id}`, { status: 'read' }).subscribe(() => {
-      this.updateStatus.emit({ id, status: 'read' });
+    this.notificationService.unarchive(id).subscribe(() => {
+      const notification = this.notifications.find(n => n.id === id);
+      if (notification) {
+        notification.status = 'READ'; // Assuming it goes back to 'READ' after unarchiving
+        this.updateStatus.emit({ id, status: 'READ' });
+      }
     });
   }
 
   onDelete(id: string) {
-    this.http.delete(`http://localhost:3000/notifications/${id}`).subscribe(() => {
+    this.notificationService.delete(id).subscribe(() => {
+      this.notifications = this.notifications.filter(n => n.id !== id);
       this.deleteConfirmed.emit(id);
     });
   }
